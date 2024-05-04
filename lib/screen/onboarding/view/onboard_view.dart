@@ -7,8 +7,12 @@ class OnboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Image.asset("assets/images/onboard.png"),
-      ),
+          child: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/onboard.png"),
+                fit: BoxFit.fitWidth)),
+      )),
     );
   }
 }
