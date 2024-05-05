@@ -141,7 +141,8 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
         child: Text(
           "Gizlilik Politikası ve şartlarinizi kabul ediyorum.",
           style: context.general.textTheme.bodySmall?.copyWith(
-            color: ProjectColor.apricot.getColor()
+            color: ProjectColor.apricot.getColor(),
+            fontWeight: FontWeight.w600
           ),
         ),
       ),

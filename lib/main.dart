@@ -13,7 +13,10 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: const WelcomeView(),
-      theme: ProjectTheme().theme,
+      theme: ProjectTheme(context).theme,
     );
   }
 }
+
+
+//todo: projede öğrenilmesi gerekenler : MVC,GetX

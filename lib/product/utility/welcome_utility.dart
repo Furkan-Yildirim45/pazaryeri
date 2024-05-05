@@ -16,7 +16,7 @@ mixin WelcomeUtility{
           backgroundColor: ProjectColor.apricot.getColor(),
           onPressed: onPressed,
           child: Text(text,style:
-          context.general.textTheme.titleMedium?.copyWith(color: Colors.white),),
+          context.general.textTheme.titleMedium?.copyWith(color: Colors.white,fontWeight: FontWeight.w700),),
       ));
   }
   Padding marketPlaceTitle(BuildContext context) {

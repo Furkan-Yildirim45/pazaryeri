@@ -3,6 +3,7 @@ import 'package:kartal/kartal.dart';
 import 'package:untitled/product/utility/create_profile_utility.dart';
 import 'package:untitled/product/utility/welcome_utility.dart';
 import 'package:untitled/screen/main_page/view/main_page_view.dart';
+import 'package:untitled/screen/product/view/product_detail_view.dart';
 
 import '../../../../product/widget/custom_dropdown_button.dart';
 
@@ -28,7 +29,7 @@ class _CreateProfileViewState extends State<CreateProfileView>
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: floatActionButton(context, text: "Devam Et", onPressed: () {
-        context.route.navigateToPage(const MainPageView());
+        context.route.navigateToPage(const ProductDetailView());
       }),
       body: SafeArea(
         child: Padding(

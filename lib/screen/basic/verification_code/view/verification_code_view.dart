@@ -74,23 +74,24 @@ class _VerificationScreenState extends State<VerificationScreen> with WelcomeUti
                     _verificationCodeText(context),
                     Container(
                       margin: context.padding.onlyTopMedium,
-                      height: context.sized.dynamicWidth(0.13),
+                      height: context.sized.dynamicWidth(0.12),
                       width: context.sized.width,
                       child: ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return Container(
                             margin: index == 5 ? EdgeInsets.zero : context.padding.onlyRightLow,
-                            width: context.sized.dynamicWidth(0.13),
+                            width: context.sized.dynamicWidth(0.12),
                             decoration: BoxDecoration(
                                 color: ProjectColor.apricot.getColor(),
                               borderRadius: context.border.normalBorderRadius,
                               border: Border.all(width: 1,color: ProjectColor.apricot.getColor()),
                             ),
-                            child: const TextField(
+                            child: TextField(
+                              style: context.general.textTheme.titleLarge?.copyWith(color: Colors.white),
                               cursorColor: Colors.white,
                               textAlign: TextAlign.center,
-                              decoration: InputDecoration(border: InputBorder.none),
+                              decoration: const InputDecoration(border: InputBorder.none),
                             ),
                           );
                         },
@@ -98,7 +99,6 @@ class _VerificationScreenState extends State<VerificationScreen> with WelcomeUti
                         itemCount: 6,
                       ),
                     ),
-                    //
                     _timeRemainingText(context),
                     _resendButton(context)
                   ],
@@ -114,7 +114,7 @@ class _VerificationScreenState extends State<VerificationScreen> with WelcomeUti
   Center _resendButton(BuildContext context) {
     return Center(
                       child: TextButton(
-                        onPressed: () {}, child: Text('Yeniden gönder',style:
+                        onPressed: () {}, child: Text('Yeni kod gönder',style:
                         context.general.textTheme.titleSmall?.copyWith(color: ProjectColor.apricot.getColor()),)
                       ),
                   );
@@ -129,7 +129,7 @@ class _VerificationScreenState extends State<VerificationScreen> with WelcomeUti
                         children: [
                           Text(
                             'Doğrulama kodunuzun kalan süresi: ',
-                            style: context.general.textTheme.labelSmall,
+                            style: context.general.textTheme.labelLarge,
                           ),
                           Text(
                             "$_counter",
