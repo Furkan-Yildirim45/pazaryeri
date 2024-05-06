@@ -1,13 +1,28 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/product/color/project_color.dart';
 import 'package:untitled/product/extension/context/border_Radius.dart';
+import 'package:untitled/product/init/init.dart';
+import 'package:untitled/product/utility/product_detail_utility.dart';
 import 'package:untitled/product/widget/custom_elevated_button.dart';
+import 'package:untitled/screen/product/all_comments/view/all_comment_view.dart';
 
-class ProductDetailView extends StatelessWidget {
+import '../model/comment_model.dart';
+
+class ProductDetailView extends StatefulWidget {
   const ProductDetailView({super.key});
+
+  @override
+  State<ProductDetailView> createState() => _ProductDetailViewState();
+}
+
+class _ProductDetailViewState extends State<ProductDetailView> with ProductDetailUtility{
+  List<CommentModel> commentItems = [];
+  @override
+  void initState() {
+    commentItems = ProjectInit().generateDummyComments();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +31,7 @@ class ProductDetailView extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(
-              height: context.sized.dynamicHeight(2), //componentlerin total heightleri burda olmalı
+              height: context.sized.dynamicHeight(1.8), //componentlerin total heightleri burda olmalı
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
@@ -78,16 +93,16 @@ class ProductDetailView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               //iç kısmı
-                              _productShopName(context),
-                              _productNameAndCode(context, textStyle: context.general.textTheme.titleMedium?.copyWith(color: Colors.grey) ?? const TextStyle()),
-                              _productRating(context, starSize: context.sized.dynamicHeight(0.02)),
+                              productShopName(context),
+                              productNameAndCode(context, textStyle: context.general.textTheme.titleMedium?.copyWith(color: Colors.grey) ?? const TextStyle()),
+                              productRating(context, starSize: context.sized.dynamicHeight(0.02)),
                               //ürün bilgisi content
                               Padding(
                                 padding: context.padding.onlyTopNormal,
                                 child: const Text('Yüzünüze parlaklık ve nem verir. Sivilce akne oluşumunu önler. Üstelik içindeki C vitamini sayesinde vücudunuzun cilt bariyerini güçlendirir.'),
                               ),
                               //divider
-                              _pageDivider(context),
+                              pageDivider(context),
                               //adet bilgisi girme
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,8 +122,8 @@ class ProductDetailView extends StatelessWidget {
                                         child: Center(child: Text('1',style:
                                         context.general.textTheme.titleLarge,)),
                                       ),
-                                      _quantityButton(context,text: "-",isLeft: true),
-                                      _quantityButton(context, text: "+",isLeft: false)
+                                      quantityButton(context,text: "-",isLeft: true),
+                                      quantityButton(context, text: "+",isLeft: false)
                                     ],
                                   ),
                                 ],
@@ -127,16 +142,12 @@ class ProductDetailView extends StatelessWidget {
                     child: Container(
                       padding: context.padding.horizontalMedium,
                       width: double.infinity,
-                      height: context.sized.dynamicHeight(1),
+                      height: context.sized.dynamicHeight(0.9),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: context.myBorder.dynamicBorderRadiusOnly(topRight: 0.08, topLeft: 0.08),
                         boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.6),
-                            blurRadius: 6,
-                            offset: const Offset(0, 3),
-                          ),
+                          buildGeneralShadow(),
                         ],
                       ),
                       child: Column(
@@ -170,7 +181,7 @@ class ProductDetailView extends StatelessWidget {
                               ],
                             ),
                           ),
-                          _pageDivider(context),
+                          pageDivider(context),
                           Container(
                             margin: context.padding.onlyTopNormal,
                             height: context.sized.dynamicHeight(0.11),
@@ -179,7 +190,7 @@ class ProductDetailView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 //satıcı profile kutusu
-                                _sellerProfileContainer(context),
+                                sellerProfileContainer(context),
                                 //Satıcı bilgisi ve ürün rating
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -187,7 +198,7 @@ class ProductDetailView extends StatelessWidget {
                                   children: [
                                     Text('Emre Armağan / Satıcı',style:
                                       context.general.textTheme.titleMedium,),
-                                    _productRating(context, starSize: context.sized.dynamicHeight(0.02)),
+                                    productRating(context, starSize: context.sized.dynamicHeight(0.02)),
                                   ],
                                 ),
                               ],
@@ -198,39 +209,44 @@ class ProductDetailView extends StatelessWidget {
                             child: Text('Ürün Değerlendirmeleri',style: context.general.textTheme.titleMedium,),
                           ),
                           //ürün değerlendirme kutucuğu
-                          Container(
-                            padding: context.padding.horizontalNormal,
-                            margin: context.padding.onlyTopNormal,
-                            width: context.sized.width,
-                            height: 400,
-                            decoration: BoxDecoration(
-                              color: ProjectColor.lightGrey.getColor(),
-                              borderRadius: context.border.highBorderRadius
-                            ),
-
-                            child: Column(
-                              children: [
-                                //Satıcı ve ürün ön bilgisi değerlendirmeler için
-                                Padding(
-                                  padding: context.padding.onlyTopNormal,
-                                  child: Row(
-                                    children: [
-                                      _sellerProfileContainer(context,url: "assets/images/product.png"),
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          _productShopName(context),
-                                          _productNameAndCode(context, textStyle: context.general.textTheme.titleSmall?.copyWith(color: Colors.grey) ?? const TextStyle()),
-                                          _productRating(context, starSize: context.sized.dynamicHeight(0.015),),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                          Column(
+                            children: [
+                              Container(
+                                padding: context.padding.horizontalNormal,
+                                margin: context.padding.onlyTopNormal,
+                                width: context.sized.width,
+                                height: context.sized.dynamicHeight(0.5),
+                                decoration: BoxDecoration(
+                                  color: ProjectColor.lightGrey.getColor(),
+                                  borderRadius: context.myBorder.dynamicBorderRadiusOnly(topLeft: 0.1,topRight: 0.1)
                                 ),
-                                _pageDivider(context),
-                                //todo: dummy olusturucaksın commentModele!
-                              ],
-                            ),
+                                child: Column(
+                                  children: [
+                                    //Satıcı ve ürün ön bilgisi değerlendirmeler için
+                                    buildSellerAndProductInfo(context),
+                                    //yorumlar ilk 2
+                                    Expanded(
+                                      child: ListView.builder(
+                                        physics: const NeverScrollableScrollPhysics(),
+                                        itemCount: 2,
+                                        itemBuilder: (context, index) {
+                                          //yorum bileşeni
+                                          return buildCommentWithDivider(context, index, commentItems: commentItems);
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              CustomElevatedButton(
+                                  width: double.infinity,
+                                  shape: RoundedRectangleBorder(borderRadius: context.myBorder.dynamicBorderRadiusOnly(bottomRight: 0.1, bottomLeft: 0.1,),),
+                                  child: Text('Tümünü Gör (543)', style: context.general.textTheme.titleMedium?.copyWith(color: ProjectColor.apricot.getColor()),),
+                                  onPressed: () {
+                                    context.route.navigateToPage(AllCommentView(commentItems: commentItems,));
+                                    },
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -244,111 +260,26 @@ class ProductDetailView extends StatelessWidget {
       ),
     );
   }
+}
 
-  Container _sellerProfileContainer(
-    BuildContext context, {
-    String? url,
-  }) {
-    return Container(
-      margin: context.padding.onlyRightNormal,
-      height: context.sized.dynamicHeight(0.11),
-      width: context.sized.dynamicHeight(0.11),
-      decoration: BoxDecoration(
-        color: Colors.grey,
-        borderRadius: context.border.normalBorderRadius,
-        image: url != null ? DecorationImage(image: AssetImage(url)) : null,
-      ),
-    );
+
+class SecureNameWidget extends StatelessWidget {
+  final String name;
+
+  const SecureNameWidget({super.key, required this.name});
+
+  @override
+  Widget build(BuildContext context) {
+    String secureName = _getSecureName(name);
+    return Text(secureName,style: context.general.textTheme.titleSmall,);
   }
 
-  Text _productNameAndCode(BuildContext context,{required TextStyle textStyle}) => Text('Yüz Bakım Serumu PZ5354686', style: textStyle,);
-
-  Text _productShopName(BuildContext context) => Text('M.Lawrence Serum', style: context.general.textTheme.titleLarge,);
-
-  Row _productRating(BuildContext context,{required double starSize}) {
-    return Row(
-      children: [
-        //total star average
-        Container(
-          margin: context.padding.onlyRightLow,
-          padding: context.padding.horizontalLow,
-          decoration: BoxDecoration(
-            color: Colors.green,
-            borderRadius: context.border.lowBorderRadius,
-          ),
-          child: Text(
-            '4.3',
-            style: context.general.textTheme.titleMedium
-                ?.copyWith(color: Colors.white),
-          ),
-        ),
-        //star point
-        SizedBox(
-          width: starSize * 5,
-          height: starSize,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return Icon(
-                Icons.star,
-                size: starSize,
-                color: index == 4
-                    ? Colors.grey
-                    : ProjectColor.starYellow.getColor(),
-              );
-            },
-          ),
-        ),
-        //divider
-        Container(
-          margin: context.padding.horizontalLow,
-          width: 2,
-          height: starSize * 1.5,
-          color: Colors.black54,
-        ),
-        //değerlendirme
-        Text(
-          '1234 Değerlendirme',
-          style: context.general.textTheme.labelSmall
-              ?.copyWith(color: Colors.grey,fontSize: context.sized.dynamicWidth(0.025)),
-          overflow: TextOverflow.ellipsis,
-        ),
-      ],
-    );
-  }
-
-  Padding _pageDivider(BuildContext context) {
-    return Padding(
-      padding: context.padding.onlyTopNormal,
-      child: const Divider(
-        height: 2,
-        color: Colors.black12,
-      ),
-    );
-  }
-
-  Positioned _quantityButton(
-    BuildContext context, {
-    bool? isLeft,
-    required String text,
-  }) {
-    return Positioned(
-      top: 0,
-      left: (isLeft ?? false) ? 0 : null,
-      right: (isLeft ?? false) ? null : 0,
-      child: CustomElevatedButton(
-        shape: RoundedRectangleBorder(
-            borderRadius: context.border.lowBorderRadius),
-        onPressed: () {},
-        width: context.sized.dynamicHeight(0.06),
-        height: context.sized.dynamicHeight(0.06),
-        child: Text(
-          text,
-          style: context.general.textTheme.titleLarge,
-        ),
-      ),
-    );
+  String _getSecureName(String name) {
+    List<String> nameParts = name.split(' ');
+    String secureName = '';
+    for (String part in nameParts) {
+      secureName += '${part[0].toUpperCase()}${'*' * (part.length - 1)} ';
+    }
+    return secureName.trim();
   }
 }

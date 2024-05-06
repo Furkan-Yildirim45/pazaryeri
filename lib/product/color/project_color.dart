@@ -13,7 +13,7 @@ extension ProjectColorExtension on ProjectColor{
       case ProjectColor.starYellow:
         return const Color(0xffedbd1d);
       case ProjectColor.lightGrey:
-        return const Color(0xfff8f8f8);
+        return const Color(0xfff0f0f0);
     }
   }
 }

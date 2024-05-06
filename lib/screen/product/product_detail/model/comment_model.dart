@@ -5,9 +5,10 @@ class CommentModel {
   final String commentDate;
   final int starPoint;
 
-  CommentModel(this.commentDate,
+  CommentModel(
       {required this.commentID,
       required this.customerID,
       required this.comment,
-      required this.starPoint});
+      required this.starPoint,
+      required this.commentDate,});
 }
