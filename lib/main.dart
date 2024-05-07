@@ -21,3 +21,6 @@ class Main extends StatelessWidget {
 
 
 //todo: projede öğrenilmesi gerekenler : MVC,GetX
+
+//todo:knk generalAppBara bak yüksekliğinde bir sıkıntı var gibi!
+//todo: knk BottomNavBar birlşeitirilicek coğu yere
