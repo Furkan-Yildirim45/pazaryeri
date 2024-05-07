@@ -2,7 +2,7 @@
 import 'dart:ui';
 
 enum ProjectColor{
-  apricot,starYellow,lightGrey
+  apricot,starYellow,lightGrey,midBrown
 }
 
 extension ProjectColorExtension on ProjectColor{
@@ -14,6 +14,8 @@ extension ProjectColorExtension on ProjectColor{
         return const Color(0xffedbd1d);
       case ProjectColor.lightGrey:
         return const Color(0xfff0f0f0);
+      case ProjectColor.midBrown:
+        return const Color(0xFFb59376);
     }
   }
 }

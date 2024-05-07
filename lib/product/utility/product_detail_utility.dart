@@ -91,9 +91,9 @@ mixin ProductDetailUtility {
     );
   }
 
-  Padding pageDivider(BuildContext context) {
+  Padding pageDivider(BuildContext context,{EdgeInsets? padding}) {
     return Padding(
-      padding: context.padding.onlyTopNormal,
+      padding: padding ?? context.padding.onlyTopNormal,
       child: const Divider(
         height: 2,
         color: Colors.black12,
