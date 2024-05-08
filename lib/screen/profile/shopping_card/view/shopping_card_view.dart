@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../product/widget/common_widget.dart';
 
+class ShoppingCardView extends StatelessWidget {
+  const ShoppingCardView({super.key});
 
-void main() {
-  runApp(Sepet());
-}
-
-class Sepet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/screen/profile/wallet/view/wallet_view.dart';
 
-import '../color/project_color.dart';
-import '../widget/custom_elevated_button.dart';
+import '../../color/project_color.dart';
+import '../../widget/custom_elevated_button.dart';
 
 mixin ProfileViewUtility {
   Positioned buildGeneralProfileContainer(

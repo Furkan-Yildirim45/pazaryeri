@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../screen/product/product_detail/model/comment_model.dart';
-import '../../screen/product/product_detail/view/product_detail_view.dart';
-import '../color/project_color.dart';
-import '../widget/custom_elevated_button.dart';
+import '../../../screen/product/product_detail/model/comment_model.dart';
+import '../../../screen/product/product_detail/view/product_detail_view.dart';
+import '../../color/project_color.dart';
+import '../../widget/custom_elevated_button.dart';
 
 mixin ProductDetailUtility {
   Container sellerProfileContainer(

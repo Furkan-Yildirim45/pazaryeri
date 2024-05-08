@@ -5,7 +5,7 @@ import 'package:untitled/product/extension/context/border_Radius.dart';
 import 'package:untitled/product/widget/custom_elevated_button.dart';
 import 'package:untitled/product/widget/general_app_bar.dart';
 
-import '../../../../product/utility/product_detail_utility.dart';
+import '../../../../product/utility/page_utility/product_detail_utility.dart';
 import '../../product_detail/model/comment_model.dart';
 
 class AllCommentView extends StatefulWidget {

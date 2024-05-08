@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import '../../../../product/widget/common_widget.dart';
 
 
-void main() {
-  runApp(Fovariler());
-}
+class FavoriteView extends StatelessWidget {
+  const FavoriteView({super.key});
 
-class Fovariler extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

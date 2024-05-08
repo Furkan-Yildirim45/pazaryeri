@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:untitled/screen/home/home_page/view/home_page_view.dart';
 
 import '../../../screen/main_page/view/main_page_view.dart';
 import '../../color/project_color.dart';
@@ -8,7 +9,7 @@ import '../../widget/my_slider.dart';
 import '../../widget/product_card_widget.dart';
 import '../project_utility/image_utility.dart';
 
-mixin MainPageUtility on State<MainPage> {
+mixin HomePageViewUtility on State<HomePageView> {
   List<String> arananKelimeler = [];
   TextEditingController aramaController = TextEditingController();
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:untitled/product/extension/string/string_extension.dart';
 
-import '../utility/profile_view_utility.dart';
+import '../utility/page_utility/profile_view_utility.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   const CustomBottomNavBar({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import '../color/project_color.dart';
-import '../widget/custom_elevated_button.dart';
+import '../../color/project_color.dart';
+import '../../widget/custom_elevated_button.dart';
 
 mixin WelcomeUtility{
   Padding floatActionButton(BuildContext context,{required void Function() onPressed,required String text}) {

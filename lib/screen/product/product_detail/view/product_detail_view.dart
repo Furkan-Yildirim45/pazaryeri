@@ -3,7 +3,7 @@ import 'package:kartal/kartal.dart';
 import 'package:untitled/product/color/project_color.dart';
 import 'package:untitled/product/extension/context/border_Radius.dart';
 import 'package:untitled/product/init/init.dart';
-import 'package:untitled/product/utility/product_detail_utility.dart';
+import 'package:untitled/product/utility/page_utility/product_detail_utility.dart';
 import 'package:untitled/product/widget/custom_elevated_button.dart';
 import 'package:untitled/screen/product/all_comments/view/all_comment_view.dart';
 
