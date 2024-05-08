@@ -136,6 +136,17 @@ mixin ProfileViewUtility {
     );
   }
 
+  LinearGradient buildBackgroundLinearGradient() {
+    return const LinearGradient(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+      colors: [
+        Color(0xFFDAC6B5),
+        Color(0xFFb59376),
+      ],
+    );
+  }
+
   void _navigateToPage(BuildContext context, ProfileLvbItems enumItem) {
     final Map<ProfileLvbItems, Widget> pages = {
       ProfileLvbItems.wallet: const WalletView(),

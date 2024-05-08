@@ -7,7 +7,9 @@ import '../utility/welcome_utility.dart';
 import 'custom_elevated_button.dart';
 
 class GeneralAppBar extends StatelessWidget with WelcomeUtility implements PreferredSizeWidget{
-  const GeneralAppBar({super.key});
+  const GeneralAppBar({super.key, this.isLeadingActive = false, required this.textColor});
+  final bool? isLeadingActive;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +21,13 @@ class GeneralAppBar extends StatelessWidget with WelcomeUtility implements Prefe
         bottomLeft: 0.05,bottomRight: 0.05,
       )),
       toolbarHeight: context.sized.dynamicHeight(0.12),
-      title: Align(alignment: Alignment.center,child: marketPlaceTitle(context)),
+      title: Align(alignment: Alignment.center,child: marketPlaceTitle(context,textColor: textColor)),
       leadingWidth: context.sized.dynamicWidth(0.16),
-      leading: Padding(
+      leading: (isLeadingActive ?? false) ? Padding(
           padding: context.padding.onlyTopMedium,
           child: _buildAppBarButton(context, onPressed: (){context.route.pop();}, child: Icon(Icons.arrow_back_outlined,size:
           context.sized.mediumValue,color: ProjectColor.apricot.getColor(),))
-      ),
+      ) : const Expanded(child: SizedBox()),
       actions: [
         Align(
           alignment: Alignment.bottomLeft,

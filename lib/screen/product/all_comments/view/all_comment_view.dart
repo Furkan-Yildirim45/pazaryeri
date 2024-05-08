@@ -21,7 +21,7 @@ class _AllCommentViewState extends State<AllCommentView> with ProductDetailUtili
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: ProjectColor.lightGrey.getColor(),
-      appBar: const GeneralAppBar(),
+      appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor(),isLeadingActive: true,),
         body: SafeArea(
           child: Expanded(
             child: ListView(

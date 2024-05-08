@@ -9,7 +9,7 @@ class WalletView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GeneralAppBar(),
+      appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor(),isLeadingActive: true,),
       body: SafeArea(
         child: Padding(
           padding: context.padding.horizontalMedium,
