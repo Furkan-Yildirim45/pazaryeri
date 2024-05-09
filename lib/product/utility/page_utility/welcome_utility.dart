@@ -2,8 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import '../../color/project_color.dart';
 import '../../widget/custom_elevated_button.dart';
+import '../project_utility/image_utility.dart';
 
 mixin WelcomeUtility{
+  BoxDecoration buildDecorationParentContainerWithImage() {
+    return BoxDecoration(
+        image: DecorationImage(image:
+        AssetImage(ImageUtility.getImagePath("welcome")),
+            fit: BoxFit.fitWidth
+        )
+    );
+  }
+
   Padding floatActionButton(BuildContext context,{required void Function() onPressed,required String text}) {
     return Padding(
       padding: context.padding.horizontalMedium,

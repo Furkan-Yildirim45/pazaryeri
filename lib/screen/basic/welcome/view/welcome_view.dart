@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/color/project_color.dart';
 import 'package:untitled/product/utility/page_utility/welcome_utility.dart';
+import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
-import '../../verification_code/view/verification_code_view.dart';
+import '../../../../product/color/project_color.dart';
+import '../../../../product/navigator/navigator_manager.dart';
+import '../../../../product/navigator/navigator_route_items.dart';
+import '../controller/privacy_policy_controller.dart';
+
+part 'parts/phone_number_widget.dart';
+part 'parts/privacy_policy_widget.dart';
 
 class WelcomeView extends StatelessWidget with WelcomeUtility{
   const WelcomeView({super.key});
@@ -14,7 +22,7 @@ class WelcomeView extends StatelessWidget with WelcomeUtility{
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: floatActionButton(context,text: 'Kodu Gönder',onPressed: () {
-        context.route.navigateToPage(const VerificationScreen());
+        NavigatorController.instance.pushToPage(NavigateRoutesItems.verificationCode);
       },),
       body: SafeArea(
         child: ListView(
@@ -23,12 +31,7 @@ class WelcomeView extends StatelessWidget with WelcomeUtility{
             Container(
               width: context.sized.width,
               height: context.sized.height,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(image:
-                  AssetImage("assets/images/welcome.png"),
-                      fit: BoxFit.fitWidth
-                  )
-              ),
+              decoration: buildDecorationParentContainerWithImage(),
               child: Padding(
                 padding: context.padding.horizontalMedium,
                 child: Column(
@@ -50,112 +53,3 @@ class WelcomeView extends StatelessWidget with WelcomeUtility{
     );
   }
 }
-
-class PhoneNumberWidget extends StatefulWidget {
-  const PhoneNumberWidget({super.key});
-
-  @override
-  State<PhoneNumberWidget> createState() => _PhoneNumberWidgetState();
-}
-
-class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: context.padding.onlyTopLow,
-      child: Stack(
-        alignment: Alignment.topRight,
-        children: [
-          Container(
-            height: context.sized.dynamicWidth(0.12),
-            width: context.sized.width,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: context.border.normalBorderRadius,
-            ),
-          ),
-          Container(
-            height: context.sized.dynamicWidth(0.12),
-            width: context.sized.dynamicWidth(0.72),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black),
-                borderRadius: context.border.normalBorderRadius
-            ),
-            child: Row(
-              children: [
-                TextButton(onPressed: (){}, child:
-                Text('+90',style: context.general.textTheme.titleSmall?.copyWith(color: Colors.grey),)),
-                SizedBox(
-                  width: context.sized.dynamicWidth(0.52),
-                  child: Padding(
-                    padding: context.padding.onlyBottomNormal,
-                    child: const TextField(
-                      cursorColor: Colors.black,
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              width: context.sized.dynamicWidth(0.16),
-              height: context.sized.dynamicWidth(0.12),
-              decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage("assets/images/turkish_flag.png"))
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PrivacyPolicyWidget extends StatefulWidget {
-  const PrivacyPolicyWidget({super.key});
-
-  @override
-  _PrivacyPolicyWidgetState createState() => _PrivacyPolicyWidgetState();
-}
-
-class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
-  bool _isChecked = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return CheckboxListTile(
-      checkboxShape: RoundedRectangleBorder(
-        borderRadius: context.border.normalBorderRadius
-      ),
-      contentPadding: EdgeInsets.zero,
-      title: GestureDetector(
-        onTap: () {},
-        child: Text(
-          "Gizlilik Politikası ve şartlarinizi kabul ediyorum.",
-          style: context.general.textTheme.bodySmall?.copyWith(
-            color: ProjectColor.apricot.getColor(),
-            fontWeight: FontWeight.w600
-          ),
-        ),
-      ),
-      value: _isChecked,
-      activeColor: ProjectColor.apricot.getColor(),
-      onChanged: (value) {
-        setState(() {
-          _isChecked = value!;
-        });
-      },
-      controlAffinity: ListTileControlAffinity.leading,
-    );
-  }
-}
-
-//todo:page de fazla extract widget var!

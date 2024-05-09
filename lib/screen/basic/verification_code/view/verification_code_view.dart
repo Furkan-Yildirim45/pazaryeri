@@ -7,14 +7,14 @@ import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
 import '../../create_profile/view/create_profile_view.dart';
 
-class VerificationScreen extends StatefulWidget {
-  const VerificationScreen({super.key});
+class VerificationView extends StatefulWidget {
+  const VerificationView({super.key});
 
   @override
-  _VerificationScreenState createState() => _VerificationScreenState();
+  _VerificationViewState createState() => _VerificationViewState();
 }
 
-class _VerificationScreenState extends State<VerificationScreen> with WelcomeUtility{
+class _VerificationViewState extends State<VerificationView> with WelcomeUtility{
   int _counter = 180;
   late Timer _timer;
 

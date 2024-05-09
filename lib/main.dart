@@ -1,23 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:untitled/product/navigator/navigator_manager.dart';
+import 'package:untitled/product/navigator/navigator_route_items.dart';
 import 'package:untitled/product/theme/project_theme.dart';
-import 'package:untitled/screen/basic/welcome/view/welcome_view.dart';
+import 'package:untitled/screen/unknown_page/view/unknown_view.dart';
 
 void main() {
-  runApp(const Main());
+  runApp(Main());
 }
 
 class Main extends StatelessWidget {
-  const Main({super.key});
+  final navigatorController = NavigatorController.instance;
+  Main({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const WelcomeView(),
+    return GetMaterialApp(
       theme: ProjectTheme(context).theme,
+      initialRoute: NavigatorRoutes.init,
+      debugShowCheckedModeBanner: false,
+      getPages: NavigatorRoutes().routes,
+      unknownRoute: GetPage(
+        name: NavigateRoutesItems.unknown.withSlash,
+        page: () => const UnknownView(),
+      ),
     );
   }
 }
-
 
 //todo: projede öğrenilmesi gerekenler : MVC,GetX
 
