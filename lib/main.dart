@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/product/theme/project_theme.dart';
 import 'package:untitled/screen/basic/welcome/view/welcome_view.dart';
-import 'package:untitled/screen/home/home_page/view/home_page_view.dart';
-import 'package:untitled/screen/main_page/view/main_page_view.dart';
-import 'package:untitled/screen/profile/profile_page/view/profile_View.dart';
 
 void main() {
   runApp(const Main());
@@ -15,7 +12,7 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const MainPageView(),
+      home: const WelcomeView(),
       theme: ProjectTheme(context).theme,
     );
   }
@@ -28,3 +25,4 @@ class Main extends StatelessWidget {
 //todo: knk BottomNavBar birlşeitirilicek coğu yere
 
 //todo:bildirimler,ödeme_sayfası,arama_filtrele sayfaları aynı
+//todo:commonu siliceksin.

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/product/utility/page_utility/main_page_utility.dart';
 import 'package:untitled/product/widget/general_app_bar.dart';
+import 'package:untitled/product/widget/general_search_bar.dart';
 
 import '../../../../product/color/project_color.dart';
 
@@ -27,7 +28,7 @@ class _HomePageViewState extends State<HomePageView> with HomePageViewUtility{
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  buildSearchBar(context),
+                  const GeneralSearchBar(),
                   buildBlackFridaySlider(context),
                   buildGridViewSpecialSuggestion(context),
                   buildInfluencerSuggestionLvb(context),

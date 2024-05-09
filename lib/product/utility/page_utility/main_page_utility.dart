@@ -10,22 +10,6 @@ import '../../widget/product_card_widget.dart';
 import '../project_utility/image_utility.dart';
 
 mixin HomePageViewUtility on State<HomePageView> {
-  List<String> arananKelimeler = [];
-  TextEditingController aramaController = TextEditingController();
-
-  void aramaYap(String kelime) {
-    setState(() {
-      arananKelimeler.add(kelime);
-      aramaController.clear();
-    });
-  }
-
-  void sil(int index) {
-    setState(() {
-      arananKelimeler.removeAt(index);
-    });
-  }
-
   Container popularProductGirdView(BuildContext context) {
     return Container(
       decoration: BoxDecoration(borderRadius: context.border.lowBorderRadius),
@@ -189,59 +173,6 @@ mixin HomePageViewUtility on State<HomePageView> {
       child: SizedBox(
         height: context.sized.dynamicHeight(0.2),
         child: const MySlider(),
-      ),
-    );
-  }
-
-  Padding buildSearchBar(BuildContext context) {
-    return Padding(
-      padding: context.padding.onlyTopMedium,
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              height: context.sized.dynamicHeight(0.06),
-              decoration: BoxDecoration(
-                color: ProjectColor.lightGrey.getColor(),
-                border: Border.all(color: Colors.black26),
-                borderRadius: context.border.normalBorderRadius,
-              ),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: context.padding.onlyLeftNormal,
-                    child: Icon(
-                      Icons.search,
-                      color: ProjectColor.apricot.getColor(),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: context.padding.onlyLeftNormal,
-                      child: Padding(
-                        padding: context.padding.onlyBottomNormal,
-                        child: TextField(
-                          textAlignVertical: TextAlignVertical.center,
-                          controller: aramaController,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText:
-                                "İstediğiniz ürünü ve kategoriyi aratabilirsiniz",
-                            hintStyle: context.general.textTheme.bodyMedium
-                                ?.copyWith(color: Colors.black54),
-                          ),
-                          onSubmitted: (kelime) {
-                            aramaYap(kelime);
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

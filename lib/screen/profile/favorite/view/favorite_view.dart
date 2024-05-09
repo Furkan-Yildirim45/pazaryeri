@@ -1,178 +1,144 @@
-
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
+import 'package:untitled/product/utility/project_utility/image_utility.dart';
+import 'package:untitled/product/widget/custom_elevated_button.dart';
+import 'package:untitled/product/widget/general_search_bar.dart';
 
-import '../../../../product/widget/common_widget.dart';
-
+import '../../../../product/color/project_color.dart';
+import '../../../../product/widget/general_app_bar.dart';
 
 class FavoriteView extends StatelessWidget {
   const FavoriteView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            appBar: CustomAppBar(),
-            bottomNavigationBar: CustomBottomNavigationBar(),
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: Container(
-                    height: 35,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black26),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Icon(
-                            Icons.search,
-                            color: Color(0xFFF2A663),
-                          ),
-                        ),
-                        SizedBox(width: 15),
-                        Expanded(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Fovarilerde ara",
-                              hintStyle: TextStyle(
-                                fontSize: 12,
-                                color: Colors.black54,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
+    return Scaffold(
+      appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor()),
+      body: SafeArea(
+        child: Padding(
+          padding: context.padding.horizontalNormal,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const GeneralSearchBar(),
+              Expanded(
+                child: Padding(
+                  padding: context.padding.onlyTopNormal,
                   child: ListView.builder(
-                    itemCount:
-                    2, // Toplamda 2 konteynar olacak şekilde belirtiyoruz
+                    itemCount: 2,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
-                        margin: EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: context.border.lowBorderRadius),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            SizedBox(
-                              height: 90, // Kart boyutunu küçültüyoruz
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                    75, // Resim alanının genişliğini belirliyoruz
-                                    child: ClipRRect(
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            // Resme tıklandığında yapılacak işlemler
-                                          },
-                                          child: Image(
-                                            width: 75,
-                                            height: 75,
-                                            image: AssetImage(
-                                                'assets/9.png'), // Örnek bir resim
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                        children: [
-                                          // Ürün adı
-                                          Text(
-                                            'XXX Erkek Parfüm', // Örnek bir ürün adı
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          SizedBox(height: 5),
-                                          // Ürün fiyatı
-                                          Text(
-                                            '\$${(index + 1) * 10}.99', // Örnek bir fiyat
-                                            style: TextStyle(
-                                              fontSize: 11,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.blue,
-                                            ),
-                                          ),
-                                          SizedBox(height: 5),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 10, vertical: 10),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(
-                                                  'Kargo Bedava',
-                                                  style: TextStyle(
-                                                      color: Colors.blueGrey,
-                                                      fontSize: 11),
-                                                ),
-                                                Text(
-                                                  'Hızlı Teslimat',
-                                                  style: TextStyle(
-                                                      color: Colors.blueGrey,
-                                                      fontSize: 11),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  // Sepete ekle butonuna basıldığında yapılacak işlemler
-                                },
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                  MaterialStateProperty.all(Color(0xFFF5B97B)),
-                                ),
-                                child: Text(
-                                  'Sepete Ekle',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            ),
+                            _buildProductDetailWithoutButton(context, index),
+                            _buildProductDetailButton(context),
                           ],
                         ),
                       );
                     },
                   ),
                 ),
-              ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding _buildProductDetailButton(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(context.sized.lowValue),
+      child: CustomElevatedButton(
+        width: double.infinity,
+        shape: RoundedRectangleBorder(
+            borderRadius: context.border.normalBorderRadius),
+        backgroundColor: ProjectColor.apricot.getColor(),
+        onPressed: () {},
+        child: Text(
+          'Sepete Ekle',
+          style: context.general.textTheme.titleSmall
+              ?.copyWith(color: Colors.white),
+        ),
+      ),
+    );
+  }
+
+  SizedBox _buildProductDetailWithoutButton(BuildContext context, int index) {
+    return SizedBox(
+      height: context.sized.dynamicHeight(0.18),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: context.padding.onlyRightLow,
+            width: context.sized.dynamicWidth(0.3),
+            height: context.sized.dynamicWidth(0.3),
+            child: Container(
+              margin: EdgeInsets.all(context.sized.lowValue),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(ImageUtility.getImagePath("9")),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: context.border.normalBorderRadius,
+              ),
             ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: context.padding.onlyTopNormal,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('XXX Erkek Parfüm',
+                      style: context.general.textTheme.bodyMedium
+                          ?.copyWith(fontWeight: FontWeight.w500)),
+                  const Text('Nivea'),
+                  Text('\$${(index + 1) * 10}.99',
+                      style: context.general.textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: ProjectColor.apricot.getColor())),
+                  Padding(
+                    padding: context.padding.onlyTopNormal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildProductFavoriteCardPropertyButton(context,
+                            onPressed: () {}, text: "Kargo Bedava"),
+                        _buildProductFavoriteCardPropertyButton(context,
+                            onPressed: () {}, text: "Hızlı Teslimat"),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-        );
-    }
+          ),
+        ],
+      ),
+    );
+  }
+
+  CustomElevatedButton _buildProductFavoriteCardPropertyButton(
+    BuildContext context, {
+    required void Function() onPressed,
+    required String text,
+  }) {
+    return CustomElevatedButton(
+      onPressed: onPressed,
+      height: context.sized.mediumValue,
+      width: context.sized.dynamicWidth(0.28),
+      shape: RoundedRectangleBorder(
+        borderRadius: context.border.normalBorderRadius,
+      ),
+      child: Text(text,
+          style: context.general.textTheme.labelLarge
+              ?.copyWith(fontWeight: FontWeight.w400)),
+    );
+  }
 }

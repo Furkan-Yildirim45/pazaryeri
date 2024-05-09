@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/product/color/project_color.dart';
 import 'package:untitled/product/utility/page_utility/welcome_utility.dart';
+import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
 import '../../create_profile/view/create_profile_view.dart';
 
@@ -58,9 +59,9 @@ class _VerificationScreenState extends State<VerificationScreen> with WelcomeUti
             Container(
               width: context.sized.width,
               height: context.sized.height,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   image: DecorationImage(image:
-                  AssetImage("assets/images/welcome.png"),
+                  AssetImage(ImageUtility.getImagePath("welcome")),
                       fit: BoxFit.fitWidth
                   )
               ),
@@ -72,33 +73,7 @@ class _VerificationScreenState extends State<VerificationScreen> with WelcomeUti
                     marketPlaceTitle(context),
                     context.sized.emptySizedHeightBoxHigh,
                     _verificationCodeText(context),
-                    Container(
-                      margin: context.padding.onlyTopMedium,
-                      height: context.sized.dynamicWidth(0.12),
-                      width: context.sized.width,
-                      child: ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            margin: index == 5 ? EdgeInsets.zero : context.padding.onlyRightLow,
-                            width: context.sized.dynamicWidth(0.12),
-                            decoration: BoxDecoration(
-                                color: ProjectColor.apricot.getColor(),
-                              borderRadius: context.border.normalBorderRadius,
-                              border: Border.all(width: 1,color: ProjectColor.apricot.getColor()),
-                            ),
-                            child: TextField(
-                              style: context.general.textTheme.titleLarge?.copyWith(color: Colors.white),
-                              cursorColor: Colors.white,
-                              textAlign: TextAlign.center,
-                              decoration: const InputDecoration(border: InputBorder.none),
-                            ),
-                          );
-                        },
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 6,
-                      ),
-                    ),
+                    _buildVerificationCodeContainerLvb(context),
                     _timeRemainingText(context),
                     _resendButton(context)
                   ],
@@ -109,6 +84,36 @@ class _VerificationScreenState extends State<VerificationScreen> with WelcomeUti
         ),
       ),
     );
+  }
+
+  Container _buildVerificationCodeContainerLvb(BuildContext context) {
+    return Container(
+                    margin: context.padding.onlyTopMedium,
+                    height: context.sized.dynamicWidth(0.12),
+                    width: context.sized.width,
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: index == 5 ? EdgeInsets.zero : context.padding.onlyRightLow,
+                          width: context.sized.dynamicWidth(0.12),
+                          decoration: BoxDecoration(
+                              color: ProjectColor.apricot.getColor(),
+                            borderRadius: context.border.normalBorderRadius,
+                            border: Border.all(width: 1,color: ProjectColor.apricot.getColor()),
+                          ),
+                          child: TextField(
+                            style: context.general.textTheme.titleLarge?.copyWith(color: Colors.white),
+                            cursorColor: Colors.white,
+                            textAlign: TextAlign.center,
+                            decoration: const InputDecoration(border: InputBorder.none),
+                          ),
+                        );
+                      },
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 6,
+                    ),
+                  );
   }
 
   Center _resendButton(BuildContext context) {
@@ -133,7 +138,7 @@ class _VerificationScreenState extends State<VerificationScreen> with WelcomeUti
                           ),
                           Text(
                             "$_counter",
-                            style: context.general.textTheme.labelSmall?.copyWith(
+                            style: context.general.textTheme.labelLarge?.copyWith(
                               color: ProjectColor.apricot.getColor()
                             ),
                           ),

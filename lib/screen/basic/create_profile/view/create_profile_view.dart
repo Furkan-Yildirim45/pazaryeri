@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/product/utility/page_utility/create_profile_utility.dart';
 import 'package:untitled/product/utility/page_utility/welcome_utility.dart';
+import 'package:untitled/screen/main_page/view/main_page_view.dart';
 
 import '../../../../product/widget/custom_dropdown_button.dart';
-import '../../../product/product_detail/view/product_detail_view.dart';
 
 
 class CreateProfileView extends StatefulWidget {
@@ -28,7 +28,7 @@ class _CreateProfileViewState extends State<CreateProfileView>
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: floatActionButton(context, text: "Devam Et", onPressed: () {
-        context.route.navigateToPage(const ProductDetailView());
+        context.route.navigateToPage(const MainPageView());
       }),
       body: SafeArea(
         child: Padding(

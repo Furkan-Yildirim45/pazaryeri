@@ -158,3 +158,4 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
   }
 }
 
+//todo:page de fazla extract widget var!
