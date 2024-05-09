@@ -77,4 +77,3 @@ mixin VerificationCodeUtility{
     );
   }
 }
-//todo: şuanda state okey ama ben yeni kod gönder bastıgımda gelsin istiyom

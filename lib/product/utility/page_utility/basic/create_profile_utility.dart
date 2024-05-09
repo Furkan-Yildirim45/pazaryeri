@@ -1,16 +1,13 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import '../../../../screen/basic/create_profile/controller/create_profile_controller.dart';
 import '../../../../screen/basic/create_profile/view/create_profile_view.dart';
 import '../../../color/project_color.dart';
 
 mixin CreateProfileUtility on State<CreateProfileView>{
-  final formKey = GlobalKey<FormState>();
-  late String name, lastname, hobbies;
-  int selectedDay = 1;
-  int selectedMonth = 1;
-  int selectedYear = 2000;
-  List<int> daysInMonth = [];
+  final CreateProfileController controller = Get.put(CreateProfileController());
 
   Column dateSelector() {
     return Column(
@@ -26,9 +23,9 @@ mixin CreateProfileUtility on State<CreateProfileView>{
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildDropDown(widget: buildDayDropdown()),
-              _buildDropDown(widget: buildMonthDropdown()),
-              _buildDropDown(widget: buildYearDropdown()),
+              Obx(() => _buildDropDown(widget: buildDayDropdown())),
+              Obx(() => _buildDropDown(widget: buildMonthDropdown())),
+              Obx(() => _buildDropDown(widget: buildYearDropdown())),
             ],
           ),
         ),
@@ -36,25 +33,12 @@ mixin CreateProfileUtility on State<CreateProfileView>{
     );
   }
 
-  Container _buildDropDown({required Widget widget}) {
-    return Container(
-            width: context.sized.dynamicWidth(0.24),
-              decoration: BoxDecoration(
-                color: const Color(0xFFF1F1F1),
-                borderRadius: context.border.normalBorderRadius,
-              ),
-              child: Center(child: widget)
-          );
-  }
-
   DropdownButton<int> buildDayDropdown() {
     return DropdownButton<int>(
       iconEnabledColor: ProjectColor.apricot.getColor(),
-      value: 1,
+      value: controller.selectedDay.value,
       onChanged: (value) {
-        setState(() {
-          selectedDay = value!;
-        });
+        controller.updateSelectedDay(value!);
       },
       underline: const SizedBox.shrink(),
       items: List.generate(
@@ -70,16 +54,10 @@ mixin CreateProfileUtility on State<CreateProfileView>{
   DropdownButton<int> buildMonthDropdown() {
     return DropdownButton<int>(
       iconEnabledColor: ProjectColor.apricot.getColor(),
-      value: 1,
+      value: controller.selectedMonth.value,
       underline: const SizedBox.shrink(),
       onChanged: (value) {
-        setState(() {
-          selectedMonth = value!;
-          updateDaysInMonth(selectedMonth);
-          if (selectedDay > daysInMonth.length) {
-            selectedDay = 1;
-          }
-        });
+        controller.updateSelectedMonth(value!);
       },
       items: List.generate(
         12,
@@ -95,11 +73,9 @@ mixin CreateProfileUtility on State<CreateProfileView>{
     return DropdownButton<int>(
       iconEnabledColor: ProjectColor.apricot.getColor(),
       underline: const SizedBox.shrink(),
-      value: DateTime.now().year,
+      value: controller.selectedYear.value,
       onChanged: (value) {
-        setState(() {
-          selectedYear = value!;
-        });
+        controller.updateSelectedYear(value!);
       },
       items: List.generate(
         100,
@@ -109,13 +85,6 @@ mixin CreateProfileUtility on State<CreateProfileView>{
         ),
       ),
     );
-  }
-
-  void updateDaysInMonth(int month) {
-    int days = DateTime(selectedYear, month + 1, 0).day;
-    setState(() {
-      daysInMonth = List.generate(days, (index) => index + 1);
-    });
   }
 
   Container customTextFormField(
@@ -158,8 +127,15 @@ mixin CreateProfileUtility on State<CreateProfileView>{
       ),
     );
   }
+
+  Container _buildDropDown({required Widget widget}) {
+    return Container(
+        width: context.sized.dynamicWidth(0.24),
+        decoration: BoxDecoration(
+          color: const Color(0xFFF1F1F1),
+          borderRadius: context.border.normalBorderRadius,
+        ),
+        child: Center(child: widget)
+    );
+  }
 }
-
-
-
-//todo: Dropdownlarda getx ile state yönetimi yapılıcak! (bug var değişmiyor) ama gender değşişiyor

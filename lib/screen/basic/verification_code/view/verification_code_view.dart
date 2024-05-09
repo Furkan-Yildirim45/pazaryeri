@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:untitled/product/navigator/navigator_manager.dart';
 import 'package:untitled/product/utility/page_utility/basic/verification_code_utility.dart';
 import 'package:untitled/product/utility/page_utility/basic/welcome_utility.dart';
 import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
-import '../../create_profile/view/create_profile_view.dart';
-import '../controller/verification_code_controller.dart';
+import '../../../../product/navigator/navigator_route_items.dart';
 
 
 class VerificationView extends StatelessWidget with WelcomeUtility, VerificationCodeUtility {
@@ -18,7 +18,7 @@ class VerificationView extends StatelessWidget with WelcomeUtility, Verification
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: floatActionButton(context, text: "Onayla", onPressed: () {
-        context.route.navigateToPage(const CreateProfileView());
+        NavigatorController.instance.pushToPage(NavigateRoutesItems.createProfile);
       }),
       body: SafeArea(
         child: ListView(
