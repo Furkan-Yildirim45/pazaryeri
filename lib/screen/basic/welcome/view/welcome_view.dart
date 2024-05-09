@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/utility/page_utility/welcome_utility.dart';
+import 'package:untitled/product/utility/page_utility/basic/welcome_utility.dart';
 import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
 import '../../../../product/color/project_color.dart';

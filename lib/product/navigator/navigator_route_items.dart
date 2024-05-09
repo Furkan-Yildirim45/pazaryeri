@@ -29,7 +29,7 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.mainPage.withSlash, page: () => const MainPageView()),
       GetPage(name: NavigateRoutesItems.welcome.withSlash, page: () => const WelcomeView()),
       GetPage(name: NavigateRoutesItems.createProfile.withSlash, page: () => const CreateProfileView()),
-      GetPage(name: NavigateRoutesItems.verificationCode.withSlash, page: () => const VerificationView()),
+      GetPage(name: NavigateRoutesItems.verificationCode.withSlash, page: () => VerificationView()),
       GetPage(name: NavigateRoutesItems.unknown.withSlash, page: () => const UnknownView()),
   ];
 }

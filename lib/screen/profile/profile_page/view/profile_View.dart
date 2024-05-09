@@ -3,7 +3,7 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:untitled/product/extension/string/string_extension.dart';
 import 'package:untitled/product/utility/page_utility/product_detail_utility.dart';
 import 'package:untitled/product/utility/page_utility/profile_view_utility.dart';
-import 'package:untitled/product/utility/page_utility/welcome_utility.dart';
+import 'package:untitled/product/utility/page_utility/basic/welcome_utility.dart';
 import 'package:untitled/product/widget/custom_bottom_nav_bar.dart';
 
 class ProfileView extends StatefulWidget{

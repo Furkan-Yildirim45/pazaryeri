@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import '../../../screen/basic/create_profile/view/create_profile_view.dart';
-import '../../color/project_color.dart';
+import '../../../../screen/basic/create_profile/view/create_profile_view.dart';
+import '../../../color/project_color.dart';
 
 mixin CreateProfileUtility on State<CreateProfileView>{
   final formKey = GlobalKey<FormState>();

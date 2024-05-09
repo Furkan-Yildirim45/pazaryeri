@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/utility/page_utility/create_profile_utility.dart';
-import 'package:untitled/product/utility/page_utility/welcome_utility.dart';
+import 'package:untitled/product/utility/page_utility/basic/create_profile_utility.dart';
+import 'package:untitled/product/utility/page_utility/basic/welcome_utility.dart';
 import 'package:untitled/screen/main_page/view/main_page_view.dart';
 
 import '../../../../product/widget/custom_dropdown_button.dart';

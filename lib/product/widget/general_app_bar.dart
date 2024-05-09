@@ -3,7 +3,7 @@ import 'package:kartal/kartal.dart';
 import 'package:untitled/product/extension/context/border_Radius.dart';
 
 import '../color/project_color.dart';
-import '../utility/page_utility/welcome_utility.dart';
+import '../utility/page_utility/basic/welcome_utility.dart';
 import 'custom_elevated_button.dart';
 
 class GeneralAppBar extends StatelessWidget with WelcomeUtility implements PreferredSizeWidget{
