@@ -6,7 +6,9 @@ import 'package:untitled/screen/profile/favorite/view/favorite_view.dart';
 import 'package:untitled/screen/profile/profile_page/view/profile_View.dart';
 import 'package:untitled/screen/profile/shopping_card/view/shopping_card_view.dart';
 
+import '../../../product/color/project_color.dart';
 import '../../../product/utility/page_utility/profile_view_utility.dart';
+import '../../../product/widget/general_app_bar.dart';
 import '../../home/home_page/view/home_page_view.dart';
 
 class MainPageView extends StatelessWidget with ProfileViewUtility{
@@ -22,15 +24,16 @@ class MainPageView extends StatelessWidget with ProfileViewUtility{
         ),
         child: CustomBottomNavBar(controller: controller),
       ),
+      appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor()),
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: controller.getPageController,
         onPageChanged: controller.onPageChanged,
-        children: const <Widget>[
-          HomePageView(),
-          FavoriteView(),
+        children: <Widget>[
+          const HomePageView(),
+          const FavoriteView(),
           ShoppingCardView(),
-          ProfileView(),
+          const ProfileView(),
         ],
       ),
     );

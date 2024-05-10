@@ -35,4 +35,4 @@ class Main extends StatelessWidget {
 //todo:bildirimler,ödeme_sayfası,arama_filtrele sayfaları aynı
 //todo:commonu siliceksin.
 
-//todo: ana sayfada bug var ıncorrect parent size widget!
+//todo: ana sayfada bug var Incorrect use of ParentDataWidget.

@@ -6,8 +6,12 @@ import '../color/project_color.dart';
 import '../utility/page_utility/basic/welcome_utility.dart';
 import 'custom_elevated_button.dart';
 
-class GeneralAppBar extends StatelessWidget with WelcomeUtility implements PreferredSizeWidget{
-  const GeneralAppBar({super.key, this.isLeadingActive = false, required this.textColor});
+class GeneralAppBar extends StatelessWidget
+    with WelcomeUtility
+    implements PreferredSizeWidget {
+  const GeneralAppBar(
+      {super.key, this.isLeadingActive = false, required this.textColor});
+
   final bool? isLeadingActive;
   final Color textColor;
 
@@ -17,17 +21,27 @@ class GeneralAppBar extends StatelessWidget with WelcomeUtility implements Prefe
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
       centerTitle: true,
-      shape: RoundedRectangleBorder(borderRadius: context.myBorder.dynamicBorderRadiusOnly(
-        bottomLeft: 0.05,bottomRight: 0.05,
+      shape: RoundedRectangleBorder(
+          borderRadius: context.myBorder.dynamicBorderRadiusOnly(
+        bottomLeft: 0.05,
+        bottomRight: 0.05,
       )),
-      toolbarHeight: context.sized.dynamicHeight(0.12),
-      title: Align(alignment: Alignment.center,child: marketPlaceTitle(context,textColor: textColor)),
+      title: Align(
+          alignment: Alignment.center,
+          child: marketPlaceTitle(context, textColor: textColor)),
       leadingWidth: context.sized.dynamicWidth(0.16),
-      leading: (isLeadingActive ?? false) ? Padding(
-          padding: context.padding.onlyTopMedium,
-          child: _buildAppBarButton(context, onPressed: (){context.route.pop();}, child: Icon(Icons.arrow_back_outlined,size:
-          context.sized.mediumValue,color: ProjectColor.apricot.getColor(),))
-      ) : const Expanded(child: SizedBox()),
+      leading: (isLeadingActive ?? false)
+          ? Padding(
+              padding: context.padding.onlyTopMedium,
+              child: _buildAppBarButton(context, onPressed: () {
+                context.route.pop();
+              },
+                  child: Icon(
+                    Icons.arrow_back_outlined,
+                    size: context.sized.mediumValue,
+                    color: ProjectColor.apricot.getColor(),
+                  )))
+          : const Expanded(child: SizedBox()),
       actions: [
         Align(
           alignment: Alignment.bottomLeft,
@@ -47,14 +61,16 @@ class GeneralAppBar extends StatelessWidget with WelcomeUtility implements Prefe
     );
   }
 
-  CustomElevatedButton _buildAppBarButton(BuildContext context,{
+  CustomElevatedButton _buildAppBarButton(
+    BuildContext context, {
     required void Function() onPressed,
     required Widget child,
   }) {
     return CustomElevatedButton(
       elevation: 0,
       backgroundColor: Colors.transparent,
-      shape: RoundedRectangleBorder(borderRadius: context.border.normalBorderRadius),
+      shape: RoundedRectangleBorder(
+          borderRadius: context.border.normalBorderRadius),
       onPressed: onPressed,
       width: context.sized.dynamicWidth(0.16),
       height: context.sized.dynamicHeight(0.12),
@@ -64,5 +80,5 @@ class GeneralAppBar extends StatelessWidget with WelcomeUtility implements Prefe
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(70);
 }

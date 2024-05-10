@@ -13,7 +13,7 @@ class GeneralSearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: context.padding.onlyTopMedium,
+      padding: context.padding.onlyTopNormal,
       child: GetBuilder<GeneralSearchBarController>(
         init: GeneralSearchBarController(),
         builder: (controller) {

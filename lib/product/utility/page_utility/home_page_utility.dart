@@ -117,7 +117,7 @@ mixin HomePageViewUtility on State<HomePageView> {
           bottom: kZero,
           left: kZero,
           right: kZero,
-          child: Text("Ege Avcı",
+          child: Text("Cris Path",
               textAlign: TextAlign.center,
               style: context.general.textTheme.bodyMedium),
         )
@@ -176,7 +176,7 @@ mixin HomePageViewUtility on State<HomePageView> {
       padding: context.padding.onlyTopNormal,
       child: SizedBox(
         height: context.sized.dynamicHeight(0.2),
-        child: const MySlider(),
+        child: MySlider(),
       ),
     );
   }
@@ -204,7 +204,7 @@ mixin HomePageViewUtility on State<HomePageView> {
             ),
             Container(
               margin: context.padding.onlyBottomNormal,
-              height: 125,
+              height: context.sized.dynamicHeight(0.16),
               decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [

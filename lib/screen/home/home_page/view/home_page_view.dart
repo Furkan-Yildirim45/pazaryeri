@@ -18,7 +18,6 @@ class _HomePageViewState extends State<HomePageView> with HomePageViewUtility{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor(),),
       body: SafeArea(
         child: Padding(
           padding: context.padding.horizontalNormal,

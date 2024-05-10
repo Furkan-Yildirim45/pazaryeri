@@ -22,45 +22,59 @@ class ProductCardWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: ClipRRect(
-                borderRadius: context.border.lowBorderRadius,
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Image.asset(
-                      ImageUtility.getImagePath("9"),
-                      fit: BoxFit.cover,
-                    ),
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {},
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            _buildProductImage(context),
+            _buildProductTitleText(context),
+            _buildPriceText(context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Expanded _buildProductImage(BuildContext context) {
+    return Expanded(
+      child: ClipRRect(
+        borderRadius: context.border.lowBorderRadius,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              ImageUtility.getImagePath("9"),
+              fit: BoxFit.cover,
             ),
-            Padding(
-              padding: context.padding.onlyTopLow,
-              child: Text(
-                  "XXX Erkek Vücut Parfümü",
-                  style: context.general.textTheme
-                      .bodySmall
-              ),
-            ),
-            Padding(
-              padding: context.padding.onlyTopLow,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text("\$99", style: context.general.textTheme.bodyMedium?.copyWith(color: ProjectColor.apricot.getColor(), fontWeight: FontWeight.w500),),
-                ],
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {},
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Padding _buildProductTitleText(BuildContext context) {
+    return Padding(
+      padding: context.padding.onlyTopLow,
+      child: Text("XXX Erkek Vücut Parfümü",
+          style: context.general.textTheme.bodySmall),
+    );
+  }
+
+  Padding _buildPriceText(BuildContext context) {
+    return Padding(
+      padding: context.padding.onlyTopLow,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            "\$99",
+            style: context.general.textTheme.bodyMedium?.copyWith(
+                color: ProjectColor.apricot.getColor(),
+                fontWeight: FontWeight.w500),
+          ),
+        ],
       ),
     );
   }

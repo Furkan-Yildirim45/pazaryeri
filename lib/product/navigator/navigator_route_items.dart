@@ -20,7 +20,7 @@ class NavigatorRoutes {
       GetPage(name: NavigatorRoutes.init, page: () => const WelcomeView()),
       GetPage(name: NavigateRoutesItems.home.withSlash, page: () => const HomePageView()),
       GetPage(name: NavigateRoutesItems.favorite.withSlash, page: () => const FavoriteView()),
-      GetPage(name: NavigateRoutesItems.shoppingCard.withSlash, page: () => const ShoppingCardView()),
+      GetPage(name: NavigateRoutesItems.shoppingCard.withSlash, page: () => ShoppingCardView()),
       GetPage(name: NavigateRoutesItems.profile.withSlash, page: () => const ProfileView()),
       GetPage(name: NavigateRoutesItems.wallet.withSlash, page: () => const WalletView()),
       GetPage(name: NavigateRoutesItems.payment.withSlash, page: () => PaymentView()),
