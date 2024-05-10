@@ -12,7 +12,7 @@ import '../project_utility/image_utility.dart';
 mixin HomePageViewUtility on State<HomePageView> {
   Container popularProductGirdView(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(borderRadius: context.border.lowBorderRadius),
+      decoration: BoxDecoration(borderRadius: context.border.lowBorderRadius,      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -34,16 +34,20 @@ mixin HomePageViewUtility on State<HomePageView> {
           ),
           Padding(
             padding: context.padding.onlyTopLow,
-            child: GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: 1.3,
-              children: List.generate(4, (index) {
-                return const ProductCardWidget();
-              }),
+            child: SizedBox(
+              width: double.infinity,
+              height: context.sized.dynamicHeight(0.422),
+              child: GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 1.3,
+                children: List.generate(4, (index) {
+                  return const ProductCardWidget();
+                }),
+              ),
             ),
           ),
         ],

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/utility/page_utility/main_page_utility.dart';
 import 'package:untitled/product/widget/general_app_bar.dart';
 import 'package:untitled/product/widget/general_search_bar.dart';
 
 import '../../../../product/color/project_color.dart';
+import '../../../../product/utility/page_utility/home_page_utility.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({super.key});
@@ -21,22 +21,16 @@ class _HomePageViewState extends State<HomePageView> with HomePageViewUtility{
       appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor(),),
       body: SafeArea(
         child: Padding(
-          padding: context.padding.onlyTopNormal,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: context.padding.horizontalNormal,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const GeneralSearchBar(),
-                  buildBlackFridaySlider(context),
-                  buildGridViewSpecialSuggestion(context),
-                  buildInfluencerSuggestionLvb(context),
-                  buildBigSaleContainer(context),
-                  popularProductGirdView(context),
-                ],
-              ),
-            ),
+          padding: context.padding.horizontalNormal,
+          child: ListView(
+            children: [
+              const GeneralSearchBar(),
+              buildBlackFridaySlider(context),
+              buildGridViewSpecialSuggestion(context),
+              buildInfluencerSuggestionLvb(context),
+              buildBigSaleContainer(context),
+              popularProductGirdView(context),
+            ],
           ),
         ),
       ),

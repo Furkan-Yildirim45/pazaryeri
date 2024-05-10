@@ -26,7 +26,7 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.payment.withSlash, page: () => PaymentView()),
       GetPage(name: NavigateRoutesItems.productDetail.withSlash, page: () => const ProductDetailView()),
       GetPage(name: NavigateRoutesItems.onBoarding.withSlash, page: () => const OnboardView()),
-      GetPage(name: NavigateRoutesItems.mainPage.withSlash, page: () => const MainPageView()),
+      GetPage(name: NavigateRoutesItems.mainPage.withSlash, page: () => MainPageView()),
       GetPage(name: NavigateRoutesItems.welcome.withSlash, page: () => const WelcomeView()),
       GetPage(name: NavigateRoutesItems.createProfile.withSlash, page: () => const CreateProfileView()),
       GetPage(name: NavigateRoutesItems.verificationCode.withSlash, page: () => VerificationView()),

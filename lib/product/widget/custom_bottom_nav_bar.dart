@@ -1,41 +1,36 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:untitled/product/extension/string/string_extension.dart';
+import 'package:untitled/screen/main_page/controller/main_page_controller.dart';
 
 import '../utility/page_utility/profile_view_utility.dart';
 
-class CustomBottomNavBar extends StatefulWidget {
-  const CustomBottomNavBar({super.key});
+class CustomBottomNavBar extends StatelessWidget with ProfileViewUtility{
+  const CustomBottomNavBar({super.key, required this.controller});
 
-  @override
-  State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
-}
-
-class _CustomBottomNavBarState extends State<CustomBottomNavBar> with ProfileViewUtility{
-  int _currentIndex = 0;
+  final MainPageController controller;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: buildBackgroundLinearGradient(),
-      ),
-      child: SalomonBottomBar(
-        currentIndex: _currentIndex,
-        onTap: (selectedIndex) {
-          setState(() {
-            _currentIndex = selectedIndex;
-          });
-        },
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        items: [
-          SalomonBottomBarItem(icon: Icon(BottomNavBarItems.home.getIconData()), title: Text(BottomNavBarItems.home.name.capitalize())),
-          SalomonBottomBarItem(icon: Icon(BottomNavBarItems.favorite.getIconData()), title: Text(BottomNavBarItems.favorite.name.capitalize())),
-          SalomonBottomBarItem(icon: Icon(BottomNavBarItems.shopping.getIconData()), title: Text(BottomNavBarItems.shopping.name.capitalize())),
-          SalomonBottomBarItem(icon: Icon(BottomNavBarItems.profile.getIconData()), title: Text(BottomNavBarItems.profile.name.capitalize())),
-        ],
+    return Obx(
+      () => Container(
+        decoration: BoxDecoration(
+          gradient: buildBackgroundLinearGradient(),
+        ),
+        child: SalomonBottomBar(
+          currentIndex: controller.selectedIndex.value,
+          onTap: (index) => controller.onItemTapped(index,context),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
+          items: [
+            SalomonBottomBarItem(icon: Icon(BottomNavBarItems.home.getIconData()), title: Text(BottomNavBarItems.home.name.capitalizeFirst ?? "")),
+            SalomonBottomBarItem(icon: Icon(BottomNavBarItems.favorite.getIconData()), title: Text(BottomNavBarItems.favorite.name.capitalizeFirst ?? "")),
+            SalomonBottomBarItem(icon: Icon(BottomNavBarItems.shopping.getIconData()), title: Text(BottomNavBarItems.shopping.name.capitalizeFirst ?? "")),
+            SalomonBottomBarItem(icon: Icon(BottomNavBarItems.profile.getIconData()), title: Text(BottomNavBarItems.profile.name.capitalizeFirst ?? "")),
+          ],
+        ),
       ),
     );
   }

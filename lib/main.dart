@@ -29,10 +29,10 @@ class Main extends StatelessWidget {
   }
 }
 
-//todo: projede öğrenilmesi gerekenler : MVC,GetX
 
 //todo:knk generalAppBara bak yüksekliğinde bir sıkıntı var gibi!
-//todo: knk BottomNavBar birlşeitirilicek coğu yere
 
 //todo:bildirimler,ödeme_sayfası,arama_filtrele sayfaları aynı
 //todo:commonu siliceksin.
+
+//todo: ana sayfada bug var ıncorrect parent size widget!
