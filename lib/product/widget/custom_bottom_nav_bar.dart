@@ -8,7 +8,7 @@ import 'package:untitled/screen/main_page/controller/main_page_controller.dart';
 import '../utility/page_utility/profile_view_utility.dart';
 
 class CustomBottomNavBar extends StatelessWidget with ProfileViewUtility{
-  const CustomBottomNavBar({super.key, required this.controller});
+  CustomBottomNavBar({super.key, required this.controller});
 
   final MainPageController controller;
 

@@ -6,6 +6,7 @@ import 'package:untitled/product/widget/custom_elevated_button.dart';
 import 'package:untitled/product/widget/general_app_bar.dart';
 
 import '../../../../product/utility/page_utility/product_detail_utility.dart';
+import '../../../../product/widget/general_shadow.dart';
 import '../../product_detail/model/comment_model.dart';
 
 class AllCommentView extends StatefulWidget {
@@ -54,7 +55,7 @@ class _AllCommentViewState extends State<AllCommentView> with ProductDetailUtili
         height: context.sized.dynamicHeight(0.08),
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow: [buildGeneralShadow()],
+          boxShadow: [generalShadow()],
           borderRadius: context.myBorder.dynamicBorderRadiusOnly(topRight: 0.04,topLeft: 0.04)
         ),
           child: Row(

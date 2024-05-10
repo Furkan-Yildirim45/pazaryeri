@@ -6,7 +6,9 @@ import 'package:untitled/screen/home/home_page/view/home_page_view.dart';
 import 'package:untitled/screen/main_page/view/main_page_view.dart';
 import 'package:untitled/screen/onboarding/view/onboard_view.dart';
 import 'package:untitled/screen/product/product_detail/view/product_detail_view.dart';
+import 'package:untitled/screen/profile/address/view/address_view.dart';
 import 'package:untitled/screen/profile/favorite/view/favorite_view.dart';
+import 'package:untitled/screen/profile/past_orders/view/past_orders_view.dart';
 import 'package:untitled/screen/profile/payment/view/payment_view.dart';
 import 'package:untitled/screen/profile/profile_page/view/profile_View.dart';
 import 'package:untitled/screen/profile/shopping_card/view/shopping_card_view.dart';
@@ -31,6 +33,11 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.createProfile.withSlash, page: () => const CreateProfileView()),
       GetPage(name: NavigateRoutesItems.verificationCode.withSlash, page: () => VerificationView()),
       GetPage(name: NavigateRoutesItems.unknown.withSlash, page: () => const UnknownView()),
+      GetPage(name: NavigateRoutesItems.pastOrders.withSlash, page: () => const PastOrdersView()),
+      GetPage(name: NavigateRoutesItems.addresses.withSlash, page: () => const AddressesView()),
+      GetPage(name: NavigateRoutesItems.creditCard.withSlash, page: () => const UnknownView()),
+      GetPage(name: NavigateRoutesItems.accountSettings.withSlash, page: () => const UnknownView()),
+      GetPage(name: NavigateRoutesItems.checkOut.withSlash, page: () => const UnknownView()),
   ];
 }
 
@@ -41,6 +48,11 @@ enum NavigateRoutesItems {
   shoppingCard,
   profile,
   wallet,
+  pastOrders,
+  addresses,
+  creditCard,
+  accountSettings,
+  checkOut,
   payment,
   productDetail,
   onBoarding,

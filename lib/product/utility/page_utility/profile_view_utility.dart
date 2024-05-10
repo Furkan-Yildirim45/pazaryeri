@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/screen/profile/wallet/view/wallet_view.dart';
+import 'package:untitled/product/navigator/navigator_manager.dart';
+import 'package:untitled/product/navigator/navigator_route_items.dart';
+import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
 import '../../color/project_color.dart';
 import '../../widget/custom_elevated_button.dart';
+import '../../widget/page_divider.dart';
 
 mixin ProfileViewUtility {
+  final List<NavigateRoutesItems> pages = [
+    NavigateRoutesItems.wallet,
+    NavigateRoutesItems.pastOrders,
+    NavigateRoutesItems.addresses,
+    NavigateRoutesItems.creditCard,
+    NavigateRoutesItems.accountSettings,
+    NavigateRoutesItems.checkOut,
+  ];
+
   Positioned buildGeneralProfileContainer(
-    BuildContext context, {
-    required Widget pageDivider,
-  }) {
+    BuildContext context,
+  ) {
     return Positioned(
       bottom: 0,
       right: 0,
@@ -25,10 +36,8 @@ mixin ProfileViewUtility {
                 borderRadius: context.border.normalBorderRadius),
             child: Column(
               children: [
-                //profile container
                 buildProfileContainer(context),
-                buildProfileContentListViewBuilder(
-                    pageDivider: pageDivider, ),
+                buildProfileContentListViewBuilder(),
               ],
             ),
           ),
@@ -37,9 +46,7 @@ mixin ProfileViewUtility {
     );
   }
 
-  Expanded buildProfileContentListViewBuilder({
-    required Widget pageDivider,
-  }) {
+  Expanded buildProfileContentListViewBuilder() {
     return Expanded(
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
@@ -47,8 +54,8 @@ mixin ProfileViewUtility {
         itemBuilder: (context, index) {
           return Column(
             children: [
-              pageDivider,
-              buildProfileContentItemsButton(context, enumItem: ProfileLvbItems.values[index]),
+              CustomPageDivider(padding: EdgeInsets.zero),
+              buildProfileContentItemsButton(context, index: index),
             ],
           );
         },
@@ -58,14 +65,14 @@ mixin ProfileViewUtility {
 
   Container buildProfileContainer(BuildContext context) {
     return Container(
+      margin: context.padding.onlyTopMedium,
       padding: context.padding.verticalMedium,
       child: Row(
         children: [
           //profilePhoto
           CircleAvatar(
             maxRadius: context.sized.dynamicHeight(0.05),
-            backgroundImage:
-                const AssetImage("assets/images/profile_photo.png"),
+            backgroundImage: AssetImage(ImageUtility.getImagePath("profile_photo")),
           ),
           Padding(
             padding: context.padding.onlyLeftMedium,
@@ -93,13 +100,13 @@ mixin ProfileViewUtility {
 
   Padding buildProfileContentItemsButton(
     BuildContext context, {
-    required ProfileLvbItems enumItem,
+    required int index,
   }) {
     return Padding(
       padding: context.padding.verticalLow,
       child: CustomElevatedButton(
         onPressed: () {
-          _navigateToPage(context, enumItem);
+          _navigateToPage(context, index);
         },
         height: context.sized.dynamicHeight(0.06),
         elevation: 0,
@@ -110,13 +117,13 @@ mixin ProfileViewUtility {
             Padding(
               padding: context.padding.onlyRightMedium,
               child: Icon(
-                enumItem.getIcon(),
+                pages[index].getIcon(),
                 size: context.sized.mediumValue,
                 color: ProjectColor.midBrown.getColor(),
               ),
             ),
             Text(
-              enumItem.getLabel(),
+              pages[index].getLabel(),
               style: context.general.textTheme.bodyLarge?.copyWith(
                   color: ProjectColor.midBrown.getColor(),
                   fontWeight: FontWeight.w500),
@@ -124,15 +131,6 @@ mixin ProfileViewUtility {
           ],
         ),
       ),
-    );
-  }
-
-  Positioned customPositionedMarketPlaceTitle(BuildContext context,
-      {required Widget marketPlaceTitle}) {
-    return Positioned(
-      top: 0,
-      left: context.sized.dynamicWidth(0.24),
-      child: marketPlaceTitle,
     );
   }
 
@@ -147,35 +145,27 @@ mixin ProfileViewUtility {
     );
   }
 
-  void _navigateToPage(BuildContext context, ProfileLvbItems enumItem) {
-    final Map<ProfileLvbItems, Widget> pages = {
-      ProfileLvbItems.wallet: const WalletView(),
-    };
-    context.route.navigateToPage(pages[enumItem]!);
+  void _navigateToPage(BuildContext context, int index) {
+    NavigatorController.instance.pushToPage(pages[index]);
   }
 }
 
-
-enum ProfileLvbItems{
-  wallet,lastOrders,addresses,creditCard,accountSettings,checkOut,
-}
-
-extension ProfileLvbItemsExtension on ProfileLvbItems {
+extension ProfileLvbItemsExtension on NavigateRoutesItems {
   String getLabel() => {
-        ProfileLvbItems.wallet: 'Cüzdanım',
-        ProfileLvbItems.lastOrders: 'Geçmiş Siparişlerim',
-        ProfileLvbItems.addresses: 'AddreAdresslerimsses',
-        ProfileLvbItems.creditCard: 'Adresslerim',
-        ProfileLvbItems.accountSettings: 'Hesap Ayarları',
-        ProfileLvbItems.checkOut: 'Çıkış Yap',
+        NavigateRoutesItems.wallet: 'Cüzdanım',
+        NavigateRoutesItems.pastOrders: 'Geçmiş Siparişlerim',
+        NavigateRoutesItems.addresses: 'addreslerim',
+        NavigateRoutesItems.creditCard: 'Kartlarım',
+        NavigateRoutesItems.accountSettings: 'Hesap Ayarları',
+        NavigateRoutesItems.checkOut: 'Çıkış Yap',
       }[this]!;
 
   IconData getIcon() => {
-        ProfileLvbItems.wallet: Icons.account_balance_wallet,
-        ProfileLvbItems.lastOrders: Icons.history,
-        ProfileLvbItems.addresses: Icons.location_on,
-        ProfileLvbItems.creditCard: Icons.credit_card,
-        ProfileLvbItems.accountSettings: Icons.settings,
-        ProfileLvbItems.checkOut: Icons.shopping_cart,
+        NavigateRoutesItems.wallet: Icons.account_balance_wallet,
+        NavigateRoutesItems.pastOrders: Icons.history,
+        NavigateRoutesItems.addresses: Icons.location_on,
+        NavigateRoutesItems.creditCard: Icons.credit_card,
+        NavigateRoutesItems.accountSettings: Icons.settings,
+        NavigateRoutesItems.checkOut: Icons.shopping_cart,
       }[this]!;
 }

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:untitled/product/widget/page_divider.dart';
 
 import '../../../screen/product/product_detail/model/comment_model.dart';
 import '../../../screen/product/product_detail/view/product_detail_view.dart';
@@ -91,16 +92,6 @@ mixin ProductDetailUtility {
     );
   }
 
-  Padding pageDivider(BuildContext context,{EdgeInsets? padding}) {
-    return Padding(
-      padding: padding ?? context.padding.onlyTopNormal,
-      child: const Divider(
-        height: 2,
-        color: Colors.black12,
-      ),
-    );
-  }
-
   Positioned quantityButton(
       BuildContext context, {
         bool? isLeft,
@@ -136,7 +127,7 @@ mixin ProductDetailUtility {
                 children: [
                   buildStarPoint(context.sized.dynamicHeight(0.015)),
                   buildVerticalDivider(context,context.sized.dynamicHeight(0.015)),
-                  const SecureNameWidget(name: "Furkan Yıldırım"), //todo: customer ile ilgili bağlantı burda
+                  const SecureNameWidget(name: "Furkan Yıldırım"),
                   Padding(
                     padding: context.padding.horizontalNormal,
                     child: Text('-',style: context.general.textTheme.titleLarge,),
@@ -151,7 +142,7 @@ mixin ProductDetailUtility {
             ],
           ),
         ),
-        pageDivider(context),
+        CustomPageDivider(),
       ],
     );
   }
@@ -175,16 +166,10 @@ mixin ProductDetailUtility {
             ],
           ),
         ),
-        pageDivider(context),
+        CustomPageDivider(),
       ],
     );
   }
 
-  BoxShadow buildGeneralShadow() {
-    return BoxShadow(
-      color: Colors.black.withOpacity(0.6),
-      blurRadius: 6,
-      offset: const Offset(0, 3),
-    );
-  }
+
 }

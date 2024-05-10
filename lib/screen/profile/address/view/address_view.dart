@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../../../product/widget/common_widget.dart';
+import '../../../../product/color/project_color.dart';
+import '../../../../product/widget/general_app_bar.dart';
 
-void main() {
-  runApp(Adreslerim());
-}
+class AddressesView extends StatelessWidget {
+  const AddressesView({super.key});
 
-class Adreslerim extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: CustomAppBar(),
-        bottomNavigationBar: CustomBottomNavigationBar(),
-        body: Adresler(),
-      ),
+    return Scaffold(
+        appBar: GeneralAppBar(
+          textColor: ProjectColor.apricot.getColor(),
+          isLeadingActive: true,
+        ),
+        body: Adresler()
     );
   }
 }

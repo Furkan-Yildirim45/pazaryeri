@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 import 'package:untitled/product/utility/page_utility/product_detail_utility.dart';
 import 'package:untitled/product/utility/page_utility/profile_view_utility.dart';
 import 'package:untitled/product/utility/page_utility/basic/welcome_utility.dart';
-import 'package:untitled/product/widget/custom_bottom_nav_bar.dart';
 
 class ProfileView extends StatefulWidget{
   const ProfileView({super.key});
@@ -24,14 +24,11 @@ class _ProfileViewState extends State<ProfileView> with WelcomeUtility, ProductD
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              customPositionedMarketPlaceTitle(context, marketPlaceTitle: marketPlaceTitle(context,textColor: Colors.white)),
-              buildGeneralProfileContainer(context, pageDivider: pageDivider(context,padding: EdgeInsets.zero))
+              buildGeneralProfileContainer(context)
             ],
           ),
         ),
       ),
-      // bottomNavigationBar: CustomBottomNavBar(controller: ,),
     );
   }
-
 }

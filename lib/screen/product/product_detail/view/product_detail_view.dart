@@ -5,6 +5,8 @@ import 'package:untitled/product/extension/context/border_Radius.dart';
 import 'package:untitled/product/init/init.dart';
 import 'package:untitled/product/utility/page_utility/product_detail_utility.dart';
 import 'package:untitled/product/widget/custom_elevated_button.dart';
+import 'package:untitled/product/widget/general_shadow.dart';
+import 'package:untitled/product/widget/page_divider.dart';
 import 'package:untitled/screen/product/all_comments/view/all_comment_view.dart';
 
 import '../model/comment_model.dart';
@@ -102,7 +104,7 @@ class _ProductDetailViewState extends State<ProductDetailView> with ProductDetai
                                 child: const Text('Yüzünüze parlaklık ve nem verir. Sivilce akne oluşumunu önler. Üstelik içindeki C vitamini sayesinde vücudunuzun cilt bariyerini güçlendirir.'),
                               ),
                               //divider
-                              pageDivider(context),
+                              CustomPageDivider(),
                               //adet bilgisi girme
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -147,7 +149,7 @@ class _ProductDetailViewState extends State<ProductDetailView> with ProductDetai
                         color: Colors.white,
                         borderRadius: context.myBorder.dynamicBorderRadiusOnly(topRight: 0.08, topLeft: 0.08),
                         boxShadow: [
-                          buildGeneralShadow(),
+                          generalShadow(),
                         ],
                       ),
                       child: Column(
@@ -181,7 +183,7 @@ class _ProductDetailViewState extends State<ProductDetailView> with ProductDetai
                               ],
                             ),
                           ),
-                          pageDivider(context),
+                          CustomPageDivider(),
                           Container(
                             margin: context.padding.onlyTopNormal,
                             height: context.sized.dynamicHeight(0.11),

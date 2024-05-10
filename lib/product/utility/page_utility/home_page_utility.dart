@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/screen/home/home_page/view/home_page_view.dart';
 
-import '../../../screen/main_page/view/main_page_view.dart';
 import '../../color/project_color.dart';
 import '../../widget/custom_elevated_button.dart';
 import '../../widget/my_slider.dart';
