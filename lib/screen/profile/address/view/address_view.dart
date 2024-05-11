@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
+import 'package:untitled/product/widget/custom_elevated_button.dart';
+import 'package:untitled/screen/profile/address/model/address_model.dart';
 
 import '../../../../product/color/project_color.dart';
 import '../../../../product/widget/general_app_bar.dart';
 
-class AddressesView extends StatelessWidget {
+class AddressesView extends StatefulWidget {
   const AddressesView({super.key});
+
+  @override
+  State<AddressesView> createState() => _AddressesViewState();
+}
+
+class _AddressesViewState extends State<AddressesView> {
+  final List<AddressModel> _addressItems = [];
 
   @override
   Widget build(BuildContext context) {
@@ -13,76 +23,71 @@ class AddressesView extends StatelessWidget {
           textColor: ProjectColor.apricot.getColor(),
           isLeadingActive: true,
         ),
-        body: Adresler()
-    );
-  }
-}
-
-
-class Adresler extends StatefulWidget {
-  @override
-  _AdreslerState createState() => _AdreslerState();
-}
-
-class _AdreslerState extends State<Adresler> {
-  List<Widget> _adresKartlari = [];
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: ElevatedButton.icon(
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                builder: (BuildContext context) {
-                  return SingleChildScrollView(
-                    child: AdresEkleFormu(
-                      onAdresSaved: (String baslik, String adres, String ilce,
-                          String il) {
-                        setState(() {
-                          _adresKartlari.add(
-                            _buildAddressCard(baslik, adres, ilce, il),
-                          );
-                        });
-                      },
+        body: SafeArea(
+          child: Padding(
+            padding: context.padding.horizontalNormal,
+            child: ListView(
+              children: [
+                CustomElevatedButton(
+                  padding: context.padding.horizontalNormal,
+                    width: context.sized.width,
+                    height: context.sized.dynamicHeight(0.085),
+                    shape: RoundedRectangleBorder(borderRadius: context.border.normalBorderRadius),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: context.padding.onlyRightLow,
+                          child: Icon(
+                            Icons.location_on_outlined,
+                            color: ProjectColor.apricot.getColor(),
+                          ),
+                        ),
+                        Text('Yeni Adress Ekle',style: context.general.textTheme.titleSmall,),
+                      ],
                     ),
-                  );
-                },
-              );
-            },
-            icon: Icon(
-              Icons.add_location,
-              color: Color(0xFFF2BC8D),
-            ),
-            label: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 75),
-              child: Text(
-                'Yeni Adres Ekle',
-                style: TextStyle(color: Colors.blueGrey),
-              ),
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return ListView(
+                            children: const [
+                              AddAddressForm()
+                            ],
+                          );
+                        },
+                      );
+                    },
+                ),
+                Container(
+                  color: Colors.red,
+                  height: context.sized.dynamicHeight(0.32),
+                  width: double.infinity,
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 2,
+                    itemBuilder: (context, index) {
+                      return _buildAddressCard(
+                          context: context,
+                          model: AddressModel(
+                              addressTitle: "Ev",
+                              address: "Örnektepe Mahallesi, 123. Sokak, No: 5, Daire: 3",
+                              province: "Balıkesir",
+                              district: "AltıEylül",
+                          ));
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: _adresKartlari.length,
-            itemBuilder: (context, index) {
-              return _adresKartlari[index];
-            },
-          ),
-        ),
-      ],
+        )
     );
   }
-
-  Widget _buildAddressCard(
-      String baslik, String adres, String ilce, String il) {
+ //todo: burda kaldın temizliceksin en son fonksiyonellikler eklenicek!
+  Card _buildAddressCard({required BuildContext context,required AddressModel model}){
     return Card(
-      key: Key(baslik),
+      key: Key(model.addressTitle),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -97,7 +102,7 @@ class _AdreslerState extends State<Adresler> {
                 SizedBox(width: 8.0),
                 Expanded(
                   child: Text(
-                    baslik,
+                    model.addressTitle,
                     style:
                     TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                   ),
@@ -108,38 +113,33 @@ class _AdreslerState extends State<Adresler> {
                     color: Colors.blueGrey,
                   ),
                   onPressed: () {
-                    _editAddress(baslik, adres, ilce, il);
+                    // _editAddress(model: );
                   },
                 ),
               ],
             ),
-            Text(adres),
-            Text("$ilce / $il"),
+            Text(model.address),
+            Text("${model.province} / ${model.district}"),
           ],
         ),
       ),
     );
   }
 
-  void _editAddress(String baslik, String adres, String ilce, String il) {
+/*
+  void _editAddress({required AddressModel model}) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
         return SingleChildScrollView(
-          child: AdresEkleFormu(
-            baslik: baslik,
-            adres: adres,
-            ilce: ilce,
-            il: il,
-            onAdresSaved:
-                (String baslik, String adres, String ilce, String il) {
+          child: AddAddressForm(model: model,
+            onAddressSaved: (model) {
               setState(() {
                 // Güncellenen kart bilgisini bul ve güncelle
-                for (int i = 0; i < _adresKartlari.length; i++) {
-                  Widget kart = _adresKartlari[i];
-                  if (kart is Card && kart.key == Key(baslik)) {
-                    _adresKartlari[i] =
-                        _buildAddressCard(baslik, adres, ilce, il);
+                for (int i = 0; i < _addressItems.length; i++) {
+                  Widget kart = _addressItems[i];
+                  if (kart is Card && kart.key == Key(model.addressTitle)) {
+                    _addressItems[i] = _buildAddressCard(model: model,context: context);
                     break; // Kart bulundu, döngüden çık
                   }
                 }
@@ -151,31 +151,20 @@ class _AdreslerState extends State<Adresler> {
       },
     );
   }
+*/
 }
 
-class AdresEkleFormu extends StatefulWidget {
-  final Function(String, String, String, String) onAdresSaved;
-  final String? baslik;
-  final String? adres;
-  final String? ilce;
-  final String? il;
+class AddAddressForm extends StatefulWidget {
 
-  const AdresEkleFormu({
-    Key? key,
-    required this.onAdresSaved,
-    this.baslik,
-    this.adres,
-    this.ilce,
-    this.il,
-  }) : super(key: key);
+  const AddAddressForm({super.key});
 
   @override
-  _AdresEkleFormuState createState() => _AdresEkleFormuState();
+  _AddAddressFormState createState() => _AddAddressFormState();
 }
 
-class _AdresEkleFormuState extends State<AdresEkleFormu> {
+class _AddAddressFormState extends State<AddAddressForm> {
   final _formKey = GlobalKey<FormState>();
-  late TextEditingController _baslikController;
+/*  late TextEditingController _baslikController;
   late TextEditingController _adresController;
   late TextEditingController _ilceController;
   late TextEditingController _ilController;
@@ -183,11 +172,11 @@ class _AdresEkleFormuState extends State<AdresEkleFormu> {
   @override
   void initState() {
     super.initState();
-    _baslikController = TextEditingController(text: widget.baslik);
-    _adresController = TextEditingController(text: widget.adres);
-    _ilceController = TextEditingController(text: widget.ilce);
-    _ilController = TextEditingController(text: widget.il);
-  }
+    _baslikController = TextEditingController(text: widget.model.addressTitle);
+    _adresController = TextEditingController(text: widget.model.address);
+    _ilceController = TextEditingController(text: widget.model.province);
+    _ilController = TextEditingController(text: widget.model.district);
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +191,7 @@ class _AdresEkleFormuState extends State<AdresEkleFormu> {
                 MainAxisSize.min, // Formun boyutu içeriği kadar olacak
                 children: [
                   TextFormField(
-                    controller: _baslikController,
+                    // controller: _baslikController,
                     decoration: InputDecoration(labelText: 'Başlık'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -212,7 +201,7 @@ class _AdresEkleFormuState extends State<AdresEkleFormu> {
                     },
                   ),
                   TextFormField(
-                    controller: _adresController,
+                    // controller: _adresController,
                     decoration: InputDecoration(labelText: 'Adres'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -222,7 +211,7 @@ class _AdresEkleFormuState extends State<AdresEkleFormu> {
                     },
                   ),
                   TextFormField(
-                    controller: _ilceController,
+                    // controller: _ilceController,
                     decoration: InputDecoration(labelText: 'İlçe'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -232,7 +221,7 @@ class _AdresEkleFormuState extends State<AdresEkleFormu> {
                     },
                   ),
                   TextFormField(
-                    controller: _ilController,
+                    // controller: _ilController,
                     decoration: InputDecoration(labelText: 'İl'),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -244,15 +233,15 @@ class _AdresEkleFormuState extends State<AdresEkleFormu> {
                   SizedBox(height: 20.0),
                   ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        widget.onAdresSaved(
+                      /*if (_formKey.currentState!.validate()) {
+                        widget.onAddressSaved(
                           _baslikController.text,
                           _adresController.text,
                           _ilceController.text,
                           _ilController.text,
                         );
                         // Navigator.pop(context); // Formu kapat
-                      }
+                      }*/
                     },
                     child: Text('Kaydet'),
                   ),
