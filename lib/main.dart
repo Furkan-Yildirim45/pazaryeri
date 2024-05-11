@@ -34,3 +34,6 @@ class Main extends StatelessWidget {
 
 //todo: ana sayfada bug var Incorrect use of ParentDataWidget.
 //todo: en sonunda profile appbar background rengi değişimi yapabilirsen!
+
+//todo:profile içindeki pageler için botomnavbarın tıklanabilir ve direkt o sayfaya gidilebilir bi halinin kodunu yap!
+//todo: knk direkt olarak o sayfaya degil de mainpageye yollayıp ordan geçirmeyi dene!

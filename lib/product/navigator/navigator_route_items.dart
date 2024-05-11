@@ -34,7 +34,7 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.verificationCode.withSlash, page: () => VerificationView()),
       GetPage(name: NavigateRoutesItems.unknown.withSlash, page: () => const UnknownView()),
       GetPage(name: NavigateRoutesItems.pastOrders.withSlash, page: () => const PastOrdersView()),
-      GetPage(name: NavigateRoutesItems.addresses.withSlash, page: () => const AddressesView()),
+      GetPage(name: NavigateRoutesItems.addresses.withSlash, page: () => AddressesView()),
       GetPage(name: NavigateRoutesItems.creditCard.withSlash, page: () => const UnknownView()),
       GetPage(name: NavigateRoutesItems.accountSettings.withSlash, page: () => const UnknownView()),
       GetPage(name: NavigateRoutesItems.checkOut.withSlash, page: () => const UnknownView()),

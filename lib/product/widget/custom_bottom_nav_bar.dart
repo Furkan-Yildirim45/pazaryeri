@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:untitled/product/navigator/navigator_route_items.dart';
 import 'package:untitled/screen/main_page/controller/main_page_controller.dart';
 
 import '../utility/page_utility/profile_view_utility.dart';
 
 class CustomBottomNavBar extends StatelessWidget with ProfileViewUtility{
-  CustomBottomNavBar({super.key, required this.controller});
+  CustomBottomNavBar({super.key, required this.controller, this.onTap});
 
   final MainPageController controller;
-
+  final dynamic Function(int)? onTap;
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -21,7 +22,7 @@ class CustomBottomNavBar extends StatelessWidget with ProfileViewUtility{
         ),
         child: SalomonBottomBar(
           currentIndex: controller.selectedIndex.value,
-          onTap: (index) => controller.onItemTapped(index,context),
+          onTap: onTap ?? (index) => controller.onItemTapped(index,context),
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white,
           items: [
