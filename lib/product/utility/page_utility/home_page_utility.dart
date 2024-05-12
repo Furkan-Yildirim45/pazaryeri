@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/screen/home/home_page/view/home_page_view.dart';
 
 import '../../color/project_color.dart';
+import '../../controller/general_page_controller.dart';
 import '../../widget/custom_elevated_button.dart';
 import '../../widget/my_slider.dart';
 import '../../widget/product_card_widget.dart';
 import '../project_utility/image_utility.dart';
 
 mixin HomePageViewUtility on State<HomePageView> {
+  final GeneralPageController generalPageController = Get.put(GeneralPageController());
+
   Container popularProductGirdView(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(borderRadius: context.border.lowBorderRadius,      ),
+      decoration: BoxDecoration(borderRadius: context.border.lowBorderRadius),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -116,7 +120,7 @@ mixin HomePageViewUtility on State<HomePageView> {
           bottom: kZero,
           left: kZero,
           right: kZero,
-          child: Text("Cris Path",
+          child: Text("Chris Path",
               textAlign: TextAlign.center,
               style: context.general.textTheme.bodyMedium),
         )

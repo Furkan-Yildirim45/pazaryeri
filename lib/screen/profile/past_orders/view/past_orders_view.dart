@@ -33,7 +33,7 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
           padding: context.padding.horizontalNormal,
           child: ListView(
             children: [
-              const GeneralSearchBar(),
+              GeneralSearchBar(),
               Container(
                 margin: context.padding.onlyTopNormal,
                 width: double.infinity,

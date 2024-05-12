@@ -17,7 +17,7 @@ class FavoriteView extends StatelessWidget with FavoriteUtility{
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const GeneralSearchBar(),
+              GeneralSearchBar(),
               Expanded(
                 child: Padding(
                   padding: context.padding.onlyTopNormal,

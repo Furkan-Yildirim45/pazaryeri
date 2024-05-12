@@ -22,7 +22,7 @@ class ShoppingCardView extends StatelessWidget
           padding: context.padding.horizontalNormal,
           child: ListView(
             children: [
-              const GeneralSearchBar(),
+              GeneralSearchBar(),
               buildProductCardLvb(context),
             ],
           ),

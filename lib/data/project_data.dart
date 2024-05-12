@@ -1,0 +1,17 @@
+
+import 'package:untitled/product/model/product_model.dart';
+
+class ProjectData{
+  static ProjectData? _instance;
+  static void init(ProjectData instance){
+    _instance ??= instance;
+  }
+
+  static ProjectData? get instance{
+    if(_instance != null) return _instance;
+    throw Exception("Instance has not initialize");
+  }
+
+  List<ProductModel> productItems = [];
+}
+

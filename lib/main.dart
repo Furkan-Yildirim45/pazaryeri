@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:untitled/data/project_data.dart';
+import 'package:untitled/product/init/init.dart';
 import 'package:untitled/product/navigator/navigator_manager.dart';
 import 'package:untitled/product/navigator/navigator_route_items.dart';
 import 'package:untitled/product/theme/project_theme.dart';
 import 'package:untitled/screen/unknown_page/view/unknown_view.dart';
 
 void main() {
+  ProjectData.init(ProjectData());
+  ProjectInit().generateDummyProduct();
   runApp(Main());
 }
 
