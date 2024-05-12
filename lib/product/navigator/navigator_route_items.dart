@@ -14,6 +14,7 @@ import 'package:untitled/screen/profile/profile_page/view/profile_View.dart';
 import 'package:untitled/screen/profile/shopping_card/view/shopping_card_view.dart';
 import 'package:untitled/screen/profile/wallet/view/wallet_view.dart';
 
+import '../../screen/profile/card/view/card_view.dart';
 import '../../screen/unknown_page/view/unknown_view.dart';
 
 class NavigatorRoutes {
@@ -35,7 +36,7 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.unknown.withSlash, page: () => const UnknownView()),
       GetPage(name: NavigateRoutesItems.pastOrders.withSlash, page: () => const PastOrdersView()),
       GetPage(name: NavigateRoutesItems.addresses.withSlash, page: () => AddressesView()),
-      GetPage(name: NavigateRoutesItems.creditCard.withSlash, page: () => const UnknownView()),
+      GetPage(name: NavigateRoutesItems.creditCard.withSlash, page: () => CreditCardView()),
       GetPage(name: NavigateRoutesItems.accountSettings.withSlash, page: () => const UnknownView()),
       GetPage(name: NavigateRoutesItems.checkOut.withSlash, page: () => const UnknownView()),
   ];

@@ -15,12 +15,13 @@ mixin AddressViewUtility{
   final AddAddressController controller = Get.put(AddAddressController());
   MainPageController mainPageController = Get.put(MainPageController());
 
-  double _buildAddressCardHeigth(BuildContext context) =>
-      context.sized.dynamicHeight(0.22);
+  double buildAddressCardHeigth(BuildContext context) =>
+      context.sized.dynamicHeight(0.24);
 
   Widget buildLvbForAddressCard(BuildContext context) {
-    return Obx(() => SizedBox(
-      height: _buildAddressCardHeigth(context) *
+    return Obx(() => Container(
+      decoration: const BoxDecoration(color: Colors.transparent),
+      height: buildAddressCardHeigth(context) *
           (controller.addressItems?.length ?? 0),
       width: double.infinity,
       child: ListView.builder(
@@ -43,7 +44,11 @@ mixin AddressViewUtility{
     ));
   }
 
-  Padding buildAddNewAddress(BuildContext context) {
+  Padding buildAddNewAddress(BuildContext context,{
+    String? text,
+    IconData? icon,
+    Future<dynamic> Function()? onPressed,
+}) {
     return Padding(
       padding: context.padding.onlyTopNormal,
       child: CustomElevatedButton(
@@ -54,25 +59,25 @@ mixin AddressViewUtility{
         shape: RoundedRectangleBorder(
             side: BorderSide(color: ProjectColor.apricot.getColor(), width: 1),
             borderRadius: context.border.normalBorderRadius),
+        onPressed: onPressed ?? () {
+          extractShowModalBottomSheet(context: context);
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: context.padding.onlyRightLow,
               child: Icon(
-                Icons.location_on_outlined,
+                icon ?? Icons.location_on_outlined,
                 color: ProjectColor.apricot.getColor(),
               ),
             ),
             Text(
-              'Yeni Adress Ekle',
+              text ?? 'Yeni Adress Ekle',
               style: context.general.textTheme.titleSmall,
             ),
           ],
         ),
-        onPressed: () {
-          extractShowModalBottomSheet(context: context);
-        },
       ),
     );
   }
@@ -80,6 +85,8 @@ mixin AddressViewUtility{
   Future<dynamic> extractShowModalBottomSheet(
       {required BuildContext context, bool? isEdit, int? index}) {
     return showModalBottomSheet(
+      isScrollControlled: true,
+      useSafeArea: true,
       context: context,
       builder: (BuildContext context) {
         return AddAddressForm(
@@ -96,8 +103,9 @@ mixin AddressViewUtility{
     return Padding(
       padding: context.padding.onlyTopNormal,
       child: SizedBox(
-        height: _buildAddressCardHeigth(context),
+        height: context.sized.dynamicHeight(0.22),
         child: Card(
+          color: ProjectColor.lightGrey.getColor(),
           key: Key(model.addressTitle),
           child: Padding(
             padding: EdgeInsets.all(context.sized.normalValue),
