@@ -4,9 +4,9 @@ import 'package:untitled/product/navigator/navigator_manager.dart';
 import 'package:untitled/product/navigator/navigator_route_items.dart';
 import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
-import '../../color/project_color.dart';
-import '../../widget/custom_elevated_button.dart';
-import '../../widget/page_divider.dart';
+import '../../../color/project_color.dart';
+import '../../../widget/custom_elevated_button.dart';
+import '../../../widget/page_divider.dart';
 
 mixin ProfileViewUtility {
   final List<NavigateRoutesItems> pages = [

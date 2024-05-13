@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:untitled/data/project_data.dart';
+import 'package:untitled/product/navigator/navigator_manager.dart';
+import 'package:untitled/product/navigator/navigator_route_items.dart';
 import 'package:untitled/product/widget/general_search_bar.dart';
 
 import '../../../../product/model/product_model.dart';
@@ -22,27 +25,9 @@ class FavoriteView extends StatelessWidget with FavoriteUtility{
                 child: Padding(
                   padding: context.padding.onlyTopNormal,
                   child: ListView.builder(
-                    itemCount: 2,
+                    itemCount: ProjectData.instance?.favoriteProductItems.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: context.border.lowBorderRadius),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            buildProductDetailWithoutButton(context: context,index: index,model:ProductModel(
-                                productUrl: "9",
-                                productBrand: "Nivea",
-                                productPrice: "300",
-                                productDate: "11.05.2024",
-                                seller: "XXXXXX",
-                                productRating: "4.7",
-                                productName: "XXX Erkek Parfüm"),),
-                            buildProductDetailButton(context, width: double.infinity,title: 'Sepete Ekle'),
-                          ],
-                        ),
-                      );
+                      return _buildFavoriteProductCard(context, index);
                     },
                   ),
                 ),
@@ -51,6 +36,28 @@ class FavoriteView extends StatelessWidget with FavoriteUtility{
           ),
         ),
       ),
+    );
+  }
+
+  GestureDetector _buildFavoriteProductCard(BuildContext context, int index,) {
+    return GestureDetector(
+      onTap: (){
+        NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail,
+        arguments: ProjectData.instance?.favoriteProductItems[index]);
+      },
+      child: Container(
+        margin: context.padding.onlyTopLow,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: context.border.lowBorderRadius),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            buildProductDetailWithoutButton(context: context,index: index,model: ProjectData.instance?.favoriteProductItems[index],),
+                            buildProductDetailButton(context, width: double.infinity,title: 'Sepete Ekle'),
+                          ],
+                        ),
+                      ),
     );
   }
 }

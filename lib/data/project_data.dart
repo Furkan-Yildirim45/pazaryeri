@@ -13,5 +13,7 @@ class ProjectData{
   }
 
   List<ProductModel> productItems = [];
+  List<ProductModel> popularProductItems = [];
+  List<ProductModel> favoriteProductItems = [];
 }
 

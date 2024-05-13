@@ -7,7 +7,7 @@ import 'package:untitled/screen/profile/profile_page/view/profile_View.dart';
 import 'package:untitled/screen/profile/shopping_card/view/shopping_card_view.dart';
 
 import '../../../product/color/project_color.dart';
-import '../../../product/utility/page_utility/profile_view_utility.dart';
+import '../../../product/utility/page_utility/profile/profile_view_utility.dart';
 import '../../../product/widget/general_app_bar.dart';
 import '../../home/home_page/view/home_page_view.dart';
 

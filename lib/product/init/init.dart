@@ -30,6 +30,34 @@ class ProjectInit extends GetxController{
         productRating: "4.5",
       );
     });
-    update();
+    //todo: update kaldrıdım
+  }
+
+  void generateDummyPopularProductItems(){
+    ProjectData.instance?.popularProductItems = List.generate(10, (index) {
+      return ProductModel(
+        productBrand: "Mavi",
+        productDate: "13.05.2024",
+        productName: "XXX Erkek Parfümü",
+        productPrice: "500.00",
+        productUrl: "product",
+        seller: "Furkan Yıldırım",
+        productRating: "4",
+      );
+    },);
+  }
+
+  void generateDummyFavoriteProductItems(){
+    ProjectData.instance?.favoriteProductItems = List.generate(2, (index) {
+      return ProductModel(
+        productBrand: "Mavi",
+        productDate: "13.05.2024",
+        productName: "XXX Erkek Parfümü",
+        productPrice: "500.00",
+        productUrl: "product",
+        seller: "Furkan Yıldırım",
+        productRating: "4",
+      );
+    },);
   }
 }

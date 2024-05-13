@@ -9,8 +9,11 @@ import 'package:untitled/product/theme/project_theme.dart';
 import 'package:untitled/screen/unknown_page/view/unknown_view.dart';
 
 void main() {
+  final ProjectInit projectInit = ProjectInit();
   ProjectData.init(ProjectData());
-  ProjectInit().generateDummyProduct();
+  projectInit.generateDummyProduct();
+  projectInit.generateDummyPopularProductItems();
+  projectInit.generateDummyFavoriteProductItems();
   runApp(Main());
 }
 

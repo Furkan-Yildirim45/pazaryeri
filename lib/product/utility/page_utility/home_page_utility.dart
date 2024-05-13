@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
+import 'package:untitled/data/project_data.dart';
 import 'package:untitled/screen/home/search/view/search_view.dart';
 import 'package:untitled/screen/home/search_result/view/search_result_view.dart';
 import 'package:untitled/screen/unknown_page/view/unknown_view.dart';
 
 import '../../color/project_color.dart';
 import '../../controller/general_page_controller.dart';
+import '../../navigator/navigator_manager.dart';
+import '../../navigator/navigator_route_items.dart';
 import '../../widget/custom_elevated_button.dart';
 import '../../widget/my_slider.dart';
 import '../../widget/product_card_widget.dart';
@@ -74,8 +77,10 @@ mixin HomePageViewUtility {
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
                 childAspectRatio: 1.3,
-                children: List.generate(4, (index) {
-                  return const ProductCardWidget();
+                children: List.generate(ProjectData.instance?.popularProductItems.length ?? 0, (index) {
+                  return ProductCardWidget(
+                    model: ProjectData.instance?.popularProductItems[index],
+                  );
                 }),
               ),
             ),

@@ -1,32 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:untitled/product/widget/custom_elevated_button.dart';
 
 import '../color/project_color.dart';
+import '../model/product_model.dart';
+import '../navigator/navigator_manager.dart';
+import '../navigator/navigator_route_items.dart';
 import '../utility/project_utility/image_utility.dart';
 
 class ProductCardWidget extends StatelessWidget {
   const ProductCardWidget({
-    super.key,
+    super.key, this.model,
   });
+  final ProductModel? model;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-          borderRadius: context.border.lowBorderRadius,
-        ),
-        padding: EdgeInsets.all(context.sized.lowValue),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildProductImage(context),
-            _buildProductTitleText(context),
-            _buildPriceText(context),
-          ],
-        ),
+    return CustomElevatedButton(
+      onPressed:() {
+      print("tıklandı");
+      NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail, arguments: model);
+    },
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: context.border.lowBorderRadius,
+      ),
+      backgroundColor: Colors.grey[200],
+      padding: EdgeInsets.all(context.sized.lowValue),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildProductImage(context),
+          _buildProductTitleText(context),
+          _buildPriceText(context),
+        ],
       ),
     );
   }
@@ -41,12 +48,6 @@ class ProductCardWidget extends StatelessWidget {
             Image.asset(
               ImageUtility.getImagePath("9"),
               fit: BoxFit.cover,
-            ),
-            Material(
-              color: Colors.transparent,
-              child: InkWell(
-                onTap: () {},
-              ),
             ),
           ],
         ),
