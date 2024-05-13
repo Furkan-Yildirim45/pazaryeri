@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/screen/home/home_page/view/home_page_view.dart';
+import 'package:untitled/screen/home/search/view/search_view.dart';
+import 'package:untitled/screen/home/search_result/view/search_result_view.dart';
+import 'package:untitled/screen/unknown_page/view/unknown_view.dart';
 
 import '../../color/project_color.dart';
 import '../../controller/general_page_controller.dart';
@@ -10,8 +12,33 @@ import '../../widget/my_slider.dart';
 import '../../widget/product_card_widget.dart';
 import '../project_utility/image_utility.dart';
 
-mixin HomePageViewUtility on State<HomePageView> {
+mixin HomePageViewUtility {
   final GeneralPageController generalPageController = Get.put(GeneralPageController());
+
+  Widget selectAndShowPage(BuildContext context) {
+    switch (generalPageController.currentPage.value) {
+      case PageType.home:
+        return buildHomePageContent(context);
+      case PageType.search:
+        return SearchView();
+      case PageType.searchResult:
+        return SearchResultView(productItems: generalPageController.items,);
+      default:
+        return const UnknownView();
+    }
+  }
+
+  Column buildHomePageContent(BuildContext context) {
+    return Column(
+      children: [
+        buildBlackFridaySlider(context),
+        buildGridViewSpecialSuggestion(context),
+        buildInfluencerSuggestionLvb(context),
+        buildBigSaleContainer(context),
+        popularProductGirdView(context),
+      ],
+    );
+  }
 
   Container popularProductGirdView(BuildContext context) {
     return Container(

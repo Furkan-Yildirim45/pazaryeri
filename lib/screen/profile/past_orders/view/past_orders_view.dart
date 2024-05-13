@@ -75,7 +75,7 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(productModel.productDate),
+              Text(productModel.productDate ?? ""),
               Row(
                 children: [
                   const Icon(

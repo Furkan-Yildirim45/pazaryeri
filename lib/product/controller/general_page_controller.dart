@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import 'package:untitled/product/model/product_model.dart';
 
 enum PageType {
   home,
@@ -9,9 +10,14 @@ enum PageType {
 
 class GeneralPageController extends GetxController {
   var currentPage = PageType.home.obs;
+  RxList<ProductModel> items = <ProductModel>[].obs;
 
-  void showPage(PageType page) {
+  void showPage(PageType page, {List<ProductModel>? matchedProducts}) {
     currentPage.value = page;
+    if(matchedProducts != null){
+      items.value = matchedProducts;
+      // items.assignAll(matchedProducts);
+    }
     update();
   }
 }

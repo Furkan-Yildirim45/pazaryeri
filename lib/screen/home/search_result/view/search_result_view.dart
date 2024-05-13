@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/data/project_data.dart';
 import 'package:untitled/product/color/project_color.dart';
+import 'package:untitled/product/model/product_model.dart';
 import 'package:untitled/product/widget/custom_elevated_button.dart';
 
 import '../../../../product/widget/product_card_widget_search_result.dart';
 
 class SearchResultView extends StatelessWidget {
-  const SearchResultView({super.key});
+  const SearchResultView({super.key, this.productItems,});
+  final List<ProductModel>? productItems;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +31,7 @@ class SearchResultView extends StatelessWidget {
     return Container(
       margin: context.padding.onlyTopNormal,
       width: double.infinity,
-      height: context.sized.dynamicHeight(0.389) *
-          (ProjectData.instance?.productItems.length ?? 0.0) /
-          2,
+      height: context.sized.dynamicHeight(0.389) * (productItems?.length ?? 0.0) / 2,
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -41,9 +40,9 @@ class SearchResultView extends StatelessWidget {
           mainAxisSpacing: context.sized.lowValue,
           childAspectRatio: 0.7,
         ),
-        itemCount: ProjectData.instance?.productItems.length,
+        itemCount: productItems?.length,
         itemBuilder: (context, index) {
-          return const ProductCardWidgetSearchResult();
+          return ProductCardWidgetSearchResult(model: productItems?[index],);
         },
       ),
     );

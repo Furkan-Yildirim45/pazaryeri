@@ -3,8 +3,11 @@ import 'package:untitled/screen/basic/create_profile/view/create_profile_view.da
 import 'package:untitled/screen/basic/verification_code/view/verification_code_view.dart';
 import 'package:untitled/screen/basic/welcome/view/welcome_view.dart';
 import 'package:untitled/screen/home/home_page/view/home_page_view.dart';
+import 'package:untitled/screen/home/search/view/search_view.dart';
+import 'package:untitled/screen/home/search_result/view/search_result_view.dart';
 import 'package:untitled/screen/main_page/view/main_page_view.dart';
 import 'package:untitled/screen/onboarding/view/onboard_view.dart';
+import 'package:untitled/screen/product/all_comments/view/all_comment_view.dart';
 import 'package:untitled/screen/product/product_detail/view/product_detail_view.dart';
 import 'package:untitled/screen/profile/address/view/address_view.dart';
 import 'package:untitled/screen/profile/favorite/view/favorite_view.dart';
@@ -27,7 +30,7 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.profile.withSlash, page: () => const ProfileView()),
       GetPage(name: NavigateRoutesItems.wallet.withSlash, page: () => const WalletView()),
       GetPage(name: NavigateRoutesItems.payment.withSlash, page: () => PaymentView()),
-      GetPage(name: NavigateRoutesItems.productDetail.withSlash, page: () => const ProductDetailView()),
+      GetPage(name: NavigateRoutesItems.productDetail.withSlash, page: () => ProductDetailView()),
       GetPage(name: NavigateRoutesItems.onBoarding.withSlash, page: () => const OnboardView()),
       GetPage(name: NavigateRoutesItems.mainPage.withSlash, page: () => MainPageView()),
       GetPage(name: NavigateRoutesItems.welcome.withSlash, page: () => const WelcomeView()),
@@ -39,6 +42,9 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.creditCard.withSlash, page: () => CreditCardView()),
       GetPage(name: NavigateRoutesItems.accountSettings.withSlash, page: () => const UnknownView()),
       GetPage(name: NavigateRoutesItems.checkOut.withSlash, page: () => const UnknownView()),
+      GetPage(name: NavigateRoutesItems.searchResult.withSlash, page: () => const SearchResultView()),
+      GetPage(name: NavigateRoutesItems.search.withSlash, page: () => SearchView()),
+      GetPage(name: NavigateRoutesItems.allComment.withSlash, page: () => AllCommentView()),
   ];
 }
 
@@ -62,6 +68,9 @@ enum NavigateRoutesItems {
   createProfile,
   verificationCode,
   unknown,
+  searchResult,
+  search,
+  allComment,
 }
 
 extension NavigateRoutesItemsExtension on NavigateRoutesItems{

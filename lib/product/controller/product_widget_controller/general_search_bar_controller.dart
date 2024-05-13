@@ -16,10 +16,10 @@ class GeneralSearchBarController extends GetxController {
   void onSubmitted(String word) {
     searchedWords.add(word);
     List<ProductModel>? matchedProducts = ProjectData.instance?.productItems
-        .where((product) => product.productName.toLowerCase().contains(word.toLowerCase()))
+        .where((product) => product.productName?.toLowerCase().contains(word.toLowerCase()) ?? false)
         .toList();
     if (matchedProducts?.isNotEmpty ?? false) {
-      generalPageController.showPage(PageType.searchResult);
+      generalPageController.showPage(PageType.searchResult,matchedProducts: matchedProducts);
     }
     _searchController.clear();
   }
