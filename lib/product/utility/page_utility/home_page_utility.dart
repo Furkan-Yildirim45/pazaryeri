@@ -117,46 +117,48 @@ mixin HomePageViewUtility {
     );
   }
 
-  Stack buildInfluencerSuggestionCard(BuildContext context) {
+  GestureDetector buildInfluencerSuggestionCard(BuildContext context) {
     var dynamicSize = context.sized.dynamicWidth(0.155);
     var kZero = 0.0;
-    return Stack(
-      children: [
-        Container(
-          width: dynamicSize,
-          height: dynamicSize,
-          decoration: BoxDecoration(
-            borderRadius: context.border.lowBorderRadius,
-            border: Border.all(
-              color: ProjectColor.apricot.getColor(),
-              width: 2,
+    return GestureDetector(
+      onTap: (){
+        NavigatorController.instance.pushToPage(NavigateRoutesItems.influencerSuggestion);
+      },
+      child: Stack(
+        children: [
+          Container(
+            width: dynamicSize,
+            height: dynamicSize,
+            decoration: BoxDecoration(
+              borderRadius: context.border.lowBorderRadius,
+              border: Border.all(
+                color: ProjectColor.apricot.getColor(),
+                width: 2,
+              ),
+              image: DecorationImage(image: AssetImage(
+                ImageUtility.getImagePath("6"),
+              ),fit: BoxFit.cover,
+              )
             ),
           ),
-          child: ClipRRect(
-            borderRadius: context.border.lowBorderRadius,
-            child: Image.asset(
-              ImageUtility.getImagePath("6"),
-              fit: BoxFit.cover,
+          Positioned(
+            top: kZero,
+            right: kZero,
+            child: const Icon(
+              Icons.check_circle,
+              color: Colors.blue,
             ),
           ),
-        ),
-        Positioned(
-          top: kZero,
-          right: kZero,
-          child: const Icon(
-            Icons.check_circle,
-            color: Colors.blue,
-          ),
-        ),
-        Positioned(
-          bottom: kZero,
-          left: kZero,
-          right: kZero,
-          child: Text("Chris Path",
-              textAlign: TextAlign.center,
-              style: context.general.textTheme.bodyMedium),
-        )
-      ],
+          Positioned(
+            bottom: kZero,
+            left: kZero,
+            right: kZero,
+            child: Text("Chris Path",
+                textAlign: TextAlign.center,
+                style: context.general.textTheme.bodyMedium),
+          )
+        ],
+      ),
     );
   }
 

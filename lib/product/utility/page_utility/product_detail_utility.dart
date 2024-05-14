@@ -306,7 +306,7 @@ mixin ProductDetailUtility {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                controller.model?.value.productPrice ?? "",
+                "${controller.model?.value.productPrice}" ?? "",
                 style: context.general.textTheme.headlineSmall
                     ?.copyWith(fontWeight: FontWeight.w500),
               ),

@@ -1,57 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/model/product_model.dart';
+import 'package:untitled/product/navigator/navigator_manager.dart';
+import 'package:untitled/product/navigator/navigator_route_items.dart';
 import 'package:untitled/product/utility/page_utility/product_detail_utility.dart';
 import 'package:untitled/product/utility/page_utility/profile/favorite_utility.dart';
 import 'package:untitled/product/widget/general_search_bar.dart';
 import 'package:untitled/product/widget/product_card_with_seller_info.dart';
 
 import '../../../../product/widget/general_shadow.dart';
+import '../controller/shopping_card_controller.dart';
 
 class ShoppingCardView extends StatelessWidget
     with ProductDetailUtility, FavoriteUtility {
   ShoppingCardView({super.key});
 
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: customFloatActionButton(context),
-      body: SafeArea(
-        child: Padding(
-          padding: context.padding.horizontalNormal,
-          child: ListView(
-            children: [
-              GeneralSearchBar(),
-              buildProductCardLvb(context),
-            ],
+    return GetBuilder(
+      init: ShoppingCardController(),
+      builder: (controller) {
+        return Scaffold(
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: customFloatActionButton(context,controller),
+          body: SafeArea(
+            child: Padding(
+              padding: context.padding.horizontalNormal,
+              child: ListView(
+                children: [
+                  GeneralSearchBar(),
+                  buildProductCardLvb(context,controller),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
-  final int lvbItemCount = 5;
 
-  Padding buildProductCardLvb(BuildContext context) {
+  Padding buildProductCardLvb(BuildContext context,ShoppingCardController controller) {
+    var dynamicCardHeight = context.sized.dynamicHeight(0.27);
     return Padding(
       padding: context.padding.onlyTopNormal,
       child: SizedBox(
-        height: lvbItemCount * context.sized.dynamicHeight(0.288),
+        height: (controller.shoppingCardProductItems?.length ?? 0.0) * dynamicCardHeight + context.sized.highValue,
         child: ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: lvbItemCount,
+          itemCount: controller.shoppingCardProductItems?.length,
           itemBuilder: (context, index) {
             return ProductCardWithSellerInfo(
               index: index,
-              productModel: ProductModel(
-                  productUrl: "9",
-                  productBrand: "Nivea",
-                  productPrice: "300",
-                  productDate: "11.05.2024",
-                  seller: "XXXXXX",
-                  productRating: "4.7",
-                  productName: "XXX Erkek Parfüm"),
+              productModel: controller.shoppingCardProductItems?[index]
             );
           },
         ),
@@ -62,6 +64,7 @@ class ShoppingCardView extends StatelessWidget
 
   Container customFloatActionButton(
     BuildContext context,
+      ShoppingCardController cardController,
   ) {
     return Container(
       width: context.sized.width,
@@ -77,7 +80,7 @@ class ShoppingCardView extends StatelessWidget
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('\$10.99',
+              Text('\$${getTotalPrice(cardController)}',
                   style: context.general.textTheme.titleLarge?.copyWith(
                       color: Colors.black, fontWeight: FontWeight.bold)),
               Text('Toplam Tutar',
@@ -90,9 +93,24 @@ class ShoppingCardView extends StatelessWidget
               title: "Alışverişi tamamla",
               height: context.sized.dynamicHeight(0.07),
               textStyle: context.general.textTheme.titleMedium
-                  ?.copyWith(color: Colors.white)),
+                  ?.copyWith(color: Colors.white), onPressed: () {
+                NavigatorController.instance.pushToPage(NavigateRoutesItems.payment);
+              }),
         ],
       ),
     );
   }
+
+  String getTotalPrice(ShoppingCardController controller){
+    double totalPrice = 0.0;
+    if(controller.shoppingCardProductItems?.isNotEmpty ?? false){
+      for (var product in controller.shoppingCardProductItems!) {
+        if (product.productPrice != null) {
+          totalPrice += product.productPrice ?? 0.0;
+        }
+      }
+    }
+    return totalPrice.toString();
+  }
+
 }

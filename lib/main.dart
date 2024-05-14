@@ -3,17 +3,14 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:untitled/data/project_data.dart';
 import 'package:untitled/product/init/init.dart';
+import 'package:untitled/product/init/main_init.dart';
 import 'package:untitled/product/navigator/navigator_manager.dart';
 import 'package:untitled/product/navigator/navigator_route_items.dart';
 import 'package:untitled/product/theme/project_theme.dart';
 import 'package:untitled/screen/unknown_page/view/unknown_view.dart';
 
 void main() {
-  final ProjectInit projectInit = ProjectInit();
-  ProjectData.init(ProjectData());
-  projectInit.generateDummyProduct();
-  projectInit.generateDummyPopularProductItems();
-  projectInit.generateDummyFavoriteProductItems();
+  MainInit().mainInit();
   runApp(Main());
 }
 
@@ -36,7 +33,7 @@ class Main extends StatelessWidget {
   }
 }
 
-//todo:bildirimler,ödeme_sayfası,arama_filtrele sayfaları aynı
+//todo:kayıtlı kartlarım2,sepete eklendi,sipariş detayı!
 
 //todo: ana sayfada bug var Incorrect use of ParentDataWidget.
 //todo: en sonunda profile appbar background rengi değişimi yapabilirsen!

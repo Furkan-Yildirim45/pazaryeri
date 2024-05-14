@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/data/project_data.dart';
+import 'package:untitled/product/controller/product_widget_controller/added_to_card_controller.dart';
 import 'package:untitled/product/navigator/navigator_manager.dart';
 import 'package:untitled/product/navigator/navigator_route_items.dart';
 import 'package:untitled/product/widget/general_search_bar.dart';
+import 'package:untitled/screen/profile/shopping_card/controller/shopping_card_controller.dart';
 
 import '../../../../product/model/product_model.dart';
 import '../../../../product/utility/page_utility/profile/favorite_utility.dart';
 
-class FavoriteView extends StatelessWidget with FavoriteUtility{
+class FavoriteView extends StatelessWidget with FavoriteUtility {
   const FavoriteView({super.key});
 
   @override
@@ -25,7 +28,8 @@ class FavoriteView extends StatelessWidget with FavoriteUtility{
                 child: Padding(
                   padding: context.padding.onlyTopNormal,
                   child: ListView.builder(
-                    itemCount: ProjectData.instance?.favoriteProductItems.length,
+                    itemCount:
+                        ProjectData.instance?.favoriteProductItems.length,
                     itemBuilder: (BuildContext context, int index) {
                       return _buildFavoriteProductCard(context, index);
                     },
@@ -39,25 +43,40 @@ class FavoriteView extends StatelessWidget with FavoriteUtility{
     );
   }
 
-  GestureDetector _buildFavoriteProductCard(BuildContext context, int index,) {
+  GestureDetector _buildFavoriteProductCard(
+    BuildContext context,
+    int index,
+  ) {
     return GestureDetector(
-      onTap: (){
-        NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail,
-        arguments: ProjectData.instance?.favoriteProductItems[index]);
+      onTap: () {
+        NavigatorController.instance.pushToPage(
+            NavigateRoutesItems.productDetail,
+            arguments: ProjectData.instance?.favoriteProductItems[index]);
       },
       child: Container(
         margin: context.padding.onlyTopLow,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: context.border.lowBorderRadius),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            buildProductDetailWithoutButton(context: context,index: index,model: ProjectData.instance?.favoriteProductItems[index],),
-                            buildProductDetailButton(context, width: double.infinity,title: 'Sepete Ekle'),
-                          ],
-                        ),
-                      ),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: context.border.lowBorderRadius),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            buildProductDetailWithoutButton(
+              context: context,
+              index: index,
+              model: ProjectData.instance?.favoriteProductItems[index],
+            ),
+            buildProductDetailButton(context,
+                width: double.infinity, title: 'Sepete Ekle', onPressed: () {
+                  final ShoppingCardController controller = Get.put(ShoppingCardController());
+                  controller.addProductToShoppingCard(ProjectData.instance?.favoriteProductItems[index]);
+                  AlertController().showAlert();
+                }),
+          ],
+        ),
+      ),
     );
   }
 }
+
+//todo:direkt olarak çek getx controller ile!

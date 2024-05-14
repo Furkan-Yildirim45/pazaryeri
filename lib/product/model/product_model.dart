@@ -1,7 +1,7 @@
 class ProductModel {
   final String? productUrl;
   final String? productBrand;
-  final String? productPrice;
+  final double? productPrice;
   final String? productDate;
   final String? seller;
   final String? productRating;

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/product/extension/context/border_Radius.dart';
+import 'package:untitled/product/navigator/navigator_manager.dart';
+import 'package:untitled/product/navigator/navigator_route_items.dart';
+import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
 import '../color/project_color.dart';
 import '../utility/page_utility/basic/welcome_utility.dart';
@@ -48,13 +51,16 @@ class GeneralAppBar extends StatelessWidget
           child: Padding(
             padding: context.padding.onlyTopMedium,
             child: _buildAppBarButton(context,
-                onPressed: () {},
+                onPressed: () {
+                  NavigatorController.instance.pushToPage(NavigateRoutesItems.notification);
+                },
                 child: Image.asset(
-                  "assets/images/notification_appbar.png",
+                  ImageUtility.getImagePath("notification_appbar"),
                   color: ProjectColor.apricot.getColor(),
                   height: context.sized.mediumValue,
                   width: context.sized.mediumValue,
-                )),
+                ),
+            ),
           ),
         ),
       ],

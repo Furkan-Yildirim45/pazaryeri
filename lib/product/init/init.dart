@@ -24,7 +24,7 @@ class ProjectInit extends GetxController{
         productBrand: "Nivea",
         productDate: "12.05.2024",
         productName: "Yüz Bakım Kremi",
-        productPrice: "360.00",
+        productPrice: 360.00,
         productUrl: "9",
         seller: "Furkan Yıldırım",
         productRating: "4.5",
@@ -39,7 +39,7 @@ class ProjectInit extends GetxController{
         productBrand: "Mavi",
         productDate: "13.05.2024",
         productName: "XXX Erkek Parfümü",
-        productPrice: "500.00",
+        productPrice: 500.00,
         productUrl: "product",
         seller: "Furkan Yıldırım",
         productRating: "4",
@@ -53,7 +53,21 @@ class ProjectInit extends GetxController{
         productBrand: "Mavi",
         productDate: "13.05.2024",
         productName: "XXX Erkek Parfümü",
-        productPrice: "500.00",
+        productPrice: 500.00,
+        productUrl: "product",
+        seller: "Furkan Yıldırım",
+        productRating: "4",
+      );
+    },);
+  }
+
+  void generateDummyShoppingCardProductItems(){
+    ProjectData.instance?.shoppingCardProductItems = List.generate(4, (index) {
+      return ProductModel(
+        productBrand: "Mavi",
+        productDate: "14.05.2024",
+        productName: "XXX Erkek Parfümü",
+        productPrice: 1000.00,
         productUrl: "product",
         seller: "Furkan Yıldırım",
         productRating: "4",

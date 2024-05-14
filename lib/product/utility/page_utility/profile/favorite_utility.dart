@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/product/model/product_model.dart';
+import 'package:untitled/product/navigator/navigator_manager.dart';
+import 'package:untitled/product/navigator/navigator_route_items.dart';
 
 import '../../../color/project_color.dart';
 import '../../../widget/custom_elevated_button.dart';
@@ -13,6 +15,7 @@ mixin FavoriteUtility {
     required String title,
     double? height,
     TextStyle? textStyle,
+        required void Function() onPressed,
   }) {
     return Padding(
       padding: EdgeInsets.all(context.sized.lowValue),
@@ -22,7 +25,7 @@ mixin FavoriteUtility {
         shape: RoundedRectangleBorder(
             borderRadius: context.border.normalBorderRadius),
         backgroundColor: ProjectColor.apricot.getColor(),
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           title,
           style: textStyle ??

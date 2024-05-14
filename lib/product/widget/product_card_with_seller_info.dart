@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/product/model/product_model.dart';
+import 'package:untitled/product/navigator/navigator_manager.dart';
+import 'package:untitled/product/navigator/navigator_route_items.dart';
 import 'package:untitled/product/utility/page_utility/profile/favorite_utility.dart';
 import 'package:untitled/product/widget/page_divider.dart';
 
@@ -18,25 +20,30 @@ class ProductCardWithSellerInfo extends StatelessWidget with FavoriteUtility {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: index == 4 ? EdgeInsets.zero : context.padding.onlyBottomNormal,
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-          borderRadius: context.border.normalBorderRadius),
-      child: Padding(
-        padding: context.padding.horizontalLow,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            topPlace ?? buildCardTopPlace(context),
-            CustomPageDivider(),
-            buildProductDetailWithoutButton(
-              index: index,
-              context: context,
-              buttons: buttons,
-              model: productModel,
-            )
-          ],
+    return GestureDetector(
+      onTap: (){
+        NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail, arguments: productModel);
+      },
+      child: Card(
+        margin: index == 4 ? EdgeInsets.zero : context.padding.onlyBottomNormal,
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+            borderRadius: context.border.normalBorderRadius),
+        child: Padding(
+          padding: context.padding.horizontalLow,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              topPlace ?? buildCardTopPlace(context),
+              CustomPageDivider(),
+              buildProductDetailWithoutButton(
+                index: index,
+                context: context,
+                buttons: buttons,
+                model: productModel,
+              )
+            ],
+          ),
         ),
       ),
     );

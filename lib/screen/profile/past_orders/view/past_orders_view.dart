@@ -18,7 +18,7 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
     final ProductModel productModel = ProductModel(
         productUrl: "9",
         productBrand: "Nivea",
-        productPrice: "300",
+        productPrice: 300,
         productDate: "11.05.2024",
         seller: "XXXXXX",
         productRating: "4.7",

@@ -11,6 +11,8 @@ import 'package:untitled/screen/product/all_comments/view/all_comment_view.dart'
 import 'package:untitled/screen/product/product_detail/view/product_detail_view.dart';
 import 'package:untitled/screen/profile/address/view/address_view.dart';
 import 'package:untitled/screen/profile/favorite/view/favorite_view.dart';
+import 'package:untitled/screen/profile/influencer_suggestion/view/influencer_suggestion_view.dart';
+import 'package:untitled/screen/profile/notification/view/notification_view.dart';
 import 'package:untitled/screen/profile/past_orders/view/past_orders_view.dart';
 import 'package:untitled/screen/profile/payment/view/payment_view.dart';
 import 'package:untitled/screen/profile/profile_page/view/profile_View.dart';
@@ -29,8 +31,8 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.shoppingCard.withSlash, page: () => ShoppingCardView()),
       GetPage(name: NavigateRoutesItems.profile.withSlash, page: () => const ProfileView()),
       GetPage(name: NavigateRoutesItems.wallet.withSlash, page: () => const WalletView()),
-      GetPage(name: NavigateRoutesItems.payment.withSlash, page: () => PaymentView()),
-      GetPage(name: NavigateRoutesItems.productDetail.withSlash, page: () => ProductDetailView()),
+      GetPage(name: NavigateRoutesItems.payment.withSlash, page: () => const PaymentView()),
+      GetPage(name: NavigateRoutesItems.productDetail.withSlash, page: () => const ProductDetailView()),
       GetPage(name: NavigateRoutesItems.onBoarding.withSlash, page: () => const OnboardView()),
       GetPage(name: NavigateRoutesItems.mainPage.withSlash, page: () => MainPageView()),
       GetPage(name: NavigateRoutesItems.welcome.withSlash, page: () => const WelcomeView()),
@@ -45,6 +47,8 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.searchResult.withSlash, page: () => const SearchResultView()),
       GetPage(name: NavigateRoutesItems.search.withSlash, page: () => SearchView()),
       GetPage(name: NavigateRoutesItems.allComment.withSlash, page: () => AllCommentView()),
+      GetPage(name: NavigateRoutesItems.notification.withSlash, page: () => const NotificationView()),
+      GetPage(name: NavigateRoutesItems.influencerSuggestion.withSlash, page: () => const InfluencerSuggestionView()),
   ];
 }
 
@@ -71,6 +75,8 @@ enum NavigateRoutesItems {
   searchResult,
   search,
   allComment,
+  notification,
+  influencerSuggestion
 }
 
 extension NavigateRoutesItemsExtension on NavigateRoutesItems{
