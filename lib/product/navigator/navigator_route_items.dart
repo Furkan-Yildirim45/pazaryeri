@@ -8,6 +8,7 @@ import 'package:untitled/screen/home/search_result/view/search_result_view.dart'
 import 'package:untitled/screen/main_page/view/main_page_view.dart';
 import 'package:untitled/screen/onboarding/view/onboard_view.dart';
 import 'package:untitled/screen/product/all_comments/view/all_comment_view.dart';
+import 'package:untitled/screen/product/order_detail/view/order_detail_view.dart';
 import 'package:untitled/screen/product/product_detail/view/product_detail_view.dart';
 import 'package:untitled/screen/profile/address/view/address_view.dart';
 import 'package:untitled/screen/profile/favorite/view/favorite_view.dart';
@@ -49,6 +50,7 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.allComment.withSlash, page: () => AllCommentView()),
       GetPage(name: NavigateRoutesItems.notification.withSlash, page: () => const NotificationView()),
       GetPage(name: NavigateRoutesItems.influencerSuggestion.withSlash, page: () => const InfluencerSuggestionView()),
+      GetPage(name: NavigateRoutesItems.orderDetail.withSlash, page: () => const OrderDetailView()),
   ];
 }
 
@@ -76,7 +78,8 @@ enum NavigateRoutesItems {
   search,
   allComment,
   notification,
-  influencerSuggestion
+  influencerSuggestion,
+  orderDetail,
 }
 
 extension NavigateRoutesItemsExtension on NavigateRoutesItems{

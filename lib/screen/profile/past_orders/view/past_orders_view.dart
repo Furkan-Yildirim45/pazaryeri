@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:untitled/product/model/product_model.dart';
+import 'package:untitled/product/navigator/navigator_manager.dart';
+import 'package:untitled/product/navigator/navigator_route_items.dart';
 import 'package:untitled/product/utility/page_utility/profile/favorite_utility.dart';
 import 'package:untitled/product/widget/general_search_bar.dart';
 import 'package:untitled/product/widget/product_card_with_seller_info.dart';
@@ -48,7 +50,9 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
                       topPlace: _buildTopPlace(context, productModel),
                       buttons: [
                         buildProductFavoriteCardPropertyButton(context,
-                            onPressed: () {},
+                            onPressed: () {
+                              NavigatorController.instance.pushToPage(NavigateRoutesItems.orderDetail);
+                            },
                             text: "Detaylar",
                             textColor: Colors.white,
                             backgroundColor: ProjectColor.apricot.getColor())
