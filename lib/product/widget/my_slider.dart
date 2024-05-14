@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/controller/product_widget_controller/my_slider_controller.dart';
 
+import '../controller/product_widget_controller/my_slider_controller.dart';
 import '../utility/project_utility/image_utility.dart';
 
 class MySlider extends StatelessWidget {

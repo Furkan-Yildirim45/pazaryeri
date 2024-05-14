@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/controller/product_widget_controller/added_to_card_controller.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
-import 'package:untitled/product/widget/general_search_bar.dart';
-import 'package:untitled/screen/profile/favorite/controller/favorite_controller.dart';
-import 'package:untitled/screen/profile/shopping_card/controller/shopping_card_controller.dart';
 
+import '../../../../product/controller/product_widget_controller/added_to_card_controller.dart';
+import '../../../../product/navigator/navigator_manager.dart';
+import '../../../../product/navigator/navigator_route_items.dart';
 import '../../../../product/utility/page_utility/profile/favorite_utility.dart';
+import '../../../../product/widget/general_search_bar.dart';
+import '../../shopping_card/controller/shopping_card_controller.dart';
+import '../controller/favorite_controller.dart';
 
 class FavoriteView extends StatelessWidget with FavoriteUtility {
   const FavoriteView({super.key});

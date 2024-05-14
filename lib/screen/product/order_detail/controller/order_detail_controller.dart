@@ -1,7 +1,8 @@
 
 
 import 'package:get/get.dart';
-import 'package:untitled/product/model/product_model.dart';
+
+import '../../../../product/model/product_model.dart';
 
 class OrderDetailController extends GetxController{
   Rx<ProductModel>? orderDetailItem = ProductModel().obs;

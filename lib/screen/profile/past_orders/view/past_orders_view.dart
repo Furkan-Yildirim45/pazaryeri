@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/model/product_model.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
-import 'package:untitled/product/utility/page_utility/profile/favorite_utility.dart';
-import 'package:untitled/product/widget/general_search_bar.dart';
-import 'package:untitled/product/widget/product_card_with_seller_info.dart';
 
 import '../../../../product/color/project_color.dart';
+import '../../../../product/model/product_model.dart';
+import '../../../../product/navigator/navigator_manager.dart';
+import '../../../../product/navigator/navigator_route_items.dart';
+import '../../../../product/utility/page_utility/profile/favorite_utility.dart';
 import '../../../../product/widget/general_app_bar.dart';
+import '../../../../product/widget/general_search_bar.dart';
+import '../../../../product/widget/product_card_with_seller_info.dart';
 
 class PastOrdersView extends StatelessWidget with FavoriteUtility {
   const PastOrdersView({super.key});

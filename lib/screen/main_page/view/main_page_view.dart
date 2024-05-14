@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled/product/widget/custom_bottom_nav_bar.dart';
-import 'package:untitled/screen/main_page/controller/main_page_controller.dart';
-import 'package:untitled/screen/profile/favorite/view/favorite_view.dart';
-import 'package:untitled/screen/profile/profile_page/view/profile_View.dart';
-import 'package:untitled/screen/profile/shopping_card/view/shopping_card_view.dart';
 
 import '../../../product/color/project_color.dart';
 import '../../../product/utility/page_utility/profile/profile_view_utility.dart';
+import '../../../product/widget/custom_bottom_nav_bar.dart';
 import '../../../product/widget/general_app_bar.dart';
 import '../../home/home_page/view/home_page_view.dart';
+import '../../profile/favorite/view/favorite_view.dart';
+import '../../profile/profile_page/view/profile_View.dart';
+import '../../profile/shopping_card/view/shopping_card_view.dart';
+import '../controller/main_page_controller.dart';
 
 class MainPageView extends StatelessWidget with ProfileViewUtility{
   MainPageView({super.key});

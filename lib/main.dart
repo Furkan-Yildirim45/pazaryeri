@@ -1,13 +1,11 @@
+import 'package:Pazaryeri/product/init/main_init.dart';
+import 'package:Pazaryeri/product/navigator/navigator_manager.dart';
+import 'package:Pazaryeri/product/navigator/navigator_route_items.dart';
+import 'package:Pazaryeri/product/theme/project_theme.dart';
+import 'package:Pazaryeri/screen/unknown_page/view/unknown_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:untitled/data/project_data.dart';
-import 'package:untitled/product/init/init.dart';
-import 'package:untitled/product/init/main_init.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
-import 'package:untitled/product/theme/project_theme.dart';
-import 'package:untitled/screen/unknown_page/view/unknown_view.dart';
 
 void main() {
   MainInit().mainInit();
@@ -35,4 +33,4 @@ class Main extends StatelessWidget {
 
 //todo:profile içindeki pageler için botomnavbarın tıklanabilir ve direkt o sayfaya gidilebilir bi halinin kodunu yap!
 //todo: knk direkt olarak o sayfaya degil de mainpageye yollayıp ordan geçirmeyi dene!
-//todo:GeneralSearch kısmını her ekrana uygulamadım fonksiyonellikleri sadece homepage de aktif!
+//todo:GeneralSearch kxısmını her ekrana uygulamadım fonksiyonellikleri sadece homepage de aktif!

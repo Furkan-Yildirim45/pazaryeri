@@ -1,14 +1,15 @@
+import 'package:Pazaryeri/product/extension/context/border_Radius.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/extension/context/border_Radius.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/utility/page_utility/product_detail_utility.dart';
-import 'package:untitled/product/utility/project_utility/image_utility.dart';
-import 'package:untitled/product/widget/custom_elevated_button.dart';
-import 'package:untitled/product/widget/general_shadow.dart';
-import 'package:untitled/product/widget/page_divider.dart';
-import 'package:untitled/screen/product/product_detail/controller/product_detail_controller.dart';
+
+import '../../../../product/navigator/navigator_manager.dart';
+import '../../../../product/utility/page_utility/product/product_detail_utility.dart';
+import '../../../../product/utility/project_utility/image_utility.dart';
+import '../../../../product/widget/custom_elevated_button.dart';
+import '../../../../product/widget/general_shadow.dart';
+import '../../../../product/widget/page_divider.dart';
+import '../controller/product_detail_controller.dart';
 
 part 'part/secure_name_widget.dart';
 

@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/model/product_model.dart';
 
 import '../../../../screen/main_page/controller/main_page_controller.dart';
 import '../../../color/project_color.dart';
+import '../../../model/product_model.dart';
 import '../../../widget/page_divider.dart';
 import '../../project_utility/image_utility.dart';
 

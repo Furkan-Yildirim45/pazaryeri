@@ -1,9 +1,9 @@
 
+import 'package:Pazaryeri/data/project_data.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:untitled/data/project_data.dart';
-import 'package:untitled/product/model/product_model.dart';
 
+import '../../model/product_model.dart';
 import '../general_page_controller.dart';
 
 class GeneralSearchBarController extends GetxController {

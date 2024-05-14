@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kartal/kartal.dart';
-import 'package:untitled/product/utility/page_utility/product_detail_utility.dart';
-import 'package:untitled/product/utility/page_utility/profile/profile_view_utility.dart';
-import 'package:untitled/product/utility/page_utility/basic/welcome_utility.dart';
+
+import '../../../../product/utility/page_utility/basic/welcome_utility.dart';
+import '../../../../product/utility/page_utility/product/product_detail_utility.dart';
+import '../../../../product/utility/page_utility/profile/profile_view_utility.dart';
 
 class ProfileView extends StatefulWidget{
   const ProfileView({super.key});

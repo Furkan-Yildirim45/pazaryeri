@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/controller/product_widget_controller/general_search_bar_controller.dart';
 
 import '../color/project_color.dart';
 import '../controller/general_page_controller.dart';
+import '../controller/product_widget_controller/general_search_bar_controller.dart';
 
 class GeneralSearchBar extends StatelessWidget {
   GeneralSearchBar({super.key});

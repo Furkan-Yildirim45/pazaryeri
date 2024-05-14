@@ -1,8 +1,9 @@
 
 
 import 'package:get/get.dart';
-import 'package:untitled/data/project_data.dart';
-import 'package:untitled/product/model/product_model.dart';
+
+import '../../../../data/project_data.dart';
+import '../../../../product/model/product_model.dart';
 
 class ShoppingCardController extends GetxController {
   RxList<ProductModel>? shoppingCardProductItems = <ProductModel>[].obs;

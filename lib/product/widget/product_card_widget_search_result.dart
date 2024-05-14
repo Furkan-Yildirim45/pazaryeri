@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/model/product_model.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
 
 import '../color/project_color.dart';
+import '../model/product_model.dart';
+import '../navigator/navigator_manager.dart';
+import '../navigator/navigator_route_items.dart';
 import '../utility/project_utility/image_utility.dart';
 
 class ProductCardWidgetSearchResult extends StatelessWidget {

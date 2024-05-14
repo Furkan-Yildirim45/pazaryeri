@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
-import 'package:untitled/screen/main_page/controller/main_page_controller.dart';
 
+import '../../screen/main_page/controller/main_page_controller.dart';
 import '../utility/page_utility/profile/profile_view_utility.dart';
 
 class CustomBottomNavBar extends StatelessWidget with ProfileViewUtility{

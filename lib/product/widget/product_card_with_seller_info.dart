@@ -1,10 +1,11 @@
+import 'package:Pazaryeri/product/widget/page_divider.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/model/product_model.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
-import 'package:untitled/product/utility/page_utility/profile/favorite_utility.dart';
-import 'package:untitled/product/widget/page_divider.dart';
+
+import '../model/product_model.dart';
+import '../navigator/navigator_manager.dart';
+import '../navigator/navigator_route_items.dart';
+import '../utility/page_utility/profile/favorite_utility.dart';
 
 class ProductCardWithSellerInfo extends StatelessWidget with FavoriteUtility {
   const ProductCardWithSellerInfo({

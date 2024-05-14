@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/utility/page_utility/profile/address_view_utility.dart';
-import 'package:untitled/product/widget/custom_bottom_nav_bar.dart';
-import 'package:untitled/product/widget/custom_elevated_button.dart';
-import 'package:untitled/product/widget/general_shadow.dart';
-import 'package:untitled/screen/profile/address/model/address_model.dart';
 
 import '../../../../product/color/project_color.dart';
 import '../../../../product/navigator/navigator_manager.dart';
+import '../../../../product/utility/page_utility/profile/address_view_utility.dart';
+import '../../../../product/widget/custom_bottom_nav_bar.dart';
+import '../../../../product/widget/custom_elevated_button.dart';
 import '../../../../product/widget/general_app_bar.dart';
+import '../../../../product/widget/general_shadow.dart';
 import '../controller/address_controller.dart';
+import '../model/address_model.dart';
 
 part 'part/add_address_form.dart';
 

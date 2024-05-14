@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
-import 'package:untitled/product/utility/page_utility/product_detail_utility.dart';
-import 'package:untitled/product/utility/page_utility/profile/favorite_utility.dart';
-import 'package:untitled/product/widget/general_search_bar.dart';
-import 'package:untitled/product/widget/product_card_with_seller_info.dart';
 
+import '../../../../product/navigator/navigator_manager.dart';
+import '../../../../product/navigator/navigator_route_items.dart';
+import '../../../../product/utility/page_utility/product/product_detail_utility.dart';
+import '../../../../product/utility/page_utility/profile/favorite_utility.dart';
+import '../../../../product/widget/general_search_bar.dart';
 import '../../../../product/widget/general_shadow.dart';
+import '../../../../product/widget/product_card_with_seller_info.dart';
 import '../controller/shopping_card_controller.dart';
 
 class ShoppingCardView extends StatelessWidget

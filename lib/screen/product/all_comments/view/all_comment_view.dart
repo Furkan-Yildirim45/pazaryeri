@@ -1,15 +1,14 @@
+import 'package:Pazaryeri/product/extension/context/border_Radius.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/color/project_color.dart';
-import 'package:untitled/product/extension/context/border_Radius.dart';
-import 'package:untitled/product/widget/custom_elevated_button.dart';
-import 'package:untitled/product/widget/general_app_bar.dart';
-import 'package:untitled/screen/product/all_comments/controller/all_comment_controller.dart';
-import 'package:untitled/screen/product/product_detail/controller/product_detail_controller.dart';
 
-import '../../../../product/utility/page_utility/product_detail_utility.dart';
+import '../../../../product/color/project_color.dart';
+import '../../../../product/utility/page_utility/product/product_detail_utility.dart';
+import '../../../../product/widget/custom_elevated_button.dart';
+import '../../../../product/widget/general_app_bar.dart';
 import '../../../../product/widget/general_shadow.dart';
+import '../controller/all_comment_controller.dart';
 
 class AllCommentView extends StatelessWidget with ProductDetailUtility{
   AllCommentView({super.key});

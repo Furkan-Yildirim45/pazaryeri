@@ -1,5 +1,6 @@
 
-import 'package:untitled/product/model/product_model.dart';
+
+import '../product/model/product_model.dart';
 
 class ProjectData{
   static ProjectData? _instance;

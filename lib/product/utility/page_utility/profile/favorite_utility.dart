@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/model/product_model.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
 
 import '../../../color/project_color.dart';
+import '../../../model/product_model.dart';
 import '../../../widget/custom_elevated_button.dart';
 import '../../project_utility/image_utility.dart';
 

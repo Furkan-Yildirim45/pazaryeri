@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
-import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
 import '../../../color/project_color.dart';
+import '../../../navigator/navigator_manager.dart';
+import '../../../navigator/navigator_route_items.dart';
 import '../../../widget/custom_elevated_button.dart';
 import '../../../widget/page_divider.dart';
+import '../../project_utility/image_utility.dart';
 
 mixin ProfileViewUtility {
   final List<NavigateRoutesItems> pages = [

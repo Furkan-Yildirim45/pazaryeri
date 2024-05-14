@@ -1,17 +1,17 @@
+import 'package:Pazaryeri/product/extension/context/border_Radius.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/extension/context/border_Radius.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
-import 'package:untitled/product/utility/project_utility/image_utility.dart';
-import 'package:untitled/product/widget/page_divider.dart';
-import 'package:untitled/screen/product/product_detail/controller/product_detail_controller.dart';
 
-import '../../../screen/product/product_detail/model/comment_model.dart';
-import '../../../screen/product/product_detail/view/product_detail_view.dart';
-import '../../color/project_color.dart';
-import '../../widget/custom_elevated_button.dart';
+import '../../../../screen/product/product_detail/controller/product_detail_controller.dart';
+import '../../../../screen/product/product_detail/model/comment_model.dart';
+import '../../../../screen/product/product_detail/view/product_detail_view.dart';
+import '../../../color/project_color.dart';
+import '../../../navigator/navigator_manager.dart';
+import '../../../navigator/navigator_route_items.dart';
+import '../../../widget/custom_elevated_button.dart';
+import '../../../widget/page_divider.dart';
+import '../../project_utility/image_utility.dart';
 
 mixin ProductDetailUtility {
   final ProductDetailController controller = Get.put(ProductDetailController());
@@ -306,7 +306,7 @@ mixin ProductDetailUtility {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "${controller.model?.value.productPrice}" ?? "",
+                "${controller.model?.value.productPrice}",
                 style: context.general.textTheme.headlineSmall
                     ?.copyWith(fontWeight: FontWeight.w500),
               ),

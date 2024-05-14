@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:untitled/product/color/project_color.dart';
+
+import '../color/project_color.dart';
 
 class ProjectTheme{
   late ThemeData theme;

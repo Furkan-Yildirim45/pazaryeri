@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/controller/product_widget_controller/general_search_bar_controller.dart';
+
+import '../../../../product/controller/product_widget_controller/general_search_bar_controller.dart';
 
 class SearchView extends StatelessWidget {
   SearchView({super.key});

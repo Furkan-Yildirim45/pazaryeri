@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/utility/page_utility/basic/verification_code_utility.dart';
-import 'package:untitled/product/utility/page_utility/basic/welcome_utility.dart';
-import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
+import '../../../../product/navigator/navigator_manager.dart';
 import '../../../../product/navigator/navigator_route_items.dart';
+import '../../../../product/utility/page_utility/basic/verification_code_utility.dart';
+import '../../../../product/utility/page_utility/basic/welcome_utility.dart';
+import '../../../../product/utility/project_utility/image_utility.dart';
 
 
 class VerificationView extends StatelessWidget with WelcomeUtility, VerificationCodeUtility {

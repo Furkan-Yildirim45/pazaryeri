@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/color/project_color.dart';
-import 'package:untitled/product/model/product_model.dart';
-import 'package:untitled/product/widget/custom_elevated_button.dart';
 
+import '../../../../product/color/project_color.dart';
+import '../../../../product/model/product_model.dart';
+import '../../../../product/widget/custom_elevated_button.dart';
 import '../../../../product/widget/product_card_widget_search_result.dart';
 
 class SearchResultView extends StatelessWidget {

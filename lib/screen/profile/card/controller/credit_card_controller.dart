@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/screen/profile/card/model/credit_card_model.dart';
+
+import '../model/credit_card_model.dart';
 
 class CreditCardController extends GetxController{
   final formKey = GlobalKey<FormState>();

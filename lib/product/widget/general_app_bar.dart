@@ -1,12 +1,12 @@
+import 'package:Pazaryeri/product/extension/context/border_Radius.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/extension/context/border_Radius.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/navigator/navigator_route_items.dart';
-import 'package:untitled/product/utility/project_utility/image_utility.dart';
 
 import '../color/project_color.dart';
+import '../navigator/navigator_manager.dart';
+import '../navigator/navigator_route_items.dart';
 import '../utility/page_utility/basic/welcome_utility.dart';
+import '../utility/project_utility/image_utility.dart';
 import 'custom_elevated_button.dart';
 
 class GeneralAppBar extends StatelessWidget

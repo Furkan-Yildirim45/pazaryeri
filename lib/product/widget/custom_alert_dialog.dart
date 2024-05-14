@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/color/project_color.dart';
-import 'package:untitled/product/widget/custom_bottom_nav_bar.dart';
-import 'package:untitled/product/widget/custom_elevated_button.dart';
 
 import '../../screen/main_page/controller/main_page_controller.dart';
+import '../color/project_color.dart';
 import '../utility/project_utility/image_utility.dart';
+import 'custom_bottom_nav_bar.dart';
+import 'custom_elevated_button.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   final String title;
@@ -31,7 +31,6 @@ class CustomAlertDialog extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     Get.back();
-                    print("tıklandı");
                   },
                   icon: const Icon(
                     Icons.close_outlined,

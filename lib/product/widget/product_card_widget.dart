@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/widget/custom_elevated_button.dart';
 
 import '../color/project_color.dart';
 import '../model/product_model.dart';
 import '../navigator/navigator_manager.dart';
 import '../navigator/navigator_route_items.dart';
 import '../utility/project_utility/image_utility.dart';
+import 'custom_elevated_button.dart';
 
 class ProductCardWidget extends StatelessWidget {
   const ProductCardWidget({
@@ -18,7 +18,6 @@ class ProductCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomElevatedButton(
       onPressed:() {
-      print("tıklandı");
       NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail, arguments: model);
     },
       elevation: 0,

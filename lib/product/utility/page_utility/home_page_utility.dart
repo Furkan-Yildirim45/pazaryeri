@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/data/project_data.dart';
-import 'package:untitled/screen/home/search/view/search_view.dart';
-import 'package:untitled/screen/home/search_result/view/search_result_view.dart';
-import 'package:untitled/screen/unknown_page/view/unknown_view.dart';
 
+import '../../../data/project_data.dart';
+import '../../../screen/home/search/view/search_view.dart';
+import '../../../screen/home/search_result/view/search_result_view.dart';
+import '../../../screen/unknown_page/view/unknown_view.dart';
 import '../../color/project_color.dart';
 import '../../controller/general_page_controller.dart';
 import '../../navigator/navigator_manager.dart';

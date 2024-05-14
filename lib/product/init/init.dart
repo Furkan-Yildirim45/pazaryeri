@@ -1,9 +1,9 @@
 
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:untitled/data/project_data.dart';
-import 'package:untitled/product/model/product_model.dart';
 
+import '../../data/project_data.dart';
 import '../../screen/product/product_detail/model/comment_model.dart';
+import '../model/product_model.dart';
 
 class ProjectInit extends GetxController{
   List<CommentModel> generateDummyComments() {

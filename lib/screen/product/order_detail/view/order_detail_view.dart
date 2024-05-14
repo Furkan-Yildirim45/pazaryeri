@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/color/project_color.dart';
-import 'package:untitled/product/model/product_model.dart';
-import 'package:untitled/product/navigator/navigator_manager.dart';
-import 'package:untitled/product/utility/project_utility/image_utility.dart';
-import 'package:untitled/product/widget/custom_bottom_nav_bar.dart';
-import 'package:untitled/product/widget/custom_elevated_button.dart';
-import 'package:untitled/product/widget/page_divider.dart';
-import 'package:untitled/screen/product/order_detail/controller/order_detail_controller.dart';
 
+import '../../../../product/color/project_color.dart';
+import '../../../../product/model/product_model.dart';
+import '../../../../product/navigator/navigator_manager.dart';
 import '../../../../product/utility/page_utility/product/order_detail_utility.dart';
+import '../../../../product/utility/project_utility/image_utility.dart';
+import '../../../../product/widget/custom_bottom_nav_bar.dart';
+import '../../../../product/widget/custom_elevated_button.dart';
+import '../../../../product/widget/page_divider.dart';
+import '../controller/order_detail_controller.dart';
 
 part 'part/product_detail_in_order_detail.dart';
 

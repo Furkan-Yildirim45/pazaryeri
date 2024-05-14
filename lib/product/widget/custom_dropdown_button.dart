@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:untitled/product/color/project_color.dart';
+
+import '../color/project_color.dart';
 
 class CustomDropDownButton<T> extends StatefulWidget {
   final List<T> items;
