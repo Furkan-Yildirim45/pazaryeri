@@ -35,3 +35,4 @@ class Main extends StatelessWidget {
 
 //todo:profile içindeki pageler için botomnavbarın tıklanabilir ve direkt o sayfaya gidilebilir bi halinin kodunu yap!
 //todo: knk direkt olarak o sayfaya degil de mainpageye yollayıp ordan geçirmeyi dene!
+//todo:GeneralSearch kısmını her ekrana uygulamadım fonksiyonellikleri sadece homepage de aktif!

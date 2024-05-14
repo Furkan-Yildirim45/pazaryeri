@@ -33,5 +33,3 @@ class GeneralSearchBarController extends GetxController {
     update();
   }
 }
-
-//todo:knk geçmiş aramalara bastıgımda onu aratmasını ayarlamadım.
