@@ -214,5 +214,3 @@ class _ProductDetailViewState extends State<ProductDetailView>
     );
   }
 }
-
-//todo: modelleri aktarirken late init hatası alıyorum

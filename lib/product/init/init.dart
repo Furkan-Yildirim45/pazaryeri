@@ -30,7 +30,6 @@ class ProjectInit extends GetxController{
         productRating: "4.5",
       );
     });
-    //todo: update kaldrıdım
   }
 
   void generateDummyPopularProductItems(){

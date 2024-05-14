@@ -59,9 +59,21 @@ class SearchView extends StatelessWidget {
   Padding _buildSearchedWordText(BuildContext context, int index) {
     return Padding(
       padding: context.padding.onlyLeftLow,
-      child: Text(
-        generalSearchBarController.searchedWords[index],
-        style: context.general.textTheme.bodyLarge,
+      child: GestureDetector(
+        onTap: (){
+          generalSearchBarController.onSubmitted(generalSearchBarController.searchedWords[index]);
+        },
+        child: SizedBox(
+          width: context.sized.dynamicWidth(0.68),
+          height: context.sized.dynamicHeight(0.05),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              generalSearchBarController.searchedWords[index],
+              style: context.general.textTheme.bodyLarge,
+            ),
+          ),
+        ),
       ),
     );
   }

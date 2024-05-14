@@ -50,7 +50,7 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.allComment.withSlash, page: () => AllCommentView()),
       GetPage(name: NavigateRoutesItems.notification.withSlash, page: () => const NotificationView()),
       GetPage(name: NavigateRoutesItems.influencerSuggestion.withSlash, page: () => const InfluencerSuggestionView()),
-      GetPage(name: NavigateRoutesItems.orderDetail.withSlash, page: () => const OrderDetailView()),
+      GetPage(name: NavigateRoutesItems.orderDetail.withSlash, page: () => OrderDetailView()),
   ];
 }
 

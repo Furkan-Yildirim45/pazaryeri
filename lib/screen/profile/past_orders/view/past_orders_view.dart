@@ -51,7 +51,7 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
                       buttons: [
                         buildProductFavoriteCardPropertyButton(context,
                             onPressed: () {
-                              NavigatorController.instance.pushToPage(NavigateRoutesItems.orderDetail);
+                              NavigatorController.instance.pushToPage(NavigateRoutesItems.orderDetail,arguments: productModel);
                             },
                             text: "Detaylar",
                             textColor: Colors.white,
