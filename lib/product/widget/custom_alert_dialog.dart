@@ -12,12 +12,13 @@ class CustomAlertDialog extends StatelessWidget {
   final String title;
   final String message;
   final String image;
+  final bool? isProductDetail;
 
   const CustomAlertDialog({
     super.key,
     required this.title,
     required this.message,
-    required this.image,
+    required this.image, this.isProductDetail,
   });
 
   @override
@@ -58,6 +59,9 @@ class CustomAlertDialog extends StatelessWidget {
           children: [
             _buildAlertDialogActionsButton(
               onPressed: (){
+                if(isProductDetail ?? false){
+                  Get.back();
+                }
                 Get.back();
                 final MainPageController mainPageController = Get.put(MainPageController());
                 mainPageController.onPageChanged(BottomNavBarItems.shopping.index);

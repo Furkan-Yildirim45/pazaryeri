@@ -31,6 +31,7 @@ class Main extends StatelessWidget {
   }
 }
 
-//todo:profile içindeki pageler için botomnavbarın tıklanabilir ve direkt o sayfaya gidilebilir bi halinin kodunu yap!
-//todo: knk direkt olarak o sayfaya degil de mainpageye yollayıp ordan geçirmeyi dene!
 //todo:GeneralSearch kxısmını her ekrana uygulamadım fonksiyonellikleri sadece homepage de aktif!
+
+//todo:en son model ,le index gönderiyosun bunun bir metodunu yap düzgün dursun!
+//todo:homepage de gereksiz bir expanded var onu kaldı!

@@ -44,7 +44,7 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.addresses.withSlash, page: () => AddressesView()),
       GetPage(name: NavigateRoutesItems.creditCard.withSlash, page: () => CreditCardView()),
       GetPage(name: NavigateRoutesItems.accountSettings.withSlash, page: () => const UnknownView()),
-      GetPage(name: NavigateRoutesItems.checkOut.withSlash, page: () => const UnknownView()),
+      GetPage(name: NavigateRoutesItems.checkOut.withSlash, page: () => const WelcomeView()),
       GetPage(name: NavigateRoutesItems.searchResult.withSlash, page: () => const SearchResultView()),
       GetPage(name: NavigateRoutesItems.search.withSlash, page: () => SearchView()),
       GetPage(name: NavigateRoutesItems.allComment.withSlash, page: () => AllCommentView()),

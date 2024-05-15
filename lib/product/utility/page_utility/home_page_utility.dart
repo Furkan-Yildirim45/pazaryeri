@@ -1,8 +1,8 @@
+import 'package:Pazaryeri/screen/home/home_page/controller/home_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../../data/project_data.dart';
 import '../../../screen/home/search/view/search_view.dart';
 import '../../../screen/home/search_result/view/search_result_view.dart';
 import '../../../screen/unknown_page/view/unknown_view.dart';
@@ -31,19 +31,22 @@ mixin HomePageViewUtility {
     }
   }
 
-  Column buildHomePageContent(BuildContext context) {
-    return Column(
-      children: [
-        buildBlackFridaySlider(context),
-        buildGridViewSpecialSuggestion(context),
-        buildInfluencerSuggestionLvb(context),
-        buildBigSaleContainer(context),
-        popularProductGirdView(context),
-      ],
+  GetBuilder buildHomePageContent(BuildContext context) {
+    return GetBuilder<HomePageController>(
+      init: HomePageController(),
+      builder: (controller) => Column(
+        children: [
+          buildBlackFridaySlider(context),
+          buildGridViewSpecialSuggestion(context),
+          buildInfluencerSuggestionLvb(context),
+          buildBigSaleContainer(context),
+          popularProductGirdView(context, controller),
+        ],
+      ),
     );
   }
 
-  Container popularProductGirdView(BuildContext context) {
+  Container popularProductGirdView(BuildContext context,HomePageController homePageController) {
     return Container(
       decoration: BoxDecoration(borderRadius: context.border.lowBorderRadius),
       child: Column(
@@ -69,7 +72,7 @@ mixin HomePageViewUtility {
             padding: context.padding.onlyTopLow,
             child: SizedBox(
               width: double.infinity,
-              height: context.sized.dynamicHeight(0.422),
+              height: context.sized.dynamicHeight(0.217) * ((homePageController.popularProductItems.length) / 2),
               child: GridView.count(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -77,9 +80,9 @@ mixin HomePageViewUtility {
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
                 childAspectRatio: 1.3,
-                children: List.generate(ProjectData.instance?.popularProductItems.length ?? 0, (index) {
+                children: List.generate(homePageController.popularProductItems.length, (index) {
                   return ProductCardWidget(
-                    model: ProjectData.instance?.popularProductItems[index],
+                    model: homePageController.popularProductItems[index], index: index,
                   );
                 }),
               ),

@@ -15,13 +15,13 @@ part 'part/secure_name_widget.dart';
 
 class ProductDetailView extends StatefulWidget {
   const ProductDetailView({super.key});
-
   @override
   State<ProductDetailView> createState() => _ProductDetailViewState();
 }
 
 class _ProductDetailViewState extends State<ProductDetailView>
     with ProductDetailUtility {
+
   @override
   void initState() {
     super.initState();

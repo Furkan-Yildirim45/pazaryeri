@@ -1,4 +1,5 @@
 import 'package:Pazaryeri/product/extension/context/border_Radius.dart';
+import 'package:Pazaryeri/screen/profile/favorite/controller/favorite_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -6,7 +7,9 @@ import 'package:kartal/kartal.dart';
 import '../../../../screen/product/product_detail/controller/product_detail_controller.dart';
 import '../../../../screen/product/product_detail/model/comment_model.dart';
 import '../../../../screen/product/product_detail/view/product_detail_view.dart';
+import '../../../../screen/profile/shopping_card/controller/shopping_card_controller.dart';
 import '../../../color/project_color.dart';
+import '../../../controller/product_widget_controller/added_to_card_controller.dart';
 import '../../../navigator/navigator_manager.dart';
 import '../../../navigator/navigator_route_items.dart';
 import '../../../widget/custom_elevated_button.dart';
@@ -320,7 +323,12 @@ mixin ProductDetailUtility {
           CustomElevatedButton(
             width: context.sized.dynamicWidth(0.45),
             height: context.sized.dynamicHeight(0.07),
-            onPressed: () {},
+            onPressed: () {
+              final ShoppingCardController shoppingCardController = Get.put(ShoppingCardController());
+              final FavoriteController favoriteController = Get.put(FavoriteController());
+              shoppingCardController.addProductToShoppingCard(favoriteController.favoriteProductItems?[controller.index.value]);
+              AlertController().showAlert(isProductDetail: true);
+            },
             shape: RoundedRectangleBorder(
                 borderRadius: context.myBorder
                     .dynamicBorderRadiusCircular(borderSize: 0.04)),

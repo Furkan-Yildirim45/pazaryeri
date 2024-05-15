@@ -10,15 +10,16 @@ import 'custom_elevated_button.dart';
 
 class ProductCardWidget extends StatelessWidget {
   const ProductCardWidget({
-    super.key, this.model,
+    super.key, this.model, required this.index,
   });
   final ProductModel? model;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return CustomElevatedButton(
       onPressed:() {
-      NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail, arguments: model);
+      NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail, arguments: {"model":model,"index":index});
     },
       elevation: 0,
       shape: RoundedRectangleBorder(

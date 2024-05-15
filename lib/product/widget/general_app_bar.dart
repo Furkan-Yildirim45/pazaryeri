@@ -44,7 +44,7 @@ class GeneralAppBar extends StatelessWidget
                     size: context.sized.mediumValue,
                     color: ProjectColor.apricot.getColor(),
                   )))
-          : const Expanded(child: SizedBox()),
+          : const Expanded(child: SizedBox.shrink()),//todo:shrink yaptık düzeldi mi bakılır.
       actions: [
         Align(
           alignment: Alignment.bottomLeft,

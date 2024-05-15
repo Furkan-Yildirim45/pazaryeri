@@ -22,7 +22,7 @@ class WelcomeView extends StatelessWidget with WelcomeUtility{
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: floatActionButton(context,text: 'Kodu Gönder',onPressed: () {
-        NavigatorController.instance.pushToPage(NavigateRoutesItems.verificationCode);
+        NavigatorController.instance.pushAndRemoveUntil(NavigateRoutesItems.verificationCode);
       },),
       body: SafeArea(
         child: ListView(

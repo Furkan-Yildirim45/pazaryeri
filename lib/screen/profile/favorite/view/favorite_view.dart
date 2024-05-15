@@ -53,7 +53,7 @@ class FavoriteView extends StatelessWidget with FavoriteUtility {
       onTap: () {
         NavigatorController.instance.pushToPage(
             NavigateRoutesItems.productDetail,
-            arguments: favoriteController.favoriteProductItems?[index]);
+            arguments: {"model":favoriteController.favoriteProductItems?[index],"index":index});
       },
       child: Container(
         margin: context.padding.onlyBottomLow,
@@ -72,7 +72,7 @@ class FavoriteView extends StatelessWidget with FavoriteUtility {
                 width: double.infinity, title: 'Sepete Ekle', onPressed: () {
                   final ShoppingCardController controller = Get.put(ShoppingCardController());
                   controller.addProductToShoppingCard(favoriteController.favoriteProductItems?[index]);
-                  AlertController().showAlert();
+                  AlertController().showAlert(isProductDetail: true);
                 }),
           ],
         ),

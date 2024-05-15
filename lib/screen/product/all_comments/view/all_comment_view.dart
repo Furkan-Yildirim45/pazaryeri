@@ -19,36 +19,34 @@ class AllCommentView extends StatelessWidget with ProductDetailUtility{
       backgroundColor: ProjectColor.lightGrey.getColor(),
       appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor(),isLeadingActive: true,),
         body: SafeArea(
-          child: Expanded(
-            child: GetBuilder(
-              init: AllCommentController(),
-              builder: (controller) {
-                return ListView(
-                  children: [
-                    Padding(
-                      padding: context.padding.horizontalMedium,
-                      child: Column(
-                        children: [
-                          buildSellerAndProductInfo(context),
-                          SizedBox(
-                            width: context.sized.width,
-                            height: controller.commentItems.length * context.sized.dynamicHeight(0.174),
-                            child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: controller.commentItems.length,
-                              itemBuilder: (context, index) {
-                                return buildCommentWithDivider(context, index,
-                                    commentItems: controller.commentItems);
-                              },
-                            ),
+          child: GetBuilder(
+            init: AllCommentController(),
+            builder: (controller) {
+              return ListView(
+                children: [
+                  Padding(
+                    padding: context.padding.horizontalMedium,
+                    child: Column(
+                      children: [
+                        buildSellerAndProductInfo(context),
+                        SizedBox(
+                          width: context.sized.width,
+                          height: controller.commentItems.length * context.sized.dynamicHeight(0.174),
+                          child: ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: controller.commentItems.length,
+                            itemBuilder: (context, index) {
+                              return buildCommentWithDivider(context, index,
+                                  commentItems: controller.commentItems);
+                            },
                           ),
-                        ],
-                      ),
-                    )
-                  ],
-                );
-              },
-            ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              );
+            },
           ),
         ),
         bottomNavigationBar: Container(

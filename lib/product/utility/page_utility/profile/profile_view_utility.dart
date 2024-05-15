@@ -146,7 +146,12 @@ mixin ProfileViewUtility {
   }
 
   void _navigateToPage(BuildContext context, int index) {
-    NavigatorController.instance.pushToPage(pages[index]);
+    if(index == pages.length -1){
+      NavigatorController.instance.pushAndRemoveUntil(pages[index]);
+    }
+    else{
+      NavigatorController.instance.pushToPage(pages[index]);
+    }
   }
 }
 
