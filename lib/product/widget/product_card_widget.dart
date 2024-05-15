@@ -1,3 +1,4 @@
+import 'package:Pazaryeri/product/model/route_arguments_model.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
@@ -19,7 +20,7 @@ class ProductCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomElevatedButton(
       onPressed:() {
-      NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail, arguments: {"model":model,"index":index});
+      NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail, arguments: RouteArgumentsModel(index: index,model: model));
     },
       elevation: 0,
       shape: RoundedRectangleBorder(

@@ -31,7 +31,4 @@ class Main extends StatelessWidget {
   }
 }
 
-//todo:GeneralSearch kxısmını her ekrana uygulamadım fonksiyonellikleri sadece homepage de aktif!
-
-//todo:en son model ,le index gönderiyosun bunun bir metodunu yap düzgün dursun!
-//todo:homepage de gereksiz bir expanded var onu kaldı!
+//todo:GeneralSearch kxısmını her ekrana uygulamadım fonksiyonellikleri, sadece homepage de aktif!

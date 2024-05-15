@@ -1,3 +1,4 @@
+import 'package:Pazaryeri/product/model/route_arguments_model.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
@@ -17,7 +18,7 @@ class ProductCardWidgetSearchResult extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail,arguments: model);
+        NavigatorController.instance.pushToPage(NavigateRoutesItems.productDetail,arguments: RouteArgumentsModel(model: model));
       },
       child: Container(
         padding: EdgeInsets.all(context.sized.lowValue),

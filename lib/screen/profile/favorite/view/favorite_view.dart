@@ -1,3 +1,4 @@
+import 'package:Pazaryeri/product/model/route_arguments_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -53,7 +54,7 @@ class FavoriteView extends StatelessWidget with FavoriteUtility {
       onTap: () {
         NavigatorController.instance.pushToPage(
             NavigateRoutesItems.productDetail,
-            arguments: {"model":favoriteController.favoriteProductItems?[index],"index":index});
+            arguments: RouteArgumentsModel(index: index,model: favoriteController.favoriteProductItems?[index]));
       },
       child: Container(
         margin: context.padding.onlyBottomLow,
@@ -72,7 +73,7 @@ class FavoriteView extends StatelessWidget with FavoriteUtility {
                 width: double.infinity, title: 'Sepete Ekle', onPressed: () {
                   final ShoppingCardController controller = Get.put(ShoppingCardController());
                   controller.addProductToShoppingCard(favoriteController.favoriteProductItems?[index]);
-                  AlertController().showAlert(isProductDetail: true);
+                  AlertController().showAlert();
                 }),
           ],
         ),

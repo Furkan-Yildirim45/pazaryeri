@@ -19,6 +19,7 @@ class _CreateProfileViewState extends State<CreateProfileView> with WelcomeUtili
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: floatActionButton(context, text: "Devam Et", onPressed: () {
         controller.floatActionOnPressed(context);
