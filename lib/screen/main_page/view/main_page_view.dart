@@ -24,7 +24,7 @@ class MainPageView extends StatelessWidget with ProfileViewUtility{
         ),
         child: CustomBottomNavBar(controller: controller),
       ),
-      appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor()),
+      appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor(),),
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: controller.getPageController,

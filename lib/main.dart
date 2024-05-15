@@ -32,3 +32,5 @@ class Main extends StatelessWidget {
 }
 
 //todo:GeneralSearch kxısmını her ekrana uygulamadım fonksiyonellikleri, sadece homepage de aktif!
+
+//todo: total 3 bug, birincisi yukarıdaki karanlık yer, ikincisi cardın height kısmı!

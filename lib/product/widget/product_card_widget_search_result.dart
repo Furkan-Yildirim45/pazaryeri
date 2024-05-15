@@ -39,10 +39,10 @@ class ProductCardWidgetSearchResult extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                   borderRadius: context.border.normalBorderRadius,
-                  image: DecorationImage(image: AssetImage(ImageUtility.getImagePath("9")),fit: BoxFit.cover)
+                  image: DecorationImage(image: AssetImage(ImageUtility.getImagePath("9")),fit: BoxFit.fitWidth)
               ),
               width: double.infinity,
-              height: context.sized.dynamicHeight(0.24),
+              height: context.sized.dynamicHeight(0.2),
             ),
             Padding(
               padding: context.padding.onlyTopLow,

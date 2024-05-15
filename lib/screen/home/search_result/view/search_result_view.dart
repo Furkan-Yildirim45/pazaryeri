@@ -31,14 +31,14 @@ class SearchResultView extends StatelessWidget {
     return Container(
       margin: context.padding.onlyTopNormal,
       width: double.infinity,
-      height: context.sized.dynamicHeight(0.389) * (productItems?.length ?? 0.0) / 2,
+      height: context.sized.dynamicHeight(0.42) * (productItems?.length ?? 0.0) / 2,
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: context.sized.lowValue,
           mainAxisSpacing: context.sized.lowValue,
-          childAspectRatio: 0.7,
+          childAspectRatio: 0.68,
         ),
         itemCount: productItems?.length,
         itemBuilder: (context, index) {

@@ -64,9 +64,10 @@ class SearchView extends StatelessWidget {
         onTap: (){
           generalSearchBarController.onSubmitted(generalSearchBarController.searchedWords[index]);
         },
-        child: SizedBox(
+        child: Container(
           width: context.sized.dynamicWidth(0.68),
           height: context.sized.dynamicHeight(0.05),
+          color: Colors.transparent,
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
