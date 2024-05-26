@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
 class CustomPageDivider extends StatelessWidget {
-  CustomPageDivider({super.key, this.padding});
+  const CustomPageDivider({super.key, this.padding});
 
-  EdgeInsets? padding;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {

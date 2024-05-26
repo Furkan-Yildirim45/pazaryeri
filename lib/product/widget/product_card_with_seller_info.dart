@@ -36,7 +36,7 @@ class ProductCardWithSellerInfo extends StatelessWidget with FavoriteUtility {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               topPlace ?? buildCardTopPlace(context),
-              CustomPageDivider(),
+              const CustomPageDivider(),
               buildProductDetailWithoutButton(
                 index: index,
                 context: context,

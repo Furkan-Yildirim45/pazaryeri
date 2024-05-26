@@ -6,11 +6,10 @@ import '../../../../screen/profile/card/controller/credit_card_controller.dart';
 import '../../../../screen/profile/card/model/credit_card_model.dart';
 import '../../../../screen/profile/card/view/card_view.dart';
 import '../../../color/project_color.dart';
-import '../../../widget/general_shadow.dart';
 import '../../project_utility/image_utility.dart';
 
 mixin CreditCardUtility{
-  CreditCardController creditCardController = Get.put(CreditCardController());
+  final CreditCardController creditCardController = Get.put(CreditCardController());
 
   double buildCreditCardHeigth(BuildContext context) =>
       context.sized.dynamicHeight(0.24);

@@ -6,10 +6,10 @@ import '../../../../product/navigator/navigator_manager.dart';
 import '../../../../product/navigator/navigator_route_items.dart';
 import '../../../../product/utility/page_utility/basic/verification_code_utility.dart';
 import '../../../../product/utility/page_utility/basic/welcome_utility.dart';
-import '../../../../product/utility/project_utility/image_utility.dart';
+import '../../../../product/utility/project_utility/background_image_utility.dart';
 
-
-class VerificationView extends StatelessWidget with WelcomeUtility, VerificationCodeUtility {
+class VerificationView extends StatelessWidget
+    with WelcomeUtility, VerificationCodeUtility, BackgroundImageUtility {
   VerificationView({super.key});
 
   @override
@@ -17,39 +17,32 @@ class VerificationView extends StatelessWidget with WelcomeUtility, Verification
     return Scaffold(
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: floatActionButton(context, text: "Onayla", onPressed: () {
-        NavigatorController.instance.pushToPage(NavigateRoutesItems.createProfile);
+      floatingActionButton:
+          floatActionButton(context, text: "Onayla", onPressed: () {
+        NavigatorController.instance
+            .pushToPage(NavigateRoutesItems.createProfile);
       }),
-      body: SafeArea(
-        child: ListView(
-          physics: const NeverScrollableScrollPhysics(),
-          children: <Widget>[
-            Container(
-              width: context.sized.width,
-              height: context.sized.height,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(ImageUtility.getImagePath("welcome")),
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-              child: Padding(
-                padding: context.padding.horizontalMedium,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    marketPlaceTitle(context),
-                    context.sized.emptySizedHeightBoxHigh,
-                    verificationCodeText(context),
-                    buildVerificationCodeContainerLvb(context),
-                    Obx(() => timeRemainingText(context)),
-                    resendButton(context),
-                  ],
-                ),
+      body: ListView(
+        physics: const NeverScrollableScrollPhysics(),
+        children: <Widget>[
+          backgroundImageUtility(
+            context,
+            child: Padding(
+              padding: context.padding.horizontalMedium,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  marketPlaceTitle(context),
+                  context.sized.emptySizedHeightBoxHigh,
+                  verificationCodeText(context),
+                  buildVerificationCodeContainerLvb(context),
+                  Obx(() => timeRemainingText(context)),
+                  resendButton(context),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -1,4 +1,7 @@
+import 'package:Pazaryeri/product/color/project_color.dart';
 import 'package:Pazaryeri/product/model/route_arguments_model.dart';
+import 'package:Pazaryeri/product/widget/general_app_bar.dart';
+import 'package:Pazaryeri/product/widget/main_page_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -17,29 +20,29 @@ class FavoriteView extends StatelessWidget with FavoriteUtility {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: context.padding.horizontalNormal,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              GeneralSearchBar(),
-              GetBuilder(
-                init: FavoriteController(),
-                builder: (controller) => Expanded(
-                  child: Padding(
-                    padding: context.padding.onlyTopNormal,
-                    child: ListView.builder(
-                      itemCount: controller.favoriteProductItems?.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return _buildFavoriteProductCard(context, index,controller);
-                      },
-                    ),
+      appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor()),
+      body: Padding(
+        padding: context.padding.horizontalNormal,
+        child: ListView(
+          children: [
+            GeneralSearchBar(),
+            GetBuilder(
+              init: FavoriteController(),
+              builder: (controller) => Padding(
+                padding: context.padding.onlyTopNormal,
+                child: SizedBox(
+                  height: (controller.favoriteProductItems?.length ?? 0.0) * context.height * 0.269,
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: controller.favoriteProductItems?.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return _buildFavoriteProductCard(context, index,controller);
+                    },
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

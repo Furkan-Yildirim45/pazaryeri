@@ -1,3 +1,5 @@
+import 'package:Pazaryeri/product/color/project_color.dart';
+import 'package:Pazaryeri/product/widget/general_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -22,17 +24,16 @@ class ShoppingCardView extends StatelessWidget
       init: ShoppingCardController(),
       builder: (controller) {
         return Scaffold(
+          appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor()),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           floatingActionButton: customFloatActionButton(context,controller),
-          body: SafeArea(
-            child: Padding(
-              padding: context.padding.horizontalNormal,
-              child: ListView(
-                children: [
-                  GeneralSearchBar(),
-                  buildProductCardLvb(context,controller),
-                ],
-              ),
+          body: Padding(
+            padding: context.padding.horizontalNormal,
+            child: ListView(
+              children: [
+                GeneralSearchBar(),
+                buildProductCardLvb(context,controller),
+              ],
             ),
           ),
         );

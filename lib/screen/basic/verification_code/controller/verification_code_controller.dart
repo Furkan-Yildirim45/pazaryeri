@@ -1,16 +1,21 @@
 import 'dart:async';
-
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
 class VerificationController extends GetxController {
   RxInt counter = 180.obs; // RxInt olarak tanımla ve .obs ile izle
   late Timer _timer;
 
+  final int codeLength = 6;
+  late List<TextEditingController> controllers;
+  late List<FocusNode> focusNodes;
+
   @override
   void onInit() {
     super.onInit();
     startCountdown();
+    controllers = List.generate(codeLength, (_) => TextEditingController());
+    focusNodes = List.generate(codeLength, (_) => FocusNode());
   }
 
   void startCountdown() {
@@ -30,5 +35,32 @@ class VerificationController extends GetxController {
 
   void disposeTimer() {
     _timer.cancel();
+  }
+
+  @override
+  void onClose() {
+    for (var controller in controllers) {
+      controller.dispose();
+    }
+    for (var focusNode in focusNodes) {
+      focusNode.dispose();
+    }
+    disposeTimer();
+    super.onClose();
+  }
+
+  void handleCodeInputChange(String value, int index, BuildContext context) {
+    if (value.length == 1) {
+      if (index < codeLength - 1) {
+        FocusScope.of(context).requestFocus(focusNodes[index + 1]);
+      } else {
+        focusNodes[index].unfocus();
+      }
+    }
+  }
+  void handleCodeInputDelete(String value, int index, BuildContext context) {
+    if (value.isEmpty && index > 0) {
+      FocusScope.of(context).requestFocus(focusNodes[index - 1]);
+    }
   }
 }

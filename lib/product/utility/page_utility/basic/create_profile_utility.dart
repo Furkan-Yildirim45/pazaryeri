@@ -16,7 +16,7 @@ mixin CreateProfileUtility on State<CreateProfileView>{
         Padding(
           padding: context.padding.onlyTopNormal,
           child: Text('Dogum Tarihiniz',style: context.general
-              .textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w400),),
+              .textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w500,color: Colors.grey),),
         ),
         Padding(
           padding: context.padding.onlyTopLow,
@@ -35,7 +35,7 @@ mixin CreateProfileUtility on State<CreateProfileView>{
 
   DropdownButton<int> buildDayDropdown() {
     return DropdownButton<int>(
-      iconEnabledColor: ProjectColor.apricot.getColor(),
+      icon: const SizedBox.shrink(),
       value: controller.selectedDay.value,
       onChanged: (value) {
         controller.updateSelectedDay(value!);
@@ -53,7 +53,7 @@ mixin CreateProfileUtility on State<CreateProfileView>{
 
   DropdownButton<int> buildMonthDropdown() {
     return DropdownButton<int>(
-      iconEnabledColor: ProjectColor.apricot.getColor(),
+      icon: const SizedBox.shrink(),
       value: controller.selectedMonth.value,
       underline: const SizedBox.shrink(),
       onChanged: (value) {
@@ -71,7 +71,7 @@ mixin CreateProfileUtility on State<CreateProfileView>{
 
   DropdownButton<int> buildYearDropdown() {
     return DropdownButton<int>(
-      iconEnabledColor: ProjectColor.apricot.getColor(),
+      icon: const SizedBox.shrink(),
       underline: const SizedBox.shrink(),
       value: controller.selectedYear.value,
       onChanged: (value) {
@@ -87,33 +87,44 @@ mixin CreateProfileUtility on State<CreateProfileView>{
     );
   }
 
-  Container customTextFormField(
+  Padding customTextFormField(
       BuildContext context, {
-        required String labelText,
+        required String text,
         required String? Function(String?) validator,
         required void Function(String?)? onSaved,
         required TextEditingController controller,
       }) {
-    return Container(
-      margin: context.padding.onlyTopNormal,
-      decoration: BoxDecoration(
-        color: const Color(0xFFF1F1F1),
-        borderRadius: context.border.normalBorderRadius, // Border radius
-      ),
-      child: TextFormField(
-        controller: controller,
-        cursorColor: Colors.black,
-        decoration: InputDecoration(
-          contentPadding: context.padding.onlyLeftNormal,
-          labelText: labelText,
-          border: InputBorder.none,
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.blue, width: 2),
-            borderRadius: context.border.normalBorderRadius, // Border radius
+    return Padding(
+      padding: context.padding.onlyTopNormal,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(text,style: context.general.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w500,color: Colors.grey
+          ),),
+          Container(
+            margin: context.padding.onlyTopLow,
+            decoration: BoxDecoration(
+              color: const Color(0xFFF1F1F1),
+              borderRadius: context.border.normalBorderRadius, // Border radius
+            ),
+            child: TextFormField(
+              controller: controller,
+              cursorColor: Colors.black,
+              decoration: InputDecoration(
+                contentPadding: context.padding.onlyLeftNormal,
+                border: InputBorder.none,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.blue, width: 2),
+                  borderRadius: context.border.normalBorderRadius, // Border radius
+                ),
+              ),
+              validator: validator,
+              onSaved: onSaved,
+            ),
           ),
-        ),
-        validator: validator,
-        onSaved: onSaved,
+        ],
       ),
     );
   }

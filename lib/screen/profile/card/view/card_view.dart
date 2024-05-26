@@ -21,17 +21,15 @@ class CreditCardView extends StatelessWidget with AddressViewUtility,CreditCardU
     return Scaffold(
       appBar: GeneralAppBar(
         textColor: ProjectColor.apricot.getColor(), isLeadingActive: true,),
-      body: SafeArea(
-        child: Padding(
-          padding: context.padding.horizontalNormal,
-          child: ListView(
-            children: [
-              buildAddNewAddress(context, text: "Yeni Kart Ekle",
-                  icon: Icons.add_outlined,
-                  onPressed: () {return buildShowModalBottomSheetForCardView(context: context,);}),
-              buildLvbForAddressCard(context),
-            ],
-          ),
+      body: Padding(
+        padding: context.padding.horizontalNormal,
+        child: ListView(
+          children: [
+            buildAddNewAddress(context, text: "Yeni Kart Ekle",
+                icon: Icons.add_outlined,
+                onPressed: () {return buildShowModalBottomSheetForCardView(context: context,);}),
+            buildLvbForAddressCard(context),
+          ],
         ),
       ),
       bottomNavigationBar: CustomBottomNavBar(controller: mainPageController,

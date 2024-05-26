@@ -30,39 +30,37 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
         textColor: ProjectColor.apricot.getColor(),
         isLeadingActive: true,
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: context.padding.horizontalNormal,
-          child: ListView(
-            children: [
-              GeneralSearchBar(),
-              Container(
-                margin: context.padding.onlyTopNormal,
-                width: double.infinity,
-                height: context.sized.dynamicHeight(0.268) * pastOrdersItemCount,
-                child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: pastOrdersItemCount,
-                  itemBuilder: (context, index) {
-                    return ProductCardWithSellerInfo(
-                      index: index,
-                      productModel: productModel,
-                      topPlace: _buildTopPlace(context, productModel),
-                      buttons: [
-                        buildProductFavoriteCardPropertyButton(context,
-                            onPressed: () {
-                              NavigatorController.instance.pushToPage(NavigateRoutesItems.orderDetail,arguments: productModel);
-                            },
-                            text: "Detaylar",
-                            textColor: Colors.white,
-                            backgroundColor: ProjectColor.apricot.getColor())
-                      ],
-                    );
-                  },
-                ),
+      body: Padding(
+        padding: context.padding.horizontalNormal,
+        child: ListView(
+          children: [
+            GeneralSearchBar(),
+            Container(
+              margin: context.padding.onlyTopNormal,
+              width: double.infinity,
+              height: context.sized.dynamicHeight(0.268) * pastOrdersItemCount,
+              child: ListView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: pastOrdersItemCount,
+                itemBuilder: (context, index) {
+                  return ProductCardWithSellerInfo(
+                    index: index,
+                    productModel: productModel,
+                    topPlace: _buildTopPlace(context, productModel),
+                    buttons: [
+                      buildProductFavoriteCardPropertyButton(context,
+                          onPressed: () {
+                            NavigatorController.instance.pushToPage(NavigateRoutesItems.orderDetail,arguments: productModel);
+                          },
+                          text: "Detaylar",
+                          textColor: Colors.white,
+                          backgroundColor: ProjectColor.apricot.getColor())
+                    ],
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

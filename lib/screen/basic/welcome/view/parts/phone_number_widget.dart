@@ -1,4 +1,4 @@
-part of"../welcome_view.dart";
+part of "../welcome_view.dart";
 
 class PhoneNumberWidget extends StatefulWidget {
   const PhoneNumberWidget({super.key});
@@ -29,26 +29,34 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black),
-                borderRadius: context.border.normalBorderRadius
-            ),
+                borderRadius: context.border.normalBorderRadius),
             child: Row(
               children: [
-                TextButton(onPressed: (){}, child:
-                Text('+90',style: context.general.textTheme.titleSmall?.copyWith(color: Colors.grey),)),
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      '+90',
+                      style: context.general.textTheme.titleSmall
+                          ?.copyWith(color: Colors.grey),
+                    )),
                 SizedBox(
                   width: context.sized.dynamicWidth(0.52),
                   child: Padding(
                     padding: context.padding.onlyBottomNormal,
-                    child: const TextField(
-                      cursorColor: Colors.black,
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: context.height * 0.005),
+                      child: const TextField(
+                        maxLines: 1,
+                        keyboardType: TextInputType.number,
+                        cursorColor: Colors.black,
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                        ),
                       ),
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
@@ -58,8 +66,9 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
               width: context.sized.dynamicWidth(0.16),
               height: context.sized.dynamicWidth(0.12),
               decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(ImageUtility.getImagePath("turkish_flag")))
-              ),
+                  image: DecorationImage(
+                      image: AssetImage(
+                          ImageUtility.getImagePath("turkish_flag")))),
             ),
           ),
         ],

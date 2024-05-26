@@ -17,36 +17,40 @@ class CreateProfileController extends GetxController {
   String lastname = "";
   String hobbies = "";
 
-  RxInt selectedDay = 1.obs;
-  RxInt selectedMonth = 1.obs;
-  RxInt selectedYear = 2000.obs;
+  RxnInt selectedDay = RxnInt(null);
+  RxnInt selectedMonth = RxnInt(null);
+  RxnInt selectedYear = RxnInt(null);
   List<int> daysInMonth = [];
 
-  void updateSelectedDay(int value) => selectedDay.value = value;
-  void updateSelectedMonth(int value) {
+  void updateSelectedDay(int? value) => selectedDay.value = value;
+  void updateSelectedMonth(int? value) {
     selectedMonth.value = value;
     updateDaysInMonth(value);
-    if (selectedDay.value > daysInMonth.length) {
+    if (selectedDay.value != null && selectedDay.value! > daysInMonth.length) {
       selectedDay.value = 1;
     }
   }
-  void updateSelectedYear(int value) => selectedYear.value = value;
+  void updateSelectedYear(int? value) => selectedYear.value = value;
 
-  void updateDaysInMonth(int month) {
-    int days = DateTime(selectedYear.value, month + 1, 0).day;
-    daysInMonth = List.generate(days, (index) => index + 1);
+  void updateDaysInMonth(int? month) {
+    if (month != null && selectedYear.value != null) {
+      int days = DateTime(selectedYear.value!, month + 1, 0).day;
+      daysInMonth = List.generate(days, (index) => index + 1);
+    } else {
+      daysInMonth = [];
+    }
   }
 
   void updateName(String? value) {
-    if(value?.isNotEmpty ?? false) name = value!;
+    if (value?.isNotEmpty ?? false) name = value!;
   }
 
   void updateLastname(String? value) {
-    if(value?.isNotEmpty ?? false) lastname = value!;
+    if (value?.isNotEmpty ?? false) lastname = value!;
   }
 
   void updateHobbies(String? value) {
-    if(value?.isNotEmpty ?? false) hobbies = value!;
+    if (value?.isNotEmpty ?? false) hobbies = value!;
   }
 
   String? emailValidator(value) {

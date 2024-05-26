@@ -1,3 +1,7 @@
+import 'package:Pazaryeri/product/color/project_color.dart';
+import 'package:Pazaryeri/product/utility/project_utility/background_image_utility.dart';
+import 'package:Pazaryeri/product/widget/general_app_bar.dart';
+import 'package:Pazaryeri/product/widget/main_page_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -12,22 +16,30 @@ class HomePageView extends StatefulWidget {
   State<HomePageView> createState() => _HomePageViewState();
 }
 
-class _HomePageViewState extends State<HomePageView> with HomePageViewUtility{
+class _HomePageViewState extends State<HomePageView> with HomePageViewUtility,BackgroundImageUtility{
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: context.padding.horizontalNormal,
-          child: ListView(
+      body: Stack(
+        children: [
+          backgroundImageUtility(context, child: const SizedBox.shrink()),
+          ListView(
             children: [
-              GeneralSearchBar(),
-              Obx(() {return selectAndShowPage(context);})
+              MainPageAppBar(textColor: ProjectColor.apricot.getColor()),
+              Padding(
+                padding: context.padding.horizontalNormal,
+                child: Column(
+                  children: [
+                    GeneralSearchBar(),
+                    Obx(() {return selectAndShowPage(context);})
+                  ],
+                ),
+              )
             ],
           ),
-        ),
-      ),
+        ],
+      )
     );
   }
 }

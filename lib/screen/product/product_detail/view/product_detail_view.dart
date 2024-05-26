@@ -31,29 +31,27 @@ class _ProductDetailViewState extends State<ProductDetailView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: GetBuilder(
-          init: ProductDetailController(),
-          builder: (controller) {
-            return ListView(
-              children: [
-                SizedBox(
-                  height: context.sized.dynamicHeight(1.8),
-                  //componentlerin total heightleri burda olmalı
-                  child: Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      //resim component
-                      _buildImageContainerPlace(context, controller),
-                      _buildProductContentPlace(context),
-                      _buildProductPriceAndAddToCardPlace(context, controller),
-                    ],
-                  ),
+      body: GetBuilder(
+        init: ProductDetailController(),
+        builder: (controller) {
+          return ListView(
+            children: [
+              SizedBox(
+                height: context.sized.dynamicHeight(1.8),
+                //componentlerin total heightleri burda olmalı
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    //resim component
+                    _buildImageContainerPlace(context, controller),
+                    _buildProductContentPlace(context),
+                    _buildProductPriceAndAddToCardPlace(context, controller),
+                  ],
                 ),
-              ],
-            );
-          },
-        ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
@@ -80,7 +78,7 @@ class _ProductDetailViewState extends State<ProductDetailView>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             amountAndAddToCard(context, controller),
-            CustomPageDivider(),
+            const CustomPageDivider(),
             sellerInfoAndProductRating(context, controller),
             productCommentText(context),
             productCommentPlace(context, controller),
@@ -124,7 +122,7 @@ class _ProductDetailViewState extends State<ProductDetailView>
                       'Yüzünüze parlaklık ve nem verir. Sivilce akne oluşumunu önler. Üstelik içindeki C vitamini sayesinde vücudunuzun cilt bariyerini güçlendirir.'),
                 ),
                 //divider
-                CustomPageDivider(),
+                const CustomPageDivider(),
                 //adet bilgisi girme
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

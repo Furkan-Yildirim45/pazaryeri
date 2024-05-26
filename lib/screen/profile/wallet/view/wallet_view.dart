@@ -15,18 +15,16 @@ class WalletView extends StatelessWidget with WalletUtility{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GeneralAppBar(textColor: ProjectColor.apricot.getColor(),isLeadingActive: true,),
-      body: SafeArea(
-        child: Padding(
-          padding: context.padding.horizontalMedium,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildWalletContainer(context),
-              buildMovementsText(context),
-              buildRecentTransactionsText(context),
-              const RecentProduct(),
-            ],
-          ),
+      body: Padding(
+        padding: context.padding.horizontalMedium,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            buildWalletContainer(context),
+            buildMovementsText(context),
+            buildRecentTransactionsText(context),
+            const RecentProduct(),
+          ],
         ),
       ),
     );

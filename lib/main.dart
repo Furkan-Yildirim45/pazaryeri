@@ -4,8 +4,7 @@ import 'package:Pazaryeri/product/navigator/navigator_route_items.dart';
 import 'package:Pazaryeri/product/theme/project_theme.dart';
 import 'package:Pazaryeri/screen/unknown_page/view/unknown_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get.dart';
 
 void main() {
   MainInit().mainInit();
@@ -32,5 +31,3 @@ class Main extends StatelessWidget {
 }
 
 //todo:GeneralSearch kxısmını her ekrana uygulamadım fonksiyonellikleri, sadece homepage de aktif!
-
-//todo: total 3 bug, birincisi yukarıdaki karanlık yer, ikincisi cardın height kısmı!

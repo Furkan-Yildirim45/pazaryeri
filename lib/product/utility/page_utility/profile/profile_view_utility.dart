@@ -18,31 +18,26 @@ mixin ProfileViewUtility {
     NavigateRoutesItems.checkOut,
   ];
 
-  Positioned buildGeneralProfileContainer(
+  Column buildGeneralProfileContainer(
     BuildContext context,
   ) {
-    return Positioned(
-      bottom: 0,
-      right: 0,
-      left: 0,
-      child: Column(
-        children: [
-          Container(
-            padding: context.padding.horizontalMedium,
-            width: double.infinity,
-            height: context.sized.dynamicHeight(0.84),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: context.border.normalBorderRadius),
-            child: Column(
-              children: [
-                buildProfileContainer(context),
-                buildProfileContentListViewBuilder(),
-              ],
-            ),
+    return Column(
+      children: [
+        Container(
+          padding: context.padding.horizontalMedium,
+          width: double.infinity,
+          height: context.sized.dynamicHeight(0.84),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: context.border.normalBorderRadius),
+          child: Column(
+            children: [
+              buildProfileContainer(context),
+              buildProfileContentListViewBuilder(),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -54,7 +49,7 @@ mixin ProfileViewUtility {
         itemBuilder: (context, index) {
           return Column(
             children: [
-              CustomPageDivider(padding: EdgeInsets.zero),
+              const CustomPageDivider(padding: EdgeInsets.zero),
               buildProfileContentItemsButton(context, index: index),
             ],
           );

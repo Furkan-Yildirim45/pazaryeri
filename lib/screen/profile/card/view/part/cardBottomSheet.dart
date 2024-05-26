@@ -1,13 +1,11 @@
-
 part of"../card_view.dart";
-
 
 class CardBottomSheet extends StatelessWidget with CreditCardUtility{
   CardBottomSheet({super.key, required this.bottomSheetContext,this.isEdit, this.index});
 
   final BuildContext bottomSheetContext;
-  bool? isEdit;
-  int? index;
+  final bool? isEdit;
+  final int? index;
   @override
   Widget build(BuildContext context) {
     return Container(

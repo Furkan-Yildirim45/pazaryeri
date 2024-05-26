@@ -39,21 +39,19 @@ class OrderDetailView extends StatelessWidget with OrderDetailUtility {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: context.padding.horizontalNormal,
-          child: GetBuilder(
-            init: OrderDetailController(),
-            builder: (controller) => ListView(
-              children: [
-                buildOrderSummary(context),
-                ProductDetailInOrderDetail(model: controller.orderDetailItem?.value,),
-                buildOrderAddressCard(context),
-                buildPaymentInfo(context,controller.orderDetailItem?.value),
-                buildSellingContract(context),
-                context.sized.emptySizedHeightBoxLow
-              ],
-            ),
+      body: Padding(
+        padding: context.padding.horizontalNormal,
+        child: GetBuilder(
+          init: OrderDetailController(),
+          builder: (controller) => ListView(
+            children: [
+              buildOrderSummary(context),
+              ProductDetailInOrderDetail(model: controller.orderDetailItem?.value,),
+              buildOrderAddressCard(context),
+              buildPaymentInfo(context,controller.orderDetailItem?.value),
+              buildSellingContract(context),
+              context.sized.emptySizedHeightBoxLow
+            ],
           ),
         ),
       ),

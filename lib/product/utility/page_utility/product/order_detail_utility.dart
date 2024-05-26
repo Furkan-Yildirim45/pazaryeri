@@ -167,7 +167,7 @@ mixin OrderDetailUtility{
               textOne:
               "150 TL ve Üzeri Kargo Bedava(Satıcı Karşılar)",
               textTwo: "-29.00 TL"),
-          CustomPageDivider(),
+          const CustomPageDivider(),
           buildDoubleText(context,
               textOne: "Toplam:",
               textTwo: model?.productPrice.toString() ?? "",

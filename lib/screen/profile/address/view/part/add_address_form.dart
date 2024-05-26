@@ -5,8 +5,8 @@ class AddAddressForm extends StatelessWidget {
 
   final AddAddressController controller = Get.put(AddAddressController());
   final BuildContext bottomSheetContext;
-  bool? isEdit;
-  int? index;
+  final bool? isEdit;
+  final int? index;
   @override
   Widget build(BuildContext context) {
     return Container(

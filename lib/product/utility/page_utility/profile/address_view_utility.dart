@@ -13,7 +13,7 @@ import '../../../widget/custom_elevated_button.dart';
 
 mixin AddressViewUtility{
   final AddAddressController controller = Get.put(AddAddressController());
-  MainPageController mainPageController = Get.put(MainPageController());
+  final MainPageController mainPageController = Get.put(MainPageController());
 
   double buildAddressCardHeigth(BuildContext context) =>
       context.sized.dynamicHeight(0.24);

@@ -169,7 +169,7 @@ mixin ProductDetailUtility {
             ],
           ),
         ),
-        CustomPageDivider(),
+        const CustomPageDivider(),
       ],
     );
   }
@@ -201,7 +201,7 @@ mixin ProductDetailUtility {
             ],
           ),
         ),
-        CustomPageDivider(),
+        const CustomPageDivider(),
       ],
     );
   }

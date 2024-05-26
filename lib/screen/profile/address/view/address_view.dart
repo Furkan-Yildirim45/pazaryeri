@@ -24,15 +24,13 @@ class AddressesView extends StatelessWidget with AddressViewUtility{
           textColor: ProjectColor.apricot.getColor(),
           isLeadingActive: true,
         ),
-        body: SafeArea(
-          child: Padding(
-            padding: context.padding.horizontalNormal,
-            child: ListView(
-              children: [
-                buildAddNewAddress(context),
-                buildLvbForAddressCard(context),
-              ],
-            ),
+        body: Padding(
+          padding: context.padding.horizontalNormal,
+          child: ListView(
+            children: [
+              buildAddNewAddress(context),
+              buildLvbForAddressCard(context),
+            ],
           ),
         ),
       bottomNavigationBar: CustomBottomNavBar(controller: mainPageController,

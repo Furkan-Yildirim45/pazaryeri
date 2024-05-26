@@ -24,74 +24,67 @@ class _CreateProfileViewState extends State<CreateProfileView> with WelcomeUtili
       floatingActionButton: floatActionButton(context, text: "Devam Et", onPressed: () {
         controller.floatActionOnPressed(context);
       },),
-      body: SafeArea(
-        child: Padding(
-          padding: context.padding.horizontalMedium,
-          child: GetBuilder<CreateProfileController>(
-            builder: (_) => ListView(
+      body: GetBuilder<CreateProfileController>(
+        builder: (_) => SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: context.sized.normalValue,
+              right: context.sized.normalValue,
+              bottom: context.height * 0.2
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                marketPlaceTitle(context),
-                createProfileText(context),
-                Form(
-                  key: controller.getFormKey,
-                  child: Column(
-                    children: <Widget>[
-                      customTextFormField(
-                        context,
-                        labelText: 'Adınız',
-                        controller: controller.nameController,
-                        validator: controller.nameValidator,
-                        onSaved: controller.updateName,
-                      ),
-                      customTextFormField(
-                        context,
-                        labelText: 'Soyadınız',
-                        controller: controller.lastnameController,
-                        validator: controller.lastNameValidator,
-                        onSaved: controller.updateLastname,
-                      ),
-                      dateSelector(),
-                      const CustomDropDownButton<String>(
-                        items: ["Erkek", "Kadın", "Diğer"],
-                        text: "Cinsiyet",
-                      ),
-                      customTextFormField(
-                        context,
-                        labelText: 'Email Adresi ',
-                        controller: controller.emailController,
-                        validator: controller.emailValidator,
-                        onSaved: controller.updateHobbies,
-                      ),
-                      const CustomDropDownButton(
-                        items: [
-                          'İlkokul',
-                          'Ortaokul',
-                          'Lise',
-                          'Üniversite',
-                          'Yüksek Lisans',
-                          'Doktora',
-                          'Diğer',
-                        ],
-                        text: "Eğitim Durumunuz",
-                      ),
-                      const CustomDropDownButton(
-                        items: [
-                          'Spor',
-                          'Yemek Yemek',
-                          'Kitap Okumak',
-                          'Müzik Dinlemek',
-                          'Seyahat Etmek',
-                          'Resim Çizmek',
-                          'Dans Etmek',
-                          'Bahçe İşleri',
-                          'Diğer',
-                        ],
-                        text: "Hobilerinizi Ekleyiniz",
-                      ),
-                    ],
+                  marketPlaceTitle(context),
+                  createProfileText(context),
+                  Form(
+                    key: controller.getFormKey,
+                    child: Column(
+                      children: <Widget>[
+                        customTextFormField(context, text: 'Adınız', controller: controller.nameController, validator: controller.nameValidator, onSaved: controller.updateName,),
+                        customTextFormField(context, text: 'Soyadınız', controller: controller.lastnameController, validator: controller.lastNameValidator, onSaved: controller.updateLastname,),
+                        dateSelector(),
+                        CustomDropDownButton<String>(
+                          items: const ["Erkek", "Kadın", "Diğer"],
+                          text: "Cinsiyet",
+                        ),
+                        customTextFormField(
+                          context,
+                          text: 'Email Adresi ',
+                          controller: controller.emailController,
+                          validator: controller.emailValidator,
+                          onSaved: controller.updateHobbies,
+                        ),
+                        CustomDropDownButton(
+                          items: const [
+                            'İlkokul',
+                            'Ortaokul',
+                            'Lise',
+                            'Üniversite',
+                            'Yüksek Lisans',
+                            'Doktora',
+                            'Diğer',
+                          ],
+                          text: "Eğitim Durumunuz",
+                        ),
+                        CustomDropDownButton(
+                          items: const [
+                            'Sport',
+                            'Yemek Yemek',
+                            'Kitap Okumak',
+                            'Müzik Dinlemek',
+                            'Seyahat Etmek',
+                            'Resim Çizmek',
+                            'Dans Etmek',
+                            'Bahçe İşleri',
+                            'Diğer',
+                          ],
+                          text: "Hobilerinizi Ekleyiniz",
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
             ),
           ),
         ),

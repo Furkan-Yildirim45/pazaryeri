@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
@@ -15,25 +16,43 @@ mixin VerificationCodeUtility{
       width: context.sized.width,
       child: ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Container(
-            margin: index == 5 ? EdgeInsets.zero : context.padding.onlyRightLow,
+            margin: index == controller.codeLength - 1
+                ? EdgeInsets.zero
+                : context.padding.onlyRightLow,
             width: context.sized.dynamicWidth(0.12),
             decoration: BoxDecoration(
               color: ProjectColor.apricot.getColor(),
               borderRadius: context.border.normalBorderRadius,
               border: Border.all(width: 1,color: ProjectColor.apricot.getColor()),
             ),
-            child: TextField(
-              style: context.general.textTheme.titleLarge?.copyWith(color: Colors.white),
-              cursorColor: Colors.white,
-              textAlign: TextAlign.center,
-              decoration: const InputDecoration(border: InputBorder.none),
+            child: Focus(
+              onKeyEvent: (node, event) {
+                if (event is KeyDownEvent && event.logicalKey == LogicalKeyboardKey.backspace && controller.controllers[index].text.isEmpty) {
+                  controller.handleCodeInputDelete(controller.controllers[index].text, index, context);
+                  return KeyEventResult.handled;
+                }
+                return KeyEventResult.ignored;
+              },
+              child: TextField(
+                controller: controller.controllers[index],
+                focusNode: controller.focusNodes[index],
+                style: context.general.textTheme.titleLarge?.copyWith(color: Colors.white),
+                cursorColor: Colors.white,
+                textAlign: TextAlign.center,
+                decoration: const InputDecoration(border: InputBorder.none,counterText: '',),
+                keyboardType: TextInputType.phone,
+                maxLength: 1,
+                onChanged: (value) {
+                  controller.handleCodeInputChange(value, index, context,);
+                },
+              ),
             ),
           );
         },
-        scrollDirection: Axis.horizontal,
-        itemCount: 6,
+        itemCount: controller.codeLength,
       ),
     );
   }

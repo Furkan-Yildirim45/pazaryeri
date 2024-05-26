@@ -5,14 +5,6 @@ import '../../../widget/custom_elevated_button.dart';
 import '../../project_utility/image_utility.dart';
 
 mixin WelcomeUtility{
-  BoxDecoration buildDecorationParentContainerWithImage() {
-    return BoxDecoration(
-        image: DecorationImage(image:
-        AssetImage(ImageUtility.getImagePath("welcome")),
-            fit: BoxFit.fitWidth
-        )
-    );
-  }
 
   Padding floatActionButton(BuildContext context,{required void Function() onPressed,required String text}) {
     return Padding(
@@ -29,9 +21,10 @@ mixin WelcomeUtility{
           context.general.textTheme.titleMedium?.copyWith(color: Colors.white,fontWeight: FontWeight.w700),),
       ));
   }
-  Padding marketPlaceTitle(BuildContext context,{Color? textColor}) {
+  Padding marketPlaceTitle(BuildContext context,{Color? textColor,
+    EdgeInsetsGeometry? padding}) {
     return Padding(
-      padding: context.padding.onlyTopMedium,
+      padding: padding ?? context.padding.onlyTopMedium,
       child: Center(
         child: Text(
           'PAZARYERi',
