@@ -1,5 +1,6 @@
 import 'package:Pazaryeri/product/extension/context/border_Radius.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../color/project_color.dart';
@@ -20,6 +21,7 @@ class GeneralAppBar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
+
     return AppBar(
       backgroundColor: Colors.white,
       automaticallyImplyLeading: false,
@@ -35,7 +37,7 @@ class GeneralAppBar extends StatelessWidget
       leadingWidth: context.sized.dynamicWidth(0.16),
       leading: (isLeadingActive ?? false)
           ? Padding(
-              padding: context.padding.onlyTopMedium,
+              padding: context.padding.verticalLow,
               child: _buildAppBarButton(context, onPressed: () {
                 context.route.pop();
               },
@@ -49,7 +51,7 @@ class GeneralAppBar extends StatelessWidget
         Align(
           alignment: Alignment.bottomLeft,
           child: Padding(
-            padding: context.padding.onlyTopMedium,
+            padding: context.padding.verticalNormal,
             child: _buildAppBarButton(context,
                 onPressed: () {
                   NavigatorController.instance.pushToPage(NavigateRoutesItems.notification);
@@ -85,5 +87,5 @@ class GeneralAppBar extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(70);
+  Size get preferredSize => Size.fromHeight(Get.height * 0.08);
 }

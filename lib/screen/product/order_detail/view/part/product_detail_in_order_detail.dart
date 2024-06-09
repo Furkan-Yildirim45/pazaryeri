@@ -16,28 +16,29 @@ class ProductDetailInOrderDetail extends StatelessWidget
         border: Border.all(color: Colors.black26, width: 1),
       ),
       width: double.infinity,
-      height: context.sized.dynamicHeight(0.88),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildOrderDateText(context),
-          _buildOrderNoText(context),
-          const CustomPageDivider(),
-          _buildSellerInfo(context),
-          _buildProductInfoMenuButtonPlace(context),
-          const CustomPageDivider(),
-          _buildSubmittedText(context),
-          _buildWhichDayOrderSubmittedText(context),
-          _buildProductCargoInfo(context),
-          _buildProductGeneralInfo(context),
-          const CustomPageDivider(),
-          buildIconAndText(context,
-              text: "Trendyol Asistan", icon: Icons.comment_outlined),
-          buildIconAndText(context,
-              text: "Fatura Görüntüle", icon: Icons.border_color_outlined),
-          buildIconAndText(context,
-              text: "Dolap'ta Hızlı Sat", icon: Icons.add),
-        ],
+      child: IntrinsicHeight(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildOrderDateText(context),
+            _buildOrderNoText(context),
+            const CustomPageDivider(),
+            _buildSellerInfo(context),
+            _buildProductInfoMenuButtonPlace(context),
+            const CustomPageDivider(),
+            _buildSubmittedText(context),
+            _buildWhichDayOrderSubmittedText(context),
+            _buildProductCargoInfo(context),
+            _buildProductGeneralInfo(context),
+            const CustomPageDivider(),
+            buildIconAndText(context,
+                text: "Trendyol Asistan", icon: Icons.comment_outlined),
+            buildIconAndText(context,
+                text: "Fatura Görüntüle", icon: Icons.border_color_outlined),
+            buildIconAndText(context,
+                text: "Dolap'ta Hızlı Sat", icon: Icons.add),
+          ],
+        ),
       ),
     );
   }
@@ -202,24 +203,32 @@ class ProductDetailInOrderDetail extends StatelessWidget
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildProductInfoMenuButton(
-            context: context,
-            text: "Satıcıyı Değerlendir",
-            onPressed: () {},
+          Expanded(
+            flex: 6,
+            child: Padding(
+              padding: context.padding.onlyRightNormal,
+              child: _buildProductInfoMenuButton(
+                context: context,
+                text: "Satıcıyı Değerlendir",
+                onPressed: () {},
+              ),
+            ),
           ),
-          _buildProductInfoMenuButton(
-              onPressed: () {},
-              context: context,
-              text: "Satıcıyı Takip Et",
-              backgroundColor: Colors.white,
-              width: context.sized.dynamicWidth(0.35),
-              textColor: ProjectColor.apricot.getColor(),
-              child: Text(
-                'Satıcıyı Değerlendir',
-                style: context.general.textTheme.labelLarge?.copyWith(
-                    color: ProjectColor.apricot.getColor(),
-                    fontWeight: FontWeight.w700),
-              )),
+          Expanded(
+            flex: 4,
+            child: _buildProductInfoMenuButton(
+                onPressed: () {},
+                context: context,
+                backgroundColor: Colors.white,
+                width: context.sized.dynamicWidth(0.35),
+                textColor: ProjectColor.apricot.getColor(),
+                child: Text(
+                  'Satıcıyı Takip Et',
+                  style: context.general.textTheme.labelLarge?.copyWith(
+                      color: ProjectColor.apricot.getColor(),
+                      fontWeight: FontWeight.w700),
+                )),
+          ),
         ],
       ),
     );
@@ -269,43 +278,52 @@ class ProductDetailInOrderDetail extends StatelessWidget
       context.general.textTheme.labelLarge
           ?.copyWith(color: color, fontWeight: fontWeight);
 
-  CustomElevatedButton _buildProductInfoMenuButton({
-    required BuildContext context,
-    Widget? child,
-    required void Function() onPressed,
-    Color? backgroundColor,
-    Color? textColor,
-    double? width,
-    String? text,
-  }) {
-    return CustomElevatedButton(
-      shape: RoundedRectangleBorder(
-          borderRadius: context.border.lowBorderRadius,
-          side: BorderSide(color: ProjectColor.apricot.getColor())),
-      height: context.sized.dynamicHeight(0.06),
-      backgroundColor: backgroundColor ?? ProjectColor.apricot.getColor(),
-      width: width ?? context.sized.dynamicWidth(0.45),
-      padding: context.padding.horizontalNormal,
-      onPressed: onPressed,
-      child: child ??
-          Row(
-            children: [
-              Padding(
-                padding: context.padding.onlyRightLow,
-                child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: context.sized.dynamicHeight(0.022),
-                    child: Icon(
-                      Icons.storefront_outlined,
-                      color: ProjectColor.apricot.getColor(),
-                    )),
+CustomElevatedButton _buildProductInfoMenuButton({
+  required BuildContext context,
+  Widget? child,
+  required void Function() onPressed,
+  Color? backgroundColor,
+  Color? textColor,
+  double? width,
+  String? text,
+}) {
+  return CustomElevatedButton(
+    shape: RoundedRectangleBorder(
+      borderRadius: context.border.lowBorderRadius,
+      side: BorderSide(color: ProjectColor.apricot.getColor()),
+    ),
+    height: context.sized.dynamicHeight(0.06),
+    backgroundColor: backgroundColor ?? ProjectColor.apricot.getColor(),
+    width: width ?? context.sized.dynamicWidth(0.45),
+    padding: context.padding.horizontalLow,
+    onPressed: onPressed,
+    child: child ??
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: context.padding.onlyRightLow,
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                radius: context.sized.dynamicHeight(0.022),
+                child: Icon(
+                  Icons.storefront_outlined,
+                  color: ProjectColor.apricot.getColor(),
+                ),
               ),
-              Text(text ?? "",
-                  style: context.general.textTheme.labelLarge?.copyWith(
-                      color: textColor ?? Colors.white,
-                      fontWeight: FontWeight.w700)),
-            ],
-          ),
-    );
-  }
+            ),
+            Flexible(
+              child: Text(
+                text ?? "",
+                style: context.general.textTheme.labelLarge?.copyWith(
+                  color: textColor ?? Colors.white,
+                  fontWeight: FontWeight.w700,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
+        ),
+  );
+}
 }

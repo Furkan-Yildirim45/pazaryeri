@@ -20,15 +20,12 @@ mixin WelcomeUtility{
           context.general.textTheme.titleMedium?.copyWith(color: Colors.white,fontWeight: FontWeight.w700),),
       ));
   }
-  Padding marketPlaceTitle(BuildContext context,{Color? textColor,
+  Center marketPlaceTitle(BuildContext context,{Color? textColor,
     EdgeInsetsGeometry? padding}) {
-    return Padding(
-      padding: padding ?? context.padding.onlyTopMedium,
-      child: Center(
-        child: Text(
-          'PAZARYERi',
-          style: context.general.textTheme.displayMedium?.copyWith(color: textColor),
-        ),
+    return Center(
+      child: Text(
+        'PAZARYERi',
+        style: context.general.textTheme.displayMedium?.copyWith(color: textColor),
       ),
     );
   }

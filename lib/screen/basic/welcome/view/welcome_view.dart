@@ -41,7 +41,10 @@ class WelcomeView extends StatelessWidget
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  marketPlaceTitle(context),
+                  Padding(
+                    padding: context.padding.onlyTopMedium,
+                    child: marketPlaceTitle(context),
+                  ),
                   welcomeAboardText(context),
                   enterYourNumberText(context),
                   const PhoneNumberWidget(),

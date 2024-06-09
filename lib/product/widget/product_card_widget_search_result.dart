@@ -1,6 +1,5 @@
 import 'package:Pazaryeri/product/model/route_arguments_model.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../color/project_color.dart';

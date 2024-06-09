@@ -4,10 +4,15 @@ import 'package:Pazaryeri/product/navigator/navigator_route_items.dart';
 import 'package:Pazaryeri/product/theme/project_theme.dart';
 import 'package:Pazaryeri/screen/unknown_page/view/unknown_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 void main() {
   MainInit().mainInit();
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+  ));
   runApp(Main());
 }
 
@@ -18,6 +23,7 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+
       theme: ProjectTheme(context).theme,
       initialRoute: NavigatorRoutes.init,
       debugShowCheckedModeBanner: false,
@@ -31,4 +37,3 @@ class Main extends StatelessWidget {
 }
 
 //todo:GeneralSearch kxısmını her ekrana uygulamadım fonksiyonellikleri, sadece homepage de aktif!
-//todo: GeneralAppBar kısmında bir bug var o kısımdaki bug size bugu! yeterli değil

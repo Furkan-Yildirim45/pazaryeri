@@ -64,7 +64,7 @@ mixin OrderDetailUtility{
 
   TextStyle? buildBodyLarge(BuildContext context, {Color? color}) =>
       context.general.textTheme.bodyLarge
-          ?.copyWith(color: color, fontWeight: FontWeight.w500);
+          ?.copyWith(color: color, fontWeight: FontWeight.w500,);
 
   Padding buildIconAndText(
       BuildContext context, {
@@ -126,25 +126,31 @@ mixin OrderDetailUtility{
     );
   }
 
-  Container buildPaymentInfo(BuildContext context,ProductModel? model) {
-    var dynamicSize = context.sized.dynamicWidth(0.08);
-    return Container(
-      padding: context.padding.horizontalNormal,
-      margin: context.padding.onlyTopNormal,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: context.border.normalBorderRadius,
-        border: Border.all(color: Colors.black26, width: 1),
-      ),
-      height: context.sized.dynamicHeight(0.28),
+Container buildPaymentInfo(BuildContext context, ProductModel? model) {
+  var dynamicSize = context.sized.dynamicWidth(0.08);
+  return Container(
+    padding: EdgeInsets.only(
+      bottom: context.sized.normalValue,
+      left: context.sized.normalValue,
+      right: context.sized.normalValue,
+    ),
+    margin: context.padding.onlyTopNormal,
+    width: double.infinity,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: context.border.normalBorderRadius,
+      border: Border.all(color: Colors.black26, width: 1),
+    ),
+    child: IntrinsicHeight(
       child: Column(
         children: [
           Row(
             children: [
-              buildIconAndText(context,
-                  text: "Ödeme Bilgileri",
-                  icon: Icons.border_color_outlined),
+              buildIconAndText(
+                context,
+                text: "Ödeme Bilgileri",
+                icon: Icons.border_color_outlined,
+              ),
               Padding(
                 padding: context.padding.onlyLeftLow,
                 child: Image.asset(
@@ -153,9 +159,15 @@ mixin OrderDetailUtility{
                   height: dynamicSize,
                 ),
               ),
-              Text(
-                '**** ****9608 - Tek Çekim',
-                style: _buildLabelLarge(context, color: Colors.grey),
+              Flexible(
+                child: Padding(
+                  padding: context.padding.onlyLeftLow,
+                  child: Text(
+                    '**** 9608 - Tek Çekim',
+                    style: _buildLabelLarge(context, color: Colors.grey),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ),
             ],
           ),
@@ -174,9 +186,9 @@ mixin OrderDetailUtility{
               color: ProjectColor.apricot.getColor())
         ],
       ),
-    );
-  }
-
+    ),
+  );
+}
   Container buildSellingContract(BuildContext context) {
     return Container(
       padding: context.padding.horizontalNormal,
@@ -196,26 +208,39 @@ mixin OrderDetailUtility{
     );
   }
 
-  Padding buildDoubleText(
-      BuildContext context, {
-        required String textOne,
-        required String textTwo,
-        Color? color,
-      }) {
-    return Padding(
-      padding: context.padding.onlyTopNormal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Text(textOne),
-          Text(
-            textTwo,
-            style: _buildLabelLarge(context, color: color ?? Colors.grey),
+Padding buildDoubleText(
+    BuildContext context, {
+      required String textOne,
+      required String textTwo,
+      Color? color,
+      TextStyle? textStyle,
+    }) {
+  return Padding(
+    padding: context.padding.onlyTopNormal,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          flex: 8,
+          child: Text(
+            textOne,
+            style: textStyle ?? _buildLabelLarge(context),
+            overflow: TextOverflow.ellipsis,
           ),
-        ],
-      ),
-    );
-  }
+        ),
+        Flexible(
+          flex: 2,
+          child: Text(
+            textTwo,
+            style: textStyle ?? _buildLabelLarge(context, color: color ?? Colors.grey),
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.right,
+          ),
+        ),
+      ],
+    ),
+  );
+}
 
   TextStyle? _buildLabelLarge(BuildContext context,
       {Color? color, FontWeight? fontWeight}) =>

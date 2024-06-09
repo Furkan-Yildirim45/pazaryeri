@@ -19,26 +19,7 @@ class OrderDetailView extends StatelessWidget with OrderDetailUtility {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        shape: const RoundedRectangleBorder(
-            side: BorderSide(color: Colors.black12, width: 1)),
-        title: Text(
-          "Sipariş Detayları",
-          style: context.general.textTheme.titleLarge
-              ?.copyWith(fontWeight: FontWeight.w500),
-        ),
-        actions: [
-          Padding(
-            padding: context.padding.onlyRightNormal,
-            child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.visibility_off,
-                  color: Colors.grey,
-                )),
-          ),
-        ],
-      ),
+      appBar: _buildPageAppBar(context),
       body: Padding(
         padding: context.padding.horizontalNormal,
         child: GetBuilder(
@@ -60,6 +41,29 @@ class OrderDetailView extends StatelessWidget with OrderDetailUtility {
         NavigatorController.instance.pop();
         controller.onItemTapped(index, context);
       },),
+    );
+  }
+
+  AppBar _buildPageAppBar(BuildContext context) {
+    return AppBar(
+      shape: const RoundedRectangleBorder(
+          side: BorderSide(color: Colors.black12, width: 1)),
+      title: Text(
+        "Sipariş Detayları",
+        style: context.general.textTheme.titleLarge
+            ?.copyWith(fontWeight: FontWeight.w500),
+      ),
+      actions: [
+        Padding(
+          padding: context.padding.onlyRightNormal,
+          child: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.visibility_off,
+                color: Colors.grey,
+              )),
+        ),
+      ],
     );
   }
 }

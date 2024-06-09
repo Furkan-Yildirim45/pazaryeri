@@ -35,7 +35,10 @@ class _CreateProfileViewState extends State<CreateProfileView> with WelcomeUtili
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                  marketPlaceTitle(context),
+                  Padding(
+                    padding: context.padding.onlyTopMedium,
+                    child: marketPlaceTitle(context),
+                  ),
                   createProfileText(context),
                   Form(
                     key: createProfileController.getFormKey,

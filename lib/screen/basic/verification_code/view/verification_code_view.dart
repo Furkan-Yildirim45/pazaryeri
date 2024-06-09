@@ -32,7 +32,10 @@ class VerificationView extends StatelessWidget
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  marketPlaceTitle(context),
+                  Padding(
+                    padding: context.padding.onlyTopMedium,
+                    child: marketPlaceTitle(context),
+                  ),
                   context.sized.emptySizedHeightBoxHigh,
                   verificationCodeText(context),
                   buildVerificationCodeContainerLvb(context),

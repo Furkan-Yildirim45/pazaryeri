@@ -48,6 +48,7 @@ mixin ProductDetailUtility {
 
   Row productRating(BuildContext context, {required double starSize}) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         //total star average
         Container(

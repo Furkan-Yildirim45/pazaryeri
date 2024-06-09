@@ -29,7 +29,6 @@ class CustomPopupMenuButton<T> extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              print("tıklandı!");
               popupKey.currentState?.showButtonMenu();
             },
             child: SizedBox(
