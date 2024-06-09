@@ -31,3 +31,4 @@ class Main extends StatelessWidget {
 }
 
 //todo:GeneralSearch kxısmını her ekrana uygulamadım fonksiyonellikleri, sadece homepage de aktif!
+//todo: GeneralAppBar kısmında bir bug var o kısımdaki bug size bugu! yeterli değil

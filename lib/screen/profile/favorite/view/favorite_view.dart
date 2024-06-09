@@ -1,7 +1,6 @@
 import 'package:Pazaryeri/product/color/project_color.dart';
 import 'package:Pazaryeri/product/model/route_arguments_model.dart';
 import 'package:Pazaryeri/product/widget/general_app_bar.dart';
-import 'package:Pazaryeri/product/widget/main_page_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';

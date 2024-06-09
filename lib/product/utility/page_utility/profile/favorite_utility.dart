@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../color/project_color.dart';
@@ -47,7 +48,7 @@ mixin FavoriteUtility {
           Container(
             margin: context.padding.onlyRightLow,
             width: context.sized.dynamicWidth(0.3),
-            height: context.sized.dynamicWidth(0.3),
+            height: Get.height * 0.17,
             child: Container(
               margin: EdgeInsets.all(context.sized.lowValue),
               decoration: BoxDecoration(
@@ -75,15 +76,30 @@ mixin FavoriteUtility {
                           fontWeight: FontWeight.w500,
                           color: ProjectColor.apricot.getColor())),
                   Padding(
-                    padding: context.padding.onlyTopNormal,
+                    padding: EdgeInsets.only(
+                      top: context.sized.normalValue,
+                      right: context.sized.lowValue,
+                    ),
                     child: Row(
                       mainAxisAlignment: buttons != null ? MainAxisAlignment.end : MainAxisAlignment.spaceBetween,
                       children: buttons ??
                           [
-                            buildProductFavoriteCardPropertyButton(context,
-                                onPressed: () {}, text: "Kargo Bedava"),
-                            buildProductFavoriteCardPropertyButton(context,
-                                onPressed: () {}, text: "Hızlı Teslimat"),
+                            Expanded(
+                              flex: 1,
+                              child: Padding(
+                                padding: context.padding.onlyRightLow,
+                                child: buildProductFavoriteCardPropertyButton(context,
+                                    onPressed: () {}, text: "Kargo Bedava"),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Padding(
+                                padding: context.padding.onlyLeftLow,
+                                child: buildProductFavoriteCardPropertyButton(context,
+                                    onPressed: () {}, text: "Hızlı Teslimat"),
+                              ),
+                            ),
                           ],
                     ),
                   ),
@@ -107,7 +123,6 @@ mixin FavoriteUtility {
       onPressed: onPressed,
       height: context.sized.mediumValue,
       backgroundColor: backgroundColor,
-      width: context.sized.dynamicWidth(0.28),
       shape: RoundedRectangleBorder(
         borderRadius: context.border.normalBorderRadius,
       ),

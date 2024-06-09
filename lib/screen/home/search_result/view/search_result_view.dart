@@ -27,24 +27,37 @@ class SearchResultView extends StatelessWidget {
     );
   }
 
-  Container _buildProductCardWidgetGridView(BuildContext context) {
-    return Container(
-      margin: context.padding.onlyTopNormal,
-      width: double.infinity,
-      height: context.sized.dynamicHeight(0.42) * (productItems?.length ?? 0.0) / 2,
-      child: GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: context.sized.lowValue,
-          mainAxisSpacing: context.sized.lowValue,
-          childAspectRatio: 0.68,
-        ),
-        itemCount: productItems?.length,
-        itemBuilder: (context, index) {
-          return ProductCardWidgetSearchResult(model: productItems?[index],);
-        },
-      ),
+  Widget _buildProductCardWidgetGridView(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        var crossAxisCount = 2;
+        var spacing = 10.0;
+        var totalSpacing = spacing * (crossAxisCount - 1);
+        var itemWidth = (constraints.maxWidth - totalSpacing) / crossAxisCount;
+        var itemHeight = itemWidth * 1.24;
+        var itemCount = productItems?.length ?? 0;
+        var rowCount = (itemCount / crossAxisCount).ceil();
+        var gridHeight = itemHeight * rowCount + (spacing * (rowCount - 1));
+
+        return Container(
+          margin: context.padding.onlyTopNormal,
+          width: double.infinity,
+          height: gridHeight + context.sized.normalValue,
+          child: GridView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
+              crossAxisSpacing: spacing,
+              mainAxisSpacing: spacing,
+              childAspectRatio: (itemWidth / itemHeight),
+            ),
+            itemCount: itemCount,
+            itemBuilder: (context, index) {
+              return ProductCardWidgetSearchResult(model: productItems?[index]);
+            },
+          ),
+        );
+      },
     );
   }
 

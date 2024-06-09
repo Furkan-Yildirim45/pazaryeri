@@ -26,7 +26,7 @@ class _ProfileViewState extends State<ProfileView>
           children: [
             Container(
               width: context.width,
-              height: context.height * 0.15,
+              height: context.height * 0.12,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(

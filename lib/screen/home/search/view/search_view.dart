@@ -36,7 +36,7 @@ class SearchView extends StatelessWidget {
                     Row(
                       children: [
                         _buildDeleteIconButton(index),
-                        _buildSearchedWordText(context, index),
+                        Expanded(child: _buildSearchedWordText(context, index)),
                       ],
                     ),
                     _buildDivider(),
@@ -65,7 +65,6 @@ class SearchView extends StatelessWidget {
           generalSearchBarController.onSubmitted(generalSearchBarController.searchedWords[index]);
         },
         child: Container(
-          width: context.sized.dynamicWidth(0.68),
           height: context.sized.dynamicHeight(0.05),
           color: Colors.transparent,
           child: Align(

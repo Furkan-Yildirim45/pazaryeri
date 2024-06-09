@@ -113,5 +113,4 @@ class ShoppingCardView extends StatelessWidget
     }
     return totalPrice.toString();
   }
-
 }

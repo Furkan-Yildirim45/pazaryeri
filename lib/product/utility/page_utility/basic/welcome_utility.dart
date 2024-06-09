@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import '../../../color/project_color.dart';
 import '../../../widget/custom_elevated_button.dart';
-import '../../project_utility/image_utility.dart';
 
 mixin WelcomeUtility{
 

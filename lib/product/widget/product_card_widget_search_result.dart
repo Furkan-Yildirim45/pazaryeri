@@ -1,5 +1,6 @@
 import 'package:Pazaryeri/product/model/route_arguments_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../color/project_color.dart';
@@ -36,13 +37,13 @@ class ProductCardWidgetSearchResult extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: context.border.normalBorderRadius,
-                  image: DecorationImage(image: AssetImage(ImageUtility.getImagePath("9")),fit: BoxFit.fitWidth)
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: context.border.normalBorderRadius,
+                    image: DecorationImage(image: AssetImage(ImageUtility.getImagePath("9")),fit: BoxFit.fitWidth)
+                ),
               ),
-              width: double.infinity,
-              height: context.sized.dynamicHeight(0.2),
             ),
             Padding(
               padding: context.padding.onlyTopLow,

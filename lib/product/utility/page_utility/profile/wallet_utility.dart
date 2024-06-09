@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../color/project_color.dart';
@@ -34,8 +35,8 @@ mixin WalletUtility{
           ),
         ),
         Positioned(
-          left: -context.sized.dynamicWidth(0.06),
-          bottom: -context.sized.dynamicWidth(0.06),
+          left: -context.width * 0.045,
+          bottom: -context.height * 0.035,
           child: SizedBox(
             width: context.sized.width,
             child: Align(
@@ -44,7 +45,7 @@ mixin WalletUtility{
                 angle: -12 * (3.14 / 180),
                 child: Image.asset(
                   ImageUtility.getImagePath("wallet"),
-                  height: context.sized.dynamicHeight(0.225),
+                  height: context.sized.dynamicHeight(0.18),
                   fit: BoxFit.cover,
                 ),
               ),

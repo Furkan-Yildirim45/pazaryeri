@@ -166,6 +166,6 @@ extension ProfileLvbItemsExtension on NavigateRoutesItems {
         NavigateRoutesItems.addresses: Icons.location_on,
         NavigateRoutesItems.creditCard: Icons.credit_card,
         NavigateRoutesItems.accountSettings: Icons.settings,
-        NavigateRoutesItems.checkOut: Icons.shopping_cart,
+        NavigateRoutesItems.checkOut: Icons.exit_to_app_outlined,
       }[this]!;
 }

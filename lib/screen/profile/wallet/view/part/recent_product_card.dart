@@ -69,14 +69,18 @@ class RecentProduct extends StatelessWidget {
   Row _buildProductTitleText(BuildContext context) {
     return Row(
       children: [
-        Text(
-          'El Kremi - ',
-          style: context.general.textTheme.bodyMedium
-              ?.copyWith(fontWeight: FontWeight.w500),
+        Flexible(
+          child: Text(
+            'El Kremi - ',
+            style: context.general.textTheme.bodyMedium
+                ?.copyWith(fontWeight: FontWeight.w500),
+          ),
         ),
-        const Text(
-          "Dynamic 100 ml",
-          overflow: TextOverflow.ellipsis,
+        const Flexible(
+          child: Text(
+            "Dynamic 100 ml",
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );

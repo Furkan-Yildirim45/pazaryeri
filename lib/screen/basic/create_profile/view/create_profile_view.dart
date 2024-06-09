@@ -22,7 +22,7 @@ class _CreateProfileViewState extends State<CreateProfileView> with WelcomeUtili
       resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: floatActionButton(context, text: "Devam Et", onPressed: () {
-        controller.floatActionOnPressed(context);
+        createProfileController.floatActionOnPressed(context);
       },),
       body: GetBuilder<CreateProfileController>(
         builder: (_) => SingleChildScrollView(
@@ -38,47 +38,95 @@ class _CreateProfileViewState extends State<CreateProfileView> with WelcomeUtili
                   marketPlaceTitle(context),
                   createProfileText(context),
                   Form(
-                    key: controller.getFormKey,
+                    key: createProfileController.getFormKey,
                     child: Column(
                       children: <Widget>[
-                        customTextFormField(context, text: 'Adınız', controller: controller.nameController, validator: controller.nameValidator, onSaved: controller.updateName,),
-                        customTextFormField(context, text: 'Soyadınız', controller: controller.lastnameController, validator: controller.lastNameValidator, onSaved: controller.updateLastname,),
+                        customTextFormField(context, text: 'Adınız', controller: createProfileController.nameController, onSaved: createProfileController.updateName, validator: createProfileController.nameValidator,),
+                        customTextFormField(context, text: 'Soyadınız', controller: createProfileController.lastnameController, onSaved: createProfileController.updateLastname,validator: createProfileController.lastNameValidator),
                         dateSelector(),
-                        CustomDropDownButton<String>(
-                          items: const ["Erkek", "Kadın", "Diğer"],
+                        CustomPopupMenuButton(
+                          controller: genderController,
+                          items: const [
+                            PopupMenuItem(
+                            value: "Erkek",
+                            child: Text("Erkek"),
+                          ),
+                          PopupMenuItem(
+                            value: "Kadın",
+                            child: Text("Kadın"),
+                          ),
+                          PopupMenuItem(
+                            value: "Diğer",
+                            child: Text("Diğer"),
+                          ),
+                           ],
                           text: "Cinsiyet",
                         ),
                         customTextFormField(
+                          validator: createProfileController.emailValidator,
                           context,
                           text: 'Email Adresi ',
-                          controller: controller.emailController,
-                          validator: controller.emailValidator,
-                          onSaved: controller.updateHobbies,
+                          controller: createProfileController.emailController,
+                          onSaved: createProfileController.updateHobbies,
                         ),
-                        CustomDropDownButton(
+                        CustomPopupMenuButton(
+                          controller: educationController,
                           items: const [
-                            'İlkokul',
-                            'Ortaokul',
-                            'Lise',
-                            'Üniversite',
-                            'Yüksek Lisans',
-                            'Doktora',
-                            'Diğer',
-                          ],
+                          PopupMenuItem(
+                            value: "İlkokul",
+                            child: Text("İlkokul"),
+                          ),
+                          PopupMenuItem(
+                            value: "Ortaokul",
+                            child: Text("Ortaokul"),
+                          ),
+                          PopupMenuItem(
+                            value: "Lise",
+                            child: Text("Lise"),
+                          ),
+                          PopupMenuItem(
+                            value: "Üniversite",
+                            child: Text("Üniversite"),
+                          ),
+                          PopupMenuItem(
+                            value: "Yüksek Lisans",
+                            child: Text("Yüksek Lisans"),
+                          ),
+                          PopupMenuItem(
+                            value: "Doktora",
+                            child: Text("Doktora"),
+                          ),
+                          PopupMenuItem(
+                            value: "Diğer",
+                            child: Text("Diğer"),
+                          ),
+                        ],
                           text: "Eğitim Durumunuz",
                         ),
-                        CustomDropDownButton(
-                          items: const [
-                            'Sport',
-                            'Yemek Yemek',
-                            'Kitap Okumak',
-                            'Müzik Dinlemek',
-                            'Seyahat Etmek',
-                            'Resim Çizmek',
-                            'Dans Etmek',
-                            'Bahçe İşleri',
-                            'Diğer',
-                          ],
+                        CustomPopupMenuButton(
+                          controller: hobbiesController,
+                           items: const [
+                          PopupMenuItem(
+                            value: "Yüzme",
+                            child: Text("Yüzme"),
+                          ),
+                          PopupMenuItem(
+                            value: "Koşu",
+                            child: Text("Koşu"),
+                          ),
+                          PopupMenuItem(
+                            value: "Okuma",
+                            child: Text("Okuma"),
+                          ),
+                          PopupMenuItem(
+                            value: "Seyahat",
+                            child: Text("Seyahat"),
+                          ),
+                          PopupMenuItem(
+                            value: "Diğer",
+                            child: Text("Diğer"),
+                          ),
+                        ],
                           text: "Hobilerinizi Ekleyiniz",
                         ),
                       ],

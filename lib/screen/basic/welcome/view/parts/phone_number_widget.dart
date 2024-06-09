@@ -10,69 +10,102 @@ class PhoneNumberWidget extends StatefulWidget {
 class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
   @override
   Widget build(BuildContext context) {
+    var dynamicComponentHeight = context.sized.dynamicHeight(0.07);
     return Padding(
       padding: context.padding.onlyTopLow,
       child: Stack(
         alignment: Alignment.topRight,
         children: [
           Container(
-            height: context.sized.dynamicWidth(0.12),
-            width: context.sized.width,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: context.border.normalBorderRadius,
-            ),
-          ),
-          Container(
-            height: context.sized.dynamicWidth(0.12),
-            width: context.sized.dynamicWidth(0.72),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black),
-                borderRadius: context.border.normalBorderRadius),
-            child: Row(
-              children: [
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      '+90',
-                      style: context.general.textTheme.titleSmall
-                          ?.copyWith(color: Colors.grey),
-                    )),
-                SizedBox(
-                  width: context.sized.dynamicWidth(0.52),
-                  child: Padding(
-                    padding: context.padding.onlyBottomNormal,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: context.height * 0.005),
-                      child: const TextField(
-                        maxLines: 1,
-                        keyboardType: TextInputType.number,
-                        cursorColor: Colors.black,
-                        textAlignVertical: TextAlignVertical.center,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              width: context.sized.dynamicWidth(0.16),
-              height: context.sized.dynamicWidth(0.12),
+              height: dynamicComponentHeight,
+              width: Get.width,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(
-                          ImageUtility.getImagePath("turkish_flag")))),
-            ),
-          ),
+                color: Colors.black,
+                borderRadius: context.border.normalBorderRadius,
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                      flex: 2,
+                      child:
+                          _buildTurkishFlag(dynamicComponentHeight, context)),
+                  Expanded(
+                      flex: 8,
+                      child: Container(
+                        height: dynamicComponentHeight,
+                        width: context.sized.dynamicWidth(0.72),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black),
+                            borderRadius: context.border.normalBorderRadius),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            _buildSelectCountyCode(
+                                dynamicComponentHeight, context),
+                            _buildTextField(context),
+                          ],
+                        ),
+                      )),
+                ],
+              ),)
         ],
       ),
     );
   }
+
+  SizedBox _buildSelectCountyCode(
+      double dynamicComponentHeight, BuildContext context) {
+    return SizedBox(
+      height: dynamicComponentHeight,
+      child: TextButton(
+          onPressed: () {},
+          child: Text(
+            '+90',
+            style: context.general.textTheme.titleSmall
+                ?.copyWith(color: Colors.grey),
+          )),
+    );
+  }
+
+  SizedBox _buildTextField(BuildContext context) {
+    return SizedBox(
+      width: context.sized.dynamicWidth(0.52),
+      child: Padding(
+        padding: EdgeInsets.only(
+          bottom: context.height * 0.025,
+        ),
+        child: TextField(
+          maxLength: 11,
+          maxLines: 1,
+          keyboardType: TextInputType.phone,
+          cursorColor: Colors.black,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+          ),
+          buildCounter: (context,
+                  {required currentLength,
+                  required isFocused,
+                  required maxLength}) =>
+              null,
+        ),
+      ),
+    );
+  }
+
+  Container _buildTurkishFlag(
+      double dynamicComponentHeight, BuildContext context) {
+    return Container(
+      height: dynamicComponentHeight,
+      width: context.sized.width,
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: context.border.normalBorderRadius,
+      ),
+      child: Image.asset(ImageUtility.getImagePath("turkish_flag")),
+    );
+  }
 }
+
+
+//todo: şimdi olmuş olması lazım!

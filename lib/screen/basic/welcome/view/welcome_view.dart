@@ -37,7 +37,7 @@ class WelcomeView extends StatelessWidget
           backgroundImageUtility(
             context,
             child: Padding(
-              padding: context.padding.horizontalMedium,
+              padding: context.padding.horizontalNormal,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

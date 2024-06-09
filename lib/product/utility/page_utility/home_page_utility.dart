@@ -46,50 +46,60 @@ mixin HomePageViewUtility {
     );
   }
 
-  Container popularProductGirdView(BuildContext context,HomePageController homePageController) {
-    return Container(
-      decoration: BoxDecoration(borderRadius: context.border.lowBorderRadius),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget popularProductGirdView(BuildContext context, HomePageController homePageController) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        var crossAxisCount = 2;
+        var itemHeight = (constraints.maxWidth / crossAxisCount) +
+        context.sized.lowValue;
+        return Container(
+          decoration: BoxDecoration(borderRadius: context.border.lowBorderRadius),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Popüler Olanlar",
-                style: context.general.textTheme.titleMedium,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Popüler Olanlar",
+                    style: context.general.textTheme.titleMedium,
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Hepsini Gör",
+                      style: context.general.textTheme.bodyMedium?.copyWith(color: ProjectColor.apricot.getColor()),
+                    ),
+                  ),
+                ],
               ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Hepsini Gör",
-                  style: context.general.textTheme.bodyMedium?.copyWith(color: ProjectColor.apricot.getColor()),
+              Padding(
+                padding: context.padding.onlyTopLow,
+                child: SizedBox(
+                  width: double.infinity,
+                  height: itemHeight * ((homePageController.popularProductItems.length) / crossAxisCount).ceil(),
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: homePageController.popularProductItems.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemBuilder: (context, index) {
+                      return ProductCardWidget(
+                        model: homePageController.popularProductItems[index],
+                        index: index,
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
           ),
-          Padding(
-            padding: context.padding.onlyTopLow,
-            child: SizedBox(
-              width: double.infinity,
-              height: context.sized.dynamicHeight(0.217) * ((homePageController.popularProductItems.length) / 2),
-              child: GridView.count(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 1.3,
-                children: List.generate(homePageController.popularProductItems.length, (index) {
-                  return ProductCardWidget(
-                    model: homePageController.popularProductItems[index], index: index,
-                  );
-                }),
-              ),
-            ),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -198,8 +208,8 @@ mixin HomePageViewUtility {
               padding: context.padding.onlyLeftLow,
               child: Image.asset(
                 ImageUtility.getImagePath("4"),
-                height: context.sized.mediumValue,
-                width: context.sized.mediumValue,
+                height: context.height * 0.03,
+                width: context.width * 0.07,
               ),
             ),
             Padding(

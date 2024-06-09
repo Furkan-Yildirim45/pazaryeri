@@ -24,8 +24,8 @@ mixin ProductDetailUtility {
   }) {
     return Container(
       margin: context.padding.onlyRightNormal,
-      height: context.sized.dynamicHeight(0.11),
-      width: context.sized.dynamicHeight(0.11),
+      height: context.sized.dynamicHeight(0.10),
+      width: context.sized.dynamicWidth(0.21),
       decoration: BoxDecoration(
         color: Colors.grey,
         borderRadius: context.border.normalBorderRadius,
@@ -36,11 +36,9 @@ mixin ProductDetailUtility {
     );
   }
 
-  Text productNameAndCode(BuildContext context,
-          {required TextStyle textStyle}) =>
+  Text productNameAndCode(BuildContext context, {required TextStyle textStyle}) =>
       Text(
-        '${controller.model?.value.productName} PZ5354686',
-        style: textStyle,
+        '${controller.model?.value.productName} PZ5354686', style: textStyle,
       );
 
   Text productShopName(BuildContext context) => Text(
@@ -74,7 +72,6 @@ mixin ProductDetailUtility {
           '1234 Değerlendirme',
           style: context.general.textTheme.labelSmall?.copyWith(
               color: Colors.grey, fontSize: context.sized.dynamicWidth(0.025)),
-          overflow: TextOverflow.ellipsis,
         ),
       ],
     );
@@ -101,8 +98,7 @@ mixin ProductDetailUtility {
           return Icon(
             Icons.star,
             size: starSize,
-            color:
-                index == 4 ? Colors.grey : ProjectColor.starYellow.getColor(),
+            color: index == 4 ? Colors.grey : ProjectColor.starYellow.getColor(),
           );
         },
       ),
@@ -122,7 +118,7 @@ mixin ProductDetailUtility {
         shape: RoundedRectangleBorder(
             borderRadius: context.border.lowBorderRadius),
         onPressed: () {},
-        width: context.sized.dynamicHeight(0.06),
+        width: context.sized.dynamicWidth(0.13),
         height: context.sized.dynamicHeight(0.06),
         child: Text(
           text,
@@ -148,22 +144,26 @@ mixin ProductDetailUtility {
                       context, context.sized.dynamicHeight(0.015)),
                   const SecureNameWidget(name: "Furkan Yıldırım"),
                   Padding(
-                    padding: context.padding.horizontalNormal,
+                    padding: context.padding.horizontalLow,
                     child: Text(
                       '-',
                       style: context.general.textTheme.titleLarge,
                     ),
                   ),
-                  Text(commentItems[index].commentDate,
-                      style: context.general.textTheme.labelLarge),
+                  Flexible(
+                    child: Text(commentItems[index].commentDate,
+                        style: context.general.textTheme.labelLarge),
+                  ),
                 ],
               ),
-              Padding(
-                padding: context.padding.onlyTopLow,
-                child: Text(
-                  commentItems[index].comment,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
+              Flexible(
+                child: Padding(
+                  padding: context.padding.onlyTopLow,
+                  child: Text(
+                    commentItems[index].comment,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ),
             ],
@@ -184,19 +184,21 @@ mixin ProductDetailUtility {
               sellerProfileContainer(context,
                   url: ImageUtility.getImagePath(
                       controller.model?.value.productUrl ?? "product")),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  productShopName(context),
-                  productNameAndCode(context,
-                      textStyle: context.general.textTheme.titleSmall
-                              ?.copyWith(color: Colors.grey) ??
-                          const TextStyle()),
-                  productRating(
-                    context,
-                    starSize: context.sized.dynamicHeight(0.015),
-                  ),
-                ],
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    productShopName(context),
+                    productNameAndCode(context,
+                        textStyle: context.general.textTheme.titleSmall
+                                ?.copyWith(color: Colors.grey) ??
+                            const TextStyle()),
+                    productRating(
+                      context,
+                      starSize: context.sized.dynamicHeight(0.015),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -278,19 +280,22 @@ mixin ProductDetailUtility {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          //satıcı profile kutusu
           sellerProfileContainer(context),
           //Satıcı bilgisi ve ürün rating
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                '${controller.model?.value.seller} / Satıcı',
-                style: context.general.textTheme.titleMedium,
+              Flexible(
+                child: Text(
+                  '${controller.model?.value.seller} / Satıcı',
+                  style: context.general.textTheme.titleMedium,
+                ),
               ),
-              productRating(context,
-                  starSize: context.sized.dynamicHeight(0.02)),
+              Flexible(
+                child: productRating(context,
+                    starSize: context.sized.dynamicHeight(0.02)),
+              ),
             ],
           ),
         ],
