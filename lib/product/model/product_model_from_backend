@@ -1,0 +1,41 @@
+
+class ProductModelFromBackend {
+  String? description;
+  String? image;
+  String? name;
+  double? price;
+  final int? productId;
+  final String? productCode;
+  String? dealer;
+
+  ProductModelFromBackend(
+      {this.description,
+      this.image,
+      this.name,
+      this.price,
+      this.productId,
+      this.productCode,
+      this.dealer});
+
+  ProductModelFromBackend.fromJson(Map<String, dynamic> json) {
+    description = json['description'];
+    image = json['image'];
+    name = json['name'];
+    price = json['price'];
+    productId = json['productId'];
+    productCode = json['productCode'];
+    dealer = json['dealer'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['description'] = this.description;
+    data['image'] = this.image;
+    data['name'] = this.name;
+    data['price'] = this.price;
+    data['productId'] = this.productId;
+    data['productCode'] = this.productCode;
+    data['dealer'] = this.dealer;
+    return data;
+  }
+}
