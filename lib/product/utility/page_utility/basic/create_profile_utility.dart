@@ -87,6 +87,9 @@ mixin CreateProfileUtility on State<CreateProfileView>{
   }
 
   Container buildYearDropdown() {
+        final int currentYear = DateTime.now().year;
+    final int maxYear = currentYear - 18; // 18 yıl öncesine kadar olan yıllar
+    final int minYear = currentYear - 100; // 100 yıl öncesine kadar olan yıllar
     return Container(
       decoration: BoxDecoration(
         borderRadius: context.border.normalBorderRadius,
@@ -101,12 +104,15 @@ mixin CreateProfileUtility on State<CreateProfileView>{
           createProfileController.updateSelectedYear(value!);
         },
         items: List.generate(
-          100,
-              (index) => DropdownMenuItem<int>(
-            value: DateTime.now().year - index,
-            child: Center(child: Text('${DateTime.now().year - index}')),
+            maxYear - minYear + 1,
+            (index) {
+              int year = maxYear - index;
+              return DropdownMenuItem<int>(
+                value: year,
+                child: Center(child: Text('$year')),
+              );
+            },
           ),
-        ),
       ),
     );
   }

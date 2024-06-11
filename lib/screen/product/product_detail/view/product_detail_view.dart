@@ -21,7 +21,6 @@ class ProductDetailView extends StatefulWidget {
 
 class _ProductDetailViewState extends State<ProductDetailView>
     with ProductDetailUtility {
-
   @override
   void initState() {
     super.initState();
@@ -68,7 +67,8 @@ class _ProductDetailViewState extends State<ProductDetailView>
         height: context.sized.dynamicHeight(0.9),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: context.myBorder.dynamicBorderRadiusOnly(topRight: 0.08, topLeft: 0.08),
+          borderRadius: context.myBorder
+              .dynamicBorderRadiusOnly(topRight: 0.08, topLeft: 0.08),
           boxShadow: [
             generalShadow(),
           ],
@@ -125,43 +125,43 @@ class _ProductDetailViewState extends State<ProductDetailView>
 
   Padding _buildProductInfoCntent(BuildContext context) {
     return Padding(
-                padding: context.padding.onlyTopNormal,
-                child: const Text(
-                    'Yüzünüze parlaklık ve nem verir. Sivilce akne oluşumunu önler. Üstelik içindeki C vitamini sayesinde vücudunuzun cilt bariyerini güçlendirir.'),
-              );
+      padding: context.padding.onlyTopNormal,
+      child: const Text(
+          'Yüzünüze parlaklık ve nem verir. Sivilce akne oluşumunu önler. Üstelik içindeki C vitamini sayesinde vücudunuzun cilt bariyerini güçlendirir.'),
+    );
   }
 
   Row _buildQuantityInfo(BuildContext context) {
     return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'ADET',
-                    style: context.general.textTheme.titleLarge,
-                  ),
-                  Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      //backgroundContainer
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.black12,
-                          borderRadius: context.border.lowBorderRadius,
-                        ),
-                        width: Get.width * 0.412,
-                        height: Get.height * 0.061,
-                        child: Center(
-                            child: Text(
-                          '1',
-                          style: context.general.textTheme.titleLarge,
-                        )),
-                      ),
-                      quantityButton(context, text: "-", isLeft: true),
-                      quantityButton(context, text: "+", isLeft: false)
-                    ],
-                  ),
-                ],
-              );
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          'ADET',
+          style: context.general.textTheme.titleLarge,
+        ),
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            //backgroundContainer
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                borderRadius: context.border.lowBorderRadius,
+              ),
+              width: Get.width * 0.412,
+              height: Get.height * 0.061,
+              child: Center(
+                  child: Text(
+                '1',
+                style: context.general.textTheme.titleLarge,
+              )),
+            ),
+            quantityButton(context, text: "-", isLeft: true),
+            quantityButton(context, text: "+", isLeft: false)
+          ],
+        ),
+      ],
+    );
   }
 
   Container _buildImageContainerPlace(
@@ -198,21 +198,36 @@ class _ProductDetailViewState extends State<ProductDetailView>
                   onPressed: () {
                     NavigatorController.instance.pop();
                   }),
-              CustomElevatedButton(
-                  width: dynamicWidth,
-                  height: dynamicButtonHeight,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: context.myBorder
-                          .dynamicBorderRadiusCircular(borderSize: 0.03)),
-                  child: const Icon(
-                    Icons.favorite,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {}),
+              Obx(
+                () => controller.model?.value.isFavorite ?? false
+                    ? _buildCustomElevatedButton(dynamicWidth, dynamicButtonHeight, context, controller,Colors.red)
+                    : _buildCustomElevatedButton(dynamicWidth, dynamicButtonHeight, context, controller, Colors.black)
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  CustomElevatedButton _buildCustomElevatedButton(
+      double dynamicWidth,
+      double dynamicButtonHeight,
+      BuildContext context,
+      ProductDetailController controller,Color color) {
+    return CustomElevatedButton(
+      width: dynamicWidth,
+      height: dynamicButtonHeight,
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              context.myBorder.dynamicBorderRadiusCircular(borderSize: 0.03)),
+      child: Icon(
+        Icons.favorite,
+        color: color,
+      ),
+      onPressed: () {
+        controller.changeFavoriteValue(controller.model?.value);
+      },
     );
   }
 }

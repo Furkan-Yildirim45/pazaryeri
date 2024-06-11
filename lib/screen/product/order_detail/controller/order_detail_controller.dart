@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../../product/model/product_model.dart';
 
 class OrderDetailController extends GetxController{
-  Rx<ProductModel>? orderDetailItem = ProductModel().obs;
+  Rx<ProductModel>? orderDetailItem = ProductModel.create().obs;
 
   @override
   void onInit() {

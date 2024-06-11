@@ -6,7 +6,7 @@ import 'package:kartal/kartal.dart';
 import '../../../../screen/basic/verification_code/controller/verification_code_controller.dart';
 import '../../../color/project_color.dart';
 
-mixin VerificationCodeUtility{
+mixin VerificationCodeUtility {
   final VerificationController controller = Get.put(VerificationController());
 
   Container buildVerificationCodeContainerLvb(BuildContext context) {
@@ -26,27 +26,42 @@ mixin VerificationCodeUtility{
             decoration: BoxDecoration(
               color: ProjectColor.apricot.getColor(),
               borderRadius: context.border.normalBorderRadius,
-              border: Border.all(width: 1,color: ProjectColor.apricot.getColor()),
+              border:
+                  Border.all(width: 1, color: ProjectColor.apricot.getColor()),
             ),
             child: Focus(
               onKeyEvent: (node, event) {
-                if (event is KeyDownEvent && event.logicalKey == LogicalKeyboardKey.backspace && controller.controllers[index].text.isEmpty) {
-                  controller.handleCodeInputDelete(controller.controllers[index].text, index, context);
+                if (event is KeyDownEvent &&
+                    event.logicalKey == LogicalKeyboardKey.backspace &&
+                    controller.controllers[index].text.isEmpty) {
+                  controller.handleCodeInputDelete(
+                      controller.controllers[index].text, index, context);
                   return KeyEventResult.handled;
                 }
                 return KeyEventResult.ignored;
               },
               child: TextField(
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
                 controller: controller.controllers[index],
                 focusNode: controller.focusNodes[index],
-                style: context.general.textTheme.titleLarge?.copyWith(color: Colors.white),
+                style: context.general.textTheme.titleLarge
+                    ?.copyWith(color: Colors.white),
                 cursorColor: Colors.white,
                 textAlign: TextAlign.center,
-                decoration: const InputDecoration(border: InputBorder.none,counterText: '',),
+                decoration: const InputDecoration(
+                  border: InputBorder.none,
+                  counterText: '',
+                ),
                 keyboardType: TextInputType.phone,
                 maxLength: 1,
                 onChanged: (value) {
-                  controller.handleCodeInputChange(value, index, context,);
+                  controller.handleCodeInputChange(
+                    value,
+                    index,
+                    context,
+                  );
                 },
               ),
             ),
@@ -62,18 +77,25 @@ mixin VerificationCodeUtility{
       child: TextButton(
           onPressed: () {
             controller.startCountdown();
-          }, child: Text('Yeni kod gönder',style:
-      context.general.textTheme.titleSmall?.copyWith(color: ProjectColor.apricot.getColor()),)
-      ),
+          },
+          child: Text(
+            'Yeni kod gönder',
+            style: context.general.textTheme.titleSmall
+                ?.copyWith(color: ProjectColor.apricot.getColor()),
+          )),
     );
   }
 
   Text verificationCodeText(BuildContext context) {
-    return Text('Doğrulama Kodunu giriniz.',style:
-    context.general.textTheme.titleMedium,);
+    return Text(
+      'Doğrulama Kodunu giriniz.',
+      style: context.general.textTheme.titleMedium,
+    );
   }
 
-  Center timeRemainingText(BuildContext context,) {
+  Center timeRemainingText(
+    BuildContext context,
+  ) {
     return Center(
       child: Padding(
         padding: context.padding.onlyTopNormal,
@@ -86,9 +108,8 @@ mixin VerificationCodeUtility{
             ),
             Text(
               "${controller.counter.value}",
-              style: context.general.textTheme.labelLarge?.copyWith(
-                  color: ProjectColor.apricot.getColor()
-              ),
+              style: context.general.textTheme.labelLarge
+                  ?.copyWith(color: ProjectColor.apricot.getColor()),
             ),
           ],
         ),

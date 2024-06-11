@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:Pazaryeri/product/navigator/navigator_manager.dart';
+import 'package:Pazaryeri/product/navigator/navigator_route_items.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -55,6 +57,7 @@ class VerificationController extends GetxController {
         FocusScope.of(context).requestFocus(focusNodes[index + 1]);
       } else {
         focusNodes[index].unfocus();
+        NavigatorController.instance.pushToPage(NavigateRoutesItems.createProfile);
       }
     }
   }

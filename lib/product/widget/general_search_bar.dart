@@ -56,9 +56,9 @@ class GeneralSearchBar extends StatelessWidget {
       BuildContext context, GeneralSearchBarController controller) {
     return Expanded(
       child: Padding(
-        padding: context.padding.onlyLeftNormal,
+        padding: context.padding.onlyLeftLow,
         child: Padding(
-          padding: context.padding.onlyBottomLow,
+          padding: EdgeInsets.only(bottom: Get.height * 0.013,right: context.sized.normalValue),
           child: TextField(
             onTap: (){
               _switchToSearchPage();
@@ -71,6 +71,7 @@ class GeneralSearchBar extends StatelessWidget {
                   hintText: hintText,
                   hintStyle: context.general.textTheme.titleSmall?.copyWith(
                     color: Colors.black54,
+                    overflow: TextOverflow.ellipsis
                   )),
               onSubmitted: controller.onSubmitted),
         ),
@@ -89,7 +90,7 @@ class GeneralSearchBar extends StatelessWidget {
   Padding _buildSearchIcon(BuildContext context,
       {required GeneralSearchBarController searchController}) {
     return Padding(
-      padding: context.padding.onlyLeftNormal,
+      padding: context.padding.onlyLeftLow,
       child: IconButton(
         onPressed: (){
           _iconButtonOnPressed(searchController);

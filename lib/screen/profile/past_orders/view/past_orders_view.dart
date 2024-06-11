@@ -17,7 +17,7 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
 
   @override
   Widget build(BuildContext context) {
-    final ProductModel productModel = ProductModel(
+    final ProductModel productModel = ProductModel.create(
         productUrl: "9",
         productBrand: "Nivea",
         productPrice: 300,

@@ -20,7 +20,7 @@ class ProjectInit extends GetxController{
 
   void generateDummyProduct() {
     ProjectData.instance?.productItems = List.generate(10, (index) {
-      return ProductModel(
+      return ProductModel.create(
         productBrand: "Nivea",
         productDate: "12.05.2024",
         productName: "Yüz Bakım Kremi",
@@ -34,7 +34,7 @@ class ProjectInit extends GetxController{
 
   void generateDummyPopularProductItems(){
     ProjectData.instance?.popularProductItems = List.generate(10, (index) {
-      return ProductModel(
+      return ProductModel.create(
         productBrand: "Mavi",
         productDate: "13.05.2024",
         productName: "XXX Erkek Parfümü",
@@ -48,7 +48,7 @@ class ProjectInit extends GetxController{
 
   void generateDummyFavoriteProductItems(){
     ProjectData.instance?.favoriteProductItems = List.generate(2, (index) {
-      return ProductModel(
+      return ProductModel.create(
         productBrand: "Mavi",
         productDate: "13.05.2024",
         productName: "XXX Erkek Parfümü",
@@ -56,13 +56,14 @@ class ProjectInit extends GetxController{
         productUrl: "product",
         seller: "Furkan Yıldırım",
         productRating: "4",
+        isFavorite: true,
       );
     },);
   }
 
   void generateDummyShoppingCardProductItems(){
     ProjectData.instance?.shoppingCardProductItems = List.generate(4, (index) {
-      return ProductModel(
+      return ProductModel.create(
         productBrand: "Mavi",
         productDate: "14.05.2024",
         productName: "XXX Erkek Parfümü",

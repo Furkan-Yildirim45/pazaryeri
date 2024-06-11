@@ -8,6 +8,8 @@ class PhoneNumberWidget extends StatefulWidget {
 }
 
 class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
+    final PhoneNumberController controller = Get.put(PhoneNumberController());
+
   @override
   Widget build(BuildContext context) {
     var dynamicComponentHeight = context.sized.dynamicHeight(0.07);
@@ -76,13 +78,17 @@ class _PhoneNumberWidgetState extends State<PhoneNumberWidget> {
           bottom: context.height * 0.025,
         ),
         child: TextField(
-          maxLength: 11,
+          maxLength: 10,
           maxLines: 1,
-          keyboardType: TextInputType.phone,
+          keyboardType: TextInputType.number,
           cursorColor: Colors.black,
           decoration: const InputDecoration(
             border: InputBorder.none,
           ),
+          inputFormatters: <TextInputFormatter>[
+            FilteringTextInputFormatter.digitsOnly,
+          ],
+          onChanged: (value) => controller.setInput(value),
           buildCounter: (context,
                   {required currentLength,
                   required isFocused,
