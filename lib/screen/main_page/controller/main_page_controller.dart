@@ -19,7 +19,7 @@ class MainPageController extends GetxController{
     _pageController.animateToPage(
       index,
       duration: context.duration.durationLow,
-      curve: Curves.ease,
+      curve: Curves.fastOutSlowIn,
     );
   }
 }

@@ -33,5 +33,3 @@ class MainService extends IMainService{
 enum _ServicePath{
   product,
 }
-
-//todo: şaunda musti bana url i vermesi gerekiyor!! ondan sonra deniceksin ui da!

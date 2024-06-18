@@ -23,7 +23,6 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-
       theme: ProjectTheme(context).theme,
       initialRoute: NavigatorRoutes.init,
       debugShowCheckedModeBanner: false,

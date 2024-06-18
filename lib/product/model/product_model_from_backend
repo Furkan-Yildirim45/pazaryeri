@@ -1,4 +1,3 @@
-
 class ProductModelFromBackend {
   String? description;
   String? image;

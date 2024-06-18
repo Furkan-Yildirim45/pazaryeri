@@ -1,6 +1,5 @@
 import 'package:Pazaryeri/screen/profile/favorite/controller/favorite_controller.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 
 import '../../../../product/init/init.dart';
 import '../../../../product/model/product_model.dart';
@@ -39,8 +38,6 @@ class ProductDetailController extends GetxController {
         model.isFavorite = true;
       }
     }
-    print("tıklandı");
-    print(model?.isFavorite);
     update();
   }
 }

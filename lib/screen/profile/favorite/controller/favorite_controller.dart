@@ -10,7 +10,6 @@ class FavoriteController extends GetxController {
   void onInit() {
     super.onInit();
     favoriteProductItems?.value = ProjectData.instance?.favoriteProductItems ?? [];
-    print(favoriteProductItems?[0].isFavorite);
   }
 
   void addFavoriteProductItems(ProductModel? product) {
