@@ -3,22 +3,37 @@ import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../color/project_color.dart';
-import '../controller/general_page_controller.dart';
+import '../controller/search_bar_page_controller.dart';
 import '../controller/product_widget_controller/general_search_bar_controller.dart';
 
-class GeneralSearchBar extends StatelessWidget {
-  GeneralSearchBar({super.key});
-  final GeneralPageController generalPageController = Get.put(GeneralPageController());
-  final GeneralSearchBarController searchBarController = Get.put(GeneralSearchBarController());
+class GeneralSearchBar extends StatefulWidget {
+  const GeneralSearchBar({super.key, required this.searchBarPageItems});
+  final SearchBarPageItems searchBarPageItems;
 
+  @override
+  State<GeneralSearchBar> createState() => _GeneralSearchBarState();
+}
+
+class _GeneralSearchBarState extends State<GeneralSearchBar> {
+  final SearchBarPageController searchBarPageController = Get.find<SearchBarPageController>();
+  final GeneralSearchBarController searchBarController = Get.put(GeneralSearchBarController());
   final String hintText = "İstediğiniz ürünü ve kategoriyi aratabilirsiniz";
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      searchBarPageController.setCurrentPage(widget.searchBarPageItems);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: context.padding.onlyTopNormal,
       child: GestureDetector(
         onTap: (){
-          _switchToSearchPage();
+          // _switchToSearchPage();
         },
         child: GetBuilder<GeneralSearchBarController>(
           init: GeneralSearchBarController(),
@@ -45,13 +60,12 @@ class GeneralSearchBar extends StatelessWidget {
     );
   }
 
-  void _switchToSearchPage() {
-    if(generalPageController.currentPage.value == PageType.home){
+/*   void _switchToSearchPage() {
+    if(searchBarPageController.currentPage.value == SearchBarPageItems.home){
       searchBarController.changeClicked();
-      generalPageController.showPage(PageType.search);
+      searchBarPageController.showPage(searchBarLocalPageItem: SearchBarLocalPage.search);
     }
-  }
-
+  } */
   Expanded _buildSearchBarTextField(
       BuildContext context, GeneralSearchBarController controller) {
     return Expanded(
@@ -61,7 +75,7 @@ class GeneralSearchBar extends StatelessWidget {
           padding: EdgeInsets.only(bottom: Get.height * 0.013,right: context.sized.normalValue),
           child: TextField(
             onTap: (){
-              _switchToSearchPage();
+              // _switchToSearchPage();
             },
               textAlignVertical: TextAlignVertical.center,
               controller: controller.getSearchController,
@@ -104,16 +118,22 @@ class GeneralSearchBar extends StatelessWidget {
   }
 
   void _iconButtonOnPressed(GeneralSearchBarController searchController) {
-    switch(generalPageController.currentPage.value){
-      case PageType.home:
+    switch(searchBarPageController.currentPage.value){
+      case "search":
+        searchController.changeClicked();
+        searchBarPageController.changeCurrentPageValue(searchBarPageItem: widget.searchBarPageItems.name);
+      case "searchResultForCouple":
+        searchController.changeClicked();
+        searchBarPageController.changeCurrentPageValue(searchBarPageItem: widget.searchBarPageItems.name);
+      case "favorite":
+      case "shoppingCard":
+      case "pastOrders":
+      case "searchResultForLonely":
+      case "home":
         searchBarController.changeClicked();
-        generalPageController.showPage(PageType.search);
-      case PageType.search:
-        searchController.changeClicked();
-        generalPageController.showPage(PageType.home);
-      case PageType.searchResult:
-        searchController.changeClicked();
-        generalPageController.showPage(PageType.home);
+        searchBarPageController.changeCurrentPageValue(searchBarLocalPageItem: SearchBarLocalPage.search.name);
     }
   }
 }
+
+//tum herşey yukarıda var dosya kodlarını tek tek chatgpt ye at senaryoyu at bakalım ne dicek!

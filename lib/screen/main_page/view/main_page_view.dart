@@ -1,3 +1,5 @@
+import 'package:Pazaryeri/product/controller/global_controller.dart';
+import 'package:Pazaryeri/product/controller/search_bar_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +14,8 @@ import '../controller/main_page_controller.dart';
 class MainPageView extends StatelessWidget with ProfileViewUtility {
   MainPageView({super.key});
   final MainPageController controller = Get.put(MainPageController());
+  final GlobalController globalController = Get.put(GlobalController());
+  final SearchBarPageController searchBarPageController = Get.put(SearchBarPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class MainPageView extends StatelessWidget with ProfileViewUtility {
         onPageChanged: controller.onPageChanged,
         children: <Widget>[
           const HomePageView(),
-          const FavoriteView(),
+          FavoriteView(),
           ShoppingCardView(),
           const ProfileView(),
         ],

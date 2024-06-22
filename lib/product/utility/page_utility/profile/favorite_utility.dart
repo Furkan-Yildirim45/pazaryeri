@@ -1,3 +1,5 @@
+import 'package:Pazaryeri/product/controller/global_controller.dart';
+import 'package:Pazaryeri/product/controller/search_bar_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -8,6 +10,9 @@ import '../../../widget/custom_elevated_button.dart';
 import '../../project_utility/image_utility.dart';
 
 mixin FavoriteUtility {
+  String get getPageNameItem => SearchBarPageItems.favorite.name;
+  final GlobalController globalController = Get.find<GlobalController>();
+
   Padding buildProductDetailButton(
     BuildContext context, {
     required double width,

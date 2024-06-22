@@ -1,3 +1,4 @@
+import 'package:Pazaryeri/product/controller/search_bar_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
@@ -11,7 +12,7 @@ import '../../../../product/widget/general_search_bar.dart';
 import '../../../../product/widget/product_card_with_seller_info.dart';
 
 class PastOrdersView extends StatelessWidget with FavoriteUtility {
-  const PastOrdersView({super.key});
+  PastOrdersView({super.key});
 
   final int pastOrdersItemCount = 2;
 
@@ -34,7 +35,7 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
         padding: context.padding.horizontalNormal,
         child: ListView(
           children: [
-            GeneralSearchBar(),
+            GeneralSearchBar(searchBarPageItems: SearchBarPageItems.pastOrders,),
             Container(
               margin: context.padding.onlyTopNormal,
               width: double.infinity,

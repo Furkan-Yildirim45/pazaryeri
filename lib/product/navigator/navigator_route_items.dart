@@ -29,8 +29,8 @@ class NavigatorRoutes {
   static const String init = "/";
   final List<GetPage<dynamic>>? routes = [
       GetPage(name: NavigatorRoutes.init, page: () => const WelcomeView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
-      GetPage(name: NavigateRoutesItems.home.withSlash, page: () => const HomePageView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
-      GetPage(name: NavigateRoutesItems.favorite.withSlash, page: () => const FavoriteView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
+      GetPage(name: NavigateRoutesItems.home.withSlash, page: () =>  HomePageView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
+      GetPage(name: NavigateRoutesItems.favorite.withSlash, page: () => FavoriteView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.shoppingCard.withSlash, page: () => ShoppingCardView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.profile.withSlash, page: () => const ProfileView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.wallet.withSlash, page: () => const WalletView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
@@ -42,7 +42,7 @@ class NavigatorRoutes {
       GetPage(name: NavigateRoutesItems.createProfile.withSlash, page: () => const CreateProfileView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.verificationCode.withSlash, page: () => VerificationView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.unknown.withSlash, page: () => const UnknownView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
-      GetPage(name: NavigateRoutesItems.pastOrders.withSlash, page: () => const PastOrdersView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
+      GetPage(name: NavigateRoutesItems.pastOrders.withSlash, page: () => PastOrdersView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.addresses.withSlash, page: () => AddressesView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.creditCard.withSlash, page: () => CreditCardView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.accountSettings.withSlash, page: () => const UnknownView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),

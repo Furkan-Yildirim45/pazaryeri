@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
-import '../../../screen/home/search/view/search_view.dart';
-import '../../../screen/home/search_result/view/search_result_view.dart';
-import '../../../screen/unknown_page/view/unknown_view.dart';
 import '../../color/project_color.dart';
-import '../../controller/general_page_controller.dart';
+import '../../controller/search_bar_page_controller.dart';
 import '../../navigator/navigator_manager.dart';
 import '../../navigator/navigator_route_items.dart';
 import '../../widget/custom_elevated_button.dart';
@@ -16,20 +13,9 @@ import '../../widget/product_card_widget.dart';
 import '../project_utility/image_utility.dart';
 
 mixin HomePageViewUtility {
-  final GeneralPageController generalPageController = Get.put(GeneralPageController());
+  final SearchBarPageController generalPageController = Get.find<SearchBarPageController>();
 
-  Widget selectAndShowPage(BuildContext context) {
-    switch (generalPageController.currentPage.value) {
-      case PageType.home:
-        return buildHomePageContent(context);
-      case PageType.search:
-        return SearchView();
-      case PageType.searchResult:
-        return SearchResultView(productItems: generalPageController.items,);
-      default:
-        return const UnknownView();
-    }
-  }
+    String get getPageNameItem => SearchBarPageItems.home.name;
 
   GetBuilder buildHomePageContent(BuildContext context) {
     return GetBuilder<HomePageController>(

@@ -1,4 +1,5 @@
 import 'package:Pazaryeri/product/color/project_color.dart';
+import 'package:Pazaryeri/product/controller/search_bar_page_controller.dart';
 import 'package:Pazaryeri/product/widget/general_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,7 +32,7 @@ class ShoppingCardView extends StatelessWidget
             padding: context.padding.horizontalNormal,
             child: ListView(
               children: [
-                GeneralSearchBar(),
+                GeneralSearchBar(searchBarPageItems: SearchBarPageItems.shoppingCard,),
                 buildProductCardLvb(context,controller),
               ],
             ),

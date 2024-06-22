@@ -4,14 +4,14 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../model/product_model.dart';
-import '../general_page_controller.dart';
+import '../search_bar_page_controller.dart';
 
 class GeneralSearchBarController extends GetxController {
   final _searchController = TextEditingController();
   TextEditingController get getSearchController => _searchController;
   final searchedWords = [].obs;
   var isClicked = false.obs;
-  final GeneralPageController generalPageController = Get.put(GeneralPageController());
+  final SearchBarPageController searchBarPageController = Get.put(SearchBarPageController());
 
   void onSubmitted(String word) {
     searchedWords.add(word);
@@ -19,7 +19,7 @@ class GeneralSearchBarController extends GetxController {
         .where((product) => product.productName?.toLowerCase().contains(word.toLowerCase()) ?? false)
         .toList();
     if (matchedProducts?.isNotEmpty ?? false) {
-      generalPageController.showPage(PageType.searchResult,matchedProducts: matchedProducts);
+      searchBarPageController.changeCurrentPageValue(searchBarLocalPageItem: SearchBarLocalPage.searchResultForCouple.name,matchedProducts: matchedProducts);
     }
     _searchController.clear();
   }

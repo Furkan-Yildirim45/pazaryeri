@@ -8,7 +8,7 @@ import '../navigator/navigator_route_items.dart';
 import '../utility/page_utility/profile/favorite_utility.dart';
 
 class ProductCardWithSellerInfo extends StatelessWidget with FavoriteUtility {
-  const ProductCardWithSellerInfo({
+  ProductCardWithSellerInfo({
     super.key,
     required this.index,
     this.buttons,
