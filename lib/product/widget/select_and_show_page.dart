@@ -1,9 +1,9 @@
 import 'package:Pazaryeri/product/controller/search_bar_page_controller.dart';
 import 'package:Pazaryeri/screen/home/search/view/search_view.dart';
 import 'package:Pazaryeri/screen/home/search_result/view/search_result_view.dart';
-import 'package:Pazaryeri/screen/unknown_page/view/unknown_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kartal/kartal.dart';
 
 Widget selectAndShowPage(
     {required BuildContext context,
@@ -12,16 +12,25 @@ Widget selectAndShowPage(
   final currentPageValue =
       Get.find<SearchBarPageController>().currentPage.value;
   print("currentPageValue :$currentPageValue");
-  final result;
+  var result;
   if (currentPageValue == pageName) {
     result = currentPageWidget;
   } else if (currentPageValue == SearchBarLocalPage.search.name) {
     result = SearchView();
   } else if (currentPageValue ==
       SearchBarLocalPage.searchResultForCouple.name) {
-    result = const SearchResultView();
+    result = SearchResultView(productItems: Get.find<SearchBarPageController>().items,);
   } else {
-    result = const UnknownView();
+    result = _buildHasNotPage(context);
   }
   return result;
+}
+
+Center _buildHasNotPage(BuildContext context) {
+  return Center(
+      child: Text(
+        'Üzgünüz, bu sayfa bulunamadı!',
+        style: context.general.textTheme.labelLarge,
+      ),
+    );
 }

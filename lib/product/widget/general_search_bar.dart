@@ -1,3 +1,4 @@
+import 'package:Pazaryeri/product/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -7,8 +8,9 @@ import '../controller/search_bar_page_controller.dart';
 import '../controller/product_widget_controller/general_search_bar_controller.dart';
 
 class GeneralSearchBar extends StatefulWidget {
-  const GeneralSearchBar({super.key, required this.searchBarPageItems});
+  const GeneralSearchBar({super.key, required this.searchBarPageItems, required this.searchBarProductItems});
   final SearchBarPageItems searchBarPageItems;
+  final List<ProductModel>? searchBarProductItems;
 
   @override
   State<GeneralSearchBar> createState() => _GeneralSearchBarState();
@@ -87,7 +89,9 @@ class _GeneralSearchBarState extends State<GeneralSearchBar> {
                     color: Colors.black54,
                     overflow: TextOverflow.ellipsis
                   )),
-              onSubmitted: controller.onSubmitted),
+              onSubmitted: (word) {
+                controller.onSubmitted(word: word, searchProductItems: widget.searchBarProductItems);
+              },),
         ),
       ),
     );
@@ -135,5 +139,3 @@ class _GeneralSearchBarState extends State<GeneralSearchBar> {
     }
   }
 }
-
-//tum herşey yukarıda var dosya kodlarını tek tek chatgpt ye at senaryoyu at bakalım ne dicek!

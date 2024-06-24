@@ -32,7 +32,7 @@ class ShoppingCardView extends StatelessWidget
             padding: context.padding.horizontalNormal,
             child: ListView(
               children: [
-                GeneralSearchBar(searchBarPageItems: SearchBarPageItems.shoppingCard,),
+                GeneralSearchBar(searchBarPageItems: SearchBarPageItems.shoppingCard, searchBarProductItems: controller.shoppingCardProductItems,),
                 buildProductCardLvb(context,controller),
               ],
             ),

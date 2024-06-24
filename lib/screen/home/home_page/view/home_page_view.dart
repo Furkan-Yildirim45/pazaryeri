@@ -1,9 +1,9 @@
 import 'package:Pazaryeri/product/color/project_color.dart';
-import 'package:Pazaryeri/product/controller/global_controller.dart';
 import 'package:Pazaryeri/product/controller/search_bar_page_controller.dart';
 import 'package:Pazaryeri/product/utility/project_utility/background_image_utility.dart';
 import 'package:Pazaryeri/product/widget/main_page_app_bar.dart';
 import 'package:Pazaryeri/product/widget/select_and_show_page.dart';
+import 'package:Pazaryeri/screen/home/home_page/controller/home_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -33,7 +33,7 @@ class _HomePageViewState extends State<HomePageView> with HomePageViewUtility,Ba
                   padding: context.padding.horizontalNormal,
                   child: Column(
                     children: [
-                      const GeneralSearchBar(searchBarPageItems: SearchBarPageItems.home,),
+                      GeneralSearchBar(searchBarPageItems: SearchBarPageItems.home, searchBarProductItems: Get.find<HomePageController>().popularProductItems,),
                       Obx(() => selectAndShowPage(context: context,pageName: getPageNameItem,currentPageWidget: buildHomePageContent(context)),)
                     ],
                   ),

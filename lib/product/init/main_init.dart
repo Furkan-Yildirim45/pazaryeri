@@ -11,5 +11,7 @@ class MainInit{
     projectInit.generateDummyPopularProductItems();
     projectInit.generateDummyFavoriteProductItems();
     projectInit.generateDummyShoppingCardProductItems();
+    projectInit.generateDummyPastOrederProductItems();
+    
   }
 }

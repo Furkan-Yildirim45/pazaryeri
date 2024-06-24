@@ -7,8 +7,7 @@ import '../../../../product/controller/product_widget_controller/general_search_
 class SearchView extends StatelessWidget {
   SearchView({super.key});
 
-  final GeneralSearchBarController generalSearchBarController =
-      Get.put(GeneralSearchBarController());
+  final GeneralSearchBarController generalSearchBarController = Get.put(GeneralSearchBarController());
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +61,7 @@ class SearchView extends StatelessWidget {
       padding: context.padding.onlyLeftLow,
       child: GestureDetector(
         onTap: (){
-          generalSearchBarController.onSubmitted(generalSearchBarController.searchedWords[index]);
+          generalSearchBarController.onSubmitted(word: generalSearchBarController.searchedWords[index]);
         },
         child: Container(
           height: context.sized.dynamicHeight(0.05),

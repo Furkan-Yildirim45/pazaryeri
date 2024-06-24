@@ -29,7 +29,7 @@ class NavigatorRoutes {
   static const String init = "/";
   final List<GetPage<dynamic>>? routes = [
       GetPage(name: NavigatorRoutes.init, page: () => const WelcomeView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
-      GetPage(name: NavigateRoutesItems.home.withSlash, page: () =>  HomePageView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
+      GetPage(name: NavigateRoutesItems.home.withSlash, page: () =>  const HomePageView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.favorite.withSlash, page: () => FavoriteView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.shoppingCard.withSlash, page: () => ShoppingCardView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),
       GetPage(name: NavigateRoutesItems.profile.withSlash, page: () => const ProfileView(),transition: Transition.cupertino,transitionDuration: const Duration(milliseconds: 500),curve: Curves.easeInOut),

@@ -5,7 +5,8 @@ enum SearchBarPageItems {
   home,
   favorite,
   shoppingCard,
-  pastOrders, search,
+  pastOrders,
+  search,
 }
 
 enum SearchBarLocalPage {
@@ -19,7 +20,9 @@ class SearchBarPageController extends GetxController {
   RxList<ProductModel> items = <ProductModel>[].obs;
 
   void changeCurrentPageValue(
-      {List<ProductModel>? matchedProducts,String? searchBarPageItem,String? searchBarLocalPageItem}) {
+      {List<ProductModel>? matchedProducts,
+      String? searchBarPageItem,
+      String? searchBarLocalPageItem}) {
     if (searchBarPageItem != null || searchBarLocalPageItem != null) {
       if (searchBarPageItem != null) {
         currentPage.value = searchBarPageItem;
@@ -28,11 +31,10 @@ class SearchBarPageController extends GetxController {
       }
       if (matchedProducts != null) {
         items.value = matchedProducts;
-        // items.assignAll(matchedProducts);
       }
       update();
-    }
-    else{
+      print("changeCurrentPageValue :${currentPage.value}");
+    } else {
       Exception("Girdiğin page null!");
     }
     print(currentPage.value);

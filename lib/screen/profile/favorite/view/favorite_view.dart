@@ -26,7 +26,7 @@ class FavoriteView extends StatelessWidget with FavoriteUtility {
         padding: context.padding.horizontalNormal,
         child: ListView(
             children: [
-              const GeneralSearchBar(searchBarPageItems: SearchBarPageItems.favorite,),
+              GeneralSearchBar(searchBarPageItems: SearchBarPageItems.favorite, searchBarProductItems: favoriteController.favoriteProductItems,),
               Obx(() => selectAndShowPage(context: context, pageName: getPageNameItem,currentPageWidget: _buildFavoriteBodyWithoutSearchBar(context))),
             ],
           ),

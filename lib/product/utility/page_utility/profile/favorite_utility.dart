@@ -1,5 +1,5 @@
-import 'package:Pazaryeri/product/controller/global_controller.dart';
 import 'package:Pazaryeri/product/controller/search_bar_page_controller.dart';
+import 'package:Pazaryeri/screen/profile/favorite/controller/favorite_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
@@ -11,7 +11,7 @@ import '../../project_utility/image_utility.dart';
 
 mixin FavoriteUtility {
   String get getPageNameItem => SearchBarPageItems.favorite.name;
-  final GlobalController globalController = Get.find<GlobalController>();
+  final FavoriteController favoriteController = Get.put(FavoriteController());
 
   Padding buildProductDetailButton(
     BuildContext context, {

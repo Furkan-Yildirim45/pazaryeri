@@ -17,5 +17,6 @@ class ProjectData{
   List<ProductModel> popularProductItems = [];
   List<ProductModel> favoriteProductItems = [];
   List<ProductModel> shoppingCardProductItems = [];
+  List<ProductModel> pastOrderProductItems = [];
 }
 

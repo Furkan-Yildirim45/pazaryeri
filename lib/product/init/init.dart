@@ -73,5 +73,17 @@ class ProjectInit extends GetxController{
         productRating: "4",
       );
     },);
+  }void generateDummyPastOrederProductItems(){
+    ProjectData.instance?.shoppingCardProductItems = List.generate(2, (index) {
+      return ProductModel.create(
+        productBrand: "Mavi",
+        productDate: "14.05.2024",
+        productName: "XXX Erkek Parfümü",
+        productPrice: 1000.00,
+        productUrl: "product",
+        seller: "Furkan Yıldırım",
+        productRating: "4",
+      );
+    },);
   }
 }

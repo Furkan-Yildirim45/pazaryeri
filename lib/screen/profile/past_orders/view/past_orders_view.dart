@@ -1,5 +1,7 @@
 import 'package:Pazaryeri/product/controller/search_bar_page_controller.dart';
+import 'package:Pazaryeri/product/utility/page_utility/profile/past_oders_view_utility.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../../../product/color/project_color.dart';
@@ -11,21 +13,12 @@ import '../../../../product/widget/general_app_bar.dart';
 import '../../../../product/widget/general_search_bar.dart';
 import '../../../../product/widget/product_card_with_seller_info.dart';
 
-class PastOrdersView extends StatelessWidget with FavoriteUtility {
+class PastOrdersView extends StatelessWidget
+    with FavoriteUtility, PastOdersViewUtility {
   PastOrdersView({super.key});
-
-  final int pastOrdersItemCount = 2;
 
   @override
   Widget build(BuildContext context) {
-    final ProductModel productModel = ProductModel.create(
-        productUrl: "9",
-        productBrand: "Nivea",
-        productPrice: 300,
-        productDate: "11.05.2024",
-        seller: "XXXXXX",
-        productRating: "4.7",
-        productName: "XXX Erkek Parfüm");
     return Scaffold(
       appBar: GeneralAppBar(
         textColor: ProjectColor.apricot.getColor(),
@@ -35,31 +28,12 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
         padding: context.padding.horizontalNormal,
         child: ListView(
           children: [
-            GeneralSearchBar(searchBarPageItems: SearchBarPageItems.pastOrders,),
-            Container(
-              margin: context.padding.onlyTopNormal,
-              width: double.infinity,
-              height: context.sized.dynamicHeight(0.268) * pastOrdersItemCount,
-              child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: pastOrdersItemCount,
-                itemBuilder: (context, index) {
-                  return ProductCardWithSellerInfo(
-                    index: index,
-                    productModel: productModel,
-                    topPlace: _buildTopPlace(context, productModel),
-                    buttons: [
-                      buildProductFavoriteCardPropertyButton(context,
-                          onPressed: () {
-                            NavigatorController.instance.pushToPage(NavigateRoutesItems.orderDetail,arguments: productModel);
-                          },
-                          text: "Detaylar",
-                          textColor: Colors.white,
-                          backgroundColor: ProjectColor.apricot.getColor())
-                    ],
-                  );
-                },
-              ),
+            GeneralSearchBar(
+              searchBarPageItems: SearchBarPageItems.pastOrders,
+              searchBarProductItems: pastOrdersController.pastOrderProductItems,
+            ),
+            Obx(
+              () => _buildProductLvb(context),
             ),
           ],
         ),
@@ -67,7 +41,39 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
     );
   }
 
-  Padding _buildTopPlace(BuildContext context, ProductModel productModel) {
+  Container _buildProductLvb(BuildContext context) {
+    return Container(
+      margin: context.padding.onlyTopNormal,
+      width: double.infinity,
+      height: context.sized.dynamicHeight(0.268) *
+          (pastOrdersController.pastOrderProductItems?.length ?? 0.0),
+      child: ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: pastOrdersController.pastOrderProductItems?.length,
+        itemBuilder: (context, index) {
+          return ProductCardWithSellerInfo(
+            index: index,
+            productModel: pastOrdersController.pastOrderProductItems?[index],
+            topPlace: _buildTopPlace(
+                context, pastOrdersController.pastOrderProductItems?[index]),
+            buttons: [
+              buildProductFavoriteCardPropertyButton(context, onPressed: () {
+                NavigatorController.instance.pushToPage(
+                    NavigateRoutesItems.orderDetail,
+                    arguments:
+                        pastOrdersController.pastOrderProductItems?[index]);
+              },
+                  text: "Detaylar",
+                  textColor: Colors.white,
+                  backgroundColor: ProjectColor.apricot.getColor())
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Padding _buildTopPlace(BuildContext context, ProductModel? productModel) {
     return Padding(
       padding: context.padding.onlyTopNormal,
       child: SizedBox(
@@ -78,7 +84,7 @@ class PastOrdersView extends StatelessWidget with FavoriteUtility {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(productModel.productDate ?? ""),
+              Text(productModel?.productDate ?? ""),
               Row(
                 children: [
                   const Icon(

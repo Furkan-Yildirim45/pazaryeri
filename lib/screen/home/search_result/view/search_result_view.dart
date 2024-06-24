@@ -12,6 +12,7 @@ class SearchResultView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("productItems.lenght :${productItems?.length}");
     return Padding(
       padding: context.padding.onlyTopNormal,
       child: SizedBox(

@@ -1,5 +1,3 @@
-
-import 'package:Pazaryeri/data/project_data.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -13,23 +11,33 @@ class GeneralSearchBarController extends GetxController {
   var isClicked = false.obs;
   final SearchBarPageController searchBarPageController = Get.put(SearchBarPageController());
 
-  void onSubmitted(String word) {
+  void onSubmitted({required String word, List<ProductModel>? searchProductItems}) {
     searchedWords.add(word);
-    List<ProductModel>? matchedProducts = ProjectData.instance?.productItems
-        .where((product) => product.productName?.toLowerCase().contains(word.toLowerCase()) ?? false)
-        .toList();
-    if (matchedProducts?.isNotEmpty ?? false) {
-      searchBarPageController.changeCurrentPageValue(searchBarLocalPageItem: SearchBarLocalPage.searchResultForCouple.name,matchedProducts: matchedProducts);
-    }
+    if(searchProductItems?.isNotEmpty ?? false){
+      List<ProductModel>? matchedProductItems = searchProductItems!
+          .where((product) =>
+              product.productName?.toLowerCase().contains(word.toLowerCase()) ??
+              false)
+          .toList();
+
+      if (matchedProductItems.isNotEmpty) {
+        searchBarPageController.changeCurrentPageValue(
+            searchBarLocalPageItem: SearchBarLocalPage.searchResultForCouple.name,
+            matchedProducts: matchedProductItems);
+      }
     _searchController.clear();
+    update();
+    }
   }
 
   void delete(int index) {
     searchedWords.removeAt(index);
   }
 
-  void changeClicked(){
+  void changeClicked() {
     isClicked.value = !isClicked.value;
     update();
   }
 }
+
+//burda match oldukdan sonra o listeyi benim göndermem gerekiyor!
