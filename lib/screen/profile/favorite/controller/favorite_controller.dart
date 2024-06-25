@@ -5,6 +5,7 @@ import '../../../../product/model/product_model.dart';
 
 class FavoriteController extends GetxController {
   RxList<ProductModel>? favoriteProductItems = <ProductModel>[].obs;
+  RxList<ProductModel>? searchedProductItems = <ProductModel>[].obs;
 
   @override
   void onInit() {

@@ -34,7 +34,7 @@ class _HomePageViewState extends State<HomePageView> with HomePageViewUtility,Ba
                   child: Column(
                     children: [
                       GeneralSearchBar(searchBarPageItems: SearchBarPageItems.home, searchBarProductItems: Get.find<HomePageController>().popularProductItems,),
-                      Obx(() => selectAndShowPage(context: context,pageName: getPageNameItem,currentPageWidget: buildHomePageContent(context)),)
+                      Obx(() => selectAndShowPage(context: context,pageName: getPageNameItem,currentPageWidget: ({data}) => buildHomePageContent(context),),)
                     ],
                   ),
                 )

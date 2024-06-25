@@ -25,7 +25,7 @@ class _GeneralSearchBarState extends State<GeneralSearchBar> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      searchBarPageController.setCurrentPage(widget.searchBarPageItems);
+      searchBarPageController.setCurrentPageForThisView(widget.searchBarPageItems);
     });
   }
 
@@ -132,10 +132,10 @@ class _GeneralSearchBarState extends State<GeneralSearchBar> {
       case "favorite":
       case "shoppingCard":
       case "pastOrders":
-      case "searchResultForLonely":
       case "home":
         searchBarController.changeClicked();
         searchBarPageController.changeCurrentPageValue(searchBarLocalPageItem: SearchBarLocalPage.search.name);
     }
   }
 }
+ 

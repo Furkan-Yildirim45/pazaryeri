@@ -1,5 +1,6 @@
 import 'package:Pazaryeri/product/color/project_color.dart';
 import 'package:Pazaryeri/product/controller/search_bar_page_controller.dart';
+import 'package:Pazaryeri/product/model/product_model.dart';
 import 'package:Pazaryeri/product/model/route_arguments_model.dart';
 import 'package:Pazaryeri/product/widget/general_app_bar.dart';
 import 'package:Pazaryeri/product/widget/select_and_show_page.dart';
@@ -27,14 +28,18 @@ class FavoriteView extends StatelessWidget with FavoriteUtility {
         child: ListView(
             children: [
               GeneralSearchBar(searchBarPageItems: SearchBarPageItems.favorite, searchBarProductItems: favoriteController.favoriteProductItems,),
-              Obx(() => selectAndShowPage(context: context, pageName: getPageNameItem,currentPageWidget: _buildFavoriteBodyWithoutSearchBar(context))),
+              Obx(() => selectAndShowPage(context: context, pageName: getPageNameItem,currentPageWidget: ({data}) {
+                //gelen datayı yüklücez o listeye!
+                if(data is List<ProductModel>){
+                  favoriteController.searchedProductItems?.value = data;
+                }
+                return _buildFavoriteBodyWithoutSearchBar(context);
+              },)),
             ],
           ),
       ),
     );
   }
-
-
 
   GetBuilder<FavoriteController> _buildFavoriteBodyWithoutSearchBar(BuildContext context) {
     return GetBuilder(

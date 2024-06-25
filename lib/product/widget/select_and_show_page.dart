@@ -5,26 +5,39 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kartal/kartal.dart';
 
-Widget selectAndShowPage(
-    {required BuildContext context,
-    required String pageName,
-    required Widget currentPageWidget}) {
-  final currentPageValue =
-      Get.find<SearchBarPageController>().currentPage.value;
+Widget selectAndShowPage({
+  required BuildContext context,
+  required String pageName,
+  required Widget Function({dynamic data}) currentPageWidget,
+  dynamic data,
+}) {
+  final currentPageValue = Get.find<SearchBarPageController>().currentPage.value;
   print("currentPageValue :$currentPageValue");
-  var result;
+
+  Widget result;
+
   if (currentPageValue == pageName) {
-    result = currentPageWidget;
+    result = currentPageWidget();
   } else if (currentPageValue == SearchBarLocalPage.search.name) {
     result = SearchView();
-  } else if (currentPageValue ==
-      SearchBarLocalPage.searchResultForCouple.name) {
-    result = SearchResultView(productItems: Get.find<SearchBarPageController>().items,);
+  } else if (currentPageValue == SearchBarLocalPage.searchResultForCouple.name && pageName == SearchBarPageItems.home.name) {
+    result = SearchResultView(
+      productItems: Get.find<SearchBarPageController>().items,
+    );
+  } else if (currentPageValue == SearchBarLocalPage.searchResultForLonely.name && pageName != SearchBarPageItems.home.name) {
+    result = currentPageWidget(data: Get.find<SearchBarPageController>().items);
+    Get.find<SearchBarPageController>().currentPage.value = pageName;
   } else {
     result = _buildHasNotPage(context);
   }
+
   return result;
 }
+
+//ben burda ne yapmalıyım?
+///burda home ile diğer sayfaların ayrı tutmalıyım bunu nasıl yaparım su sekilde
+///search olucak okey,asıl sayfa olucak okey,burda currentPageValue lonely olup home ye eşit olmazsa resultu currentPageWidgeta atamalıyım 
+///ve gerekli searchu yapmalıyım o sayfanın listesindeki!
 
 Center _buildHasNotPage(BuildContext context) {
   return Center(

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 import '../model/product_model.dart';
 
 enum SearchBarPageItems {
@@ -18,6 +19,7 @@ enum SearchBarLocalPage {
 class SearchBarPageController extends GetxController {
   var currentPage = SearchBarPageItems.home.name.obs;
   RxList<ProductModel> items = <ProductModel>[].obs;
+  var searchBarPageItemForThisView = SearchBarPageItems.home.name.obs;
 
   void changeCurrentPageValue(
       {List<ProductModel>? matchedProducts,
@@ -32,15 +34,16 @@ class SearchBarPageController extends GetxController {
       if (matchedProducts != null) {
         items.value = matchedProducts;
       }
-      update();
       print("changeCurrentPageValue :${currentPage.value}");
     } else {
       Exception("Girdiğin page null!");
     }
     print(currentPage.value);
+    update();
   }
 
-  void setCurrentPage(SearchBarPageItems items) {
+  void setCurrentPageForThisView(SearchBarPageItems items) {
     currentPage.value = items.name;
+    searchBarPageItemForThisView.value = items.name;
   }
 }

@@ -9,11 +9,13 @@ class GeneralSearchBarController extends GetxController {
   TextEditingController get getSearchController => _searchController;
   final searchedWords = [].obs;
   var isClicked = false.obs;
-  final SearchBarPageController searchBarPageController = Get.put(SearchBarPageController());
+  final SearchBarPageController searchBarPageController =
+      Get.put(SearchBarPageController());
 
-  void onSubmitted({required String word, List<ProductModel>? searchProductItems}) {
+  void onSubmitted(
+      {required String word, List<ProductModel>? searchProductItems}) {
     searchedWords.add(word);
-    if(searchProductItems?.isNotEmpty ?? false){
+    if (searchProductItems?.isNotEmpty ?? false) {
       List<ProductModel>? matchedProductItems = searchProductItems!
           .where((product) =>
               product.productName?.toLowerCase().contains(word.toLowerCase()) ??
@@ -22,11 +24,13 @@ class GeneralSearchBarController extends GetxController {
 
       if (matchedProductItems.isNotEmpty) {
         searchBarPageController.changeCurrentPageValue(
-            searchBarLocalPageItem: SearchBarLocalPage.searchResultForCouple.name,
+            searchBarLocalPageItem: Get.find<SearchBarPageController>().searchBarPageItemForThisView.value == SearchBarPageItems.home.name
+                ? SearchBarLocalPage.searchResultForCouple.name
+                : SearchBarLocalPage.searchResultForLonely.name,
             matchedProducts: matchedProductItems);
       }
-    _searchController.clear();
-    update();
+      _searchController.clear();
+      update();
     }
   }
 
@@ -39,5 +43,3 @@ class GeneralSearchBarController extends GetxController {
     update();
   }
 }
-
-//burda match oldukdan sonra o listeyi benim göndermem gerekiyor!
